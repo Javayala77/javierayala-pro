@@ -5,10 +5,10 @@ import { TrendingUp, FileText, MapPin, Share2, CheckCircle2 } from "lucide-react
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
 
 const deliverables = [
-  { icon: FileText, title: "5 SEO Blog Posts per Week", desc: "Written by AI, optimized by our team, auto-published to your site. Google finds them without you doing a thing." },
-  { icon: MapPin, title: "Daily Google Business Posts", desc: "Your Google profile stays active every single day — the #1 signal Google uses to rank local businesses." },
-  { icon: Share2, title: "Daily Social Content", desc: "Instagram, Facebook, LinkedIn — posting consistently so your brand stays visible while you're working." },
-  { icon: TrendingUp, title: "Monthly Rankings Report", desc: "You see exactly which keywords moved, how much, and what's coming next." },
+  { icon: FileText, title: "5 SEO Blog Posts per Week", desc: "Written by AI, optimized for your city and industry, auto-published. Google indexes them without you lifting a finger." },
+  { icon: MapPin, title: "Daily Google Business Posts", desc: "The same daily GMB updates that used to take our agency hours — now done automatically, every single day." },
+  { icon: Share2, title: "Daily Social Content", desc: "Instagram, Facebook, LinkedIn — your brand shows up consistently while you focus on running your business." },
+  { icon: TrendingUp, title: "Monthly Rankings Report", desc: "You see exactly where you moved on Google, which keywords are climbing, and what's coming next." },
 ]
 
 const results = [
@@ -21,10 +21,10 @@ export default function RankFlowPage() {
   return (
     <LandingLayout
       accentColor="text-emerald-400"
-      ctaText="I Want More Customers"
+      ctaText="I Want This System"
       ctaHref="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
     >
-      {/* HOOK — Hero */}
+      {/* HOOK */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1),transparent_60%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
@@ -41,16 +41,16 @@ export default function RankFlowPage() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.02] tracking-tight mb-6">
-            There&apos;s a Reason Your Competitor<br />
+            I Used to Do This Manually.<br />
             <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-              Shows Up First on Google.
+              Then Everything Changed.
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            It&apos;s not because they&apos;re better than you.{" "}
-            <span className="text-white font-semibold">It&apos;s because they show up every single day — and you don&apos;t.</span>{" "}
-            Keep reading. This changes today.
+            What I discovered inside a marketing agency completely changed how I think about Google rankings —
+            and{" "}
+            <span className="text-white font-semibold">it has nothing to do with SEO tricks or backlinks.</span>
           </p>
 
           <motion.a
@@ -61,14 +61,14 @@ export default function RankFlowPage() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-300"
           >
-            Show Me How It Works
+            Show Me the System
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Takes 2 minutes · We reply on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
         </motion.div>
       </section>
 
-      {/* STORY — Problem Agitation */}
+      {/* EPIPHANY BRIDGE — The Backstory */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-3xl mx-auto">
@@ -78,34 +78,31 @@ export default function RankFlowPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            <SectionLabel>The Real Problem</SectionLabel>
+            <SectionLabel>The Story</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
-              Google Doesn&apos;t Rank the Best Business.<br />
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">It Ranks the Most Consistent One.</span>
+              Four Years Ago,<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">I Was Doing This By Hand.</span>
             </h2>
 
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                You&apos;re good at what you do. You have happy clients. You&apos;ve built something real. But when someone in your city types your service into Google — <span className="text-white font-semibold">your competitor shows up. Not you.</span>
+                I started at a digital marketing agency. My job? Google Business Profile updates. Every client, every week, manually. Log in, write a post, upload a photo, hit publish. Then do it again for the next client. And the next.
               </p>
               <p>
-                It&apos;s not because they have a better business. It&apos;s because they&apos;re publishing content every week — blog posts, Google Business updates, social posts — while you&apos;re busy actually running your business.
+                The entire agency ran this way. Every piece of content — written by humans, scheduled by humans, published by humans. Hours and hours of work that produced decent results but <span className="text-white font-semibold">never scaled</span>.
               </p>
               <p>
-                Google sees their name constantly. It sees yours occasionally. And it ranks accordingly.
+                And here&apos;s the frustrating part: we knew consistency was the key. The clients we updated daily ranked higher than the ones we updated weekly. The ones we blogged for every week crushed the ones we blogged for once a month. The data was undeniable.
               </p>
               <p className="text-white font-semibold text-xl">
-                Every week you don&apos;t publish, your competitor pulls further ahead. And here&apos;s what nobody tells you: the gap compounds.
-              </p>
-              <p>
-                Businesses that publish consistently for 90 days see 3x more organic traffic than those who don&apos;t. Not because the algorithm changed. Because consistency is the algorithm.
+                The problem wasn&apos;t the strategy. The problem was that doing it right took more hours than we had.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* STORY — The Turn */}
+      {/* EPIPHANY BRIDGE — The Moment */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-3xl mx-auto">
@@ -115,24 +112,28 @@ export default function RankFlowPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            <SectionLabel>The Solution</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
-              What If You Could Publish Every Day<br />
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Without Writing a Single Word?</span>
-            </h2>
+            <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.04] mb-10">
+              <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-3">The Epiphany</p>
+              <p className="text-white text-2xl font-bold leading-relaxed">
+                &ldquo;What if AI could do every single one of these manual tasks — faster, cheaper, and at a quality our best human writers couldn&apos;t match at scale?&rdquo;
+              </p>
+            </div>
 
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                That&apos;s exactly what we built. An AI-powered content system that publishes for you — blog posts, Google Business updates, social content — every single day, fully automated.
+                We started testing. First the GMB posts — AI drafts, human review, automated publishing. The content quality was better. The consistency was perfect. And it took <span className="text-white font-semibold">10 minutes instead of 3 hours</span>.
               </p>
               <p>
-                We handle the keyword research. We write the content. We optimize it for your city and your industry. We publish it. You get a monthly report showing exactly where you moved on Google.
+                Then we automated the blog posts. The social content. The keyword research. One by one, everything that used to require a team of people running on coffee and spreadsheets became a system that ran itself.
+              </p>
+              <p>
+                The results didn&apos;t just stay the same — <span className="text-white font-semibold">they got better</span>. Because now we could be consistent at a level no human team could sustain. Daily GMB posts. Five SEO blogs a week. Daily social content. Every. Single. Day. Without fail.
               </p>
               <p className="text-white font-semibold text-xl">
-                You don&apos;t write anything. You don&apos;t schedule anything. You just start ranking.
+                Clients who had been stuck on page 2 for years started hitting the top 3 on Google Maps within 60 days. Organic traffic doubled. Then tripled. And they hadn&apos;t changed anything about their business — just their online consistency.
               </p>
               <p>
-                And here&apos;s the part that most people don&apos;t expect: it&apos;s not just blogs. We update your Google Business Profile daily — the single most underused local SEO signal there is. Most of your competitors aren&apos;t doing it. That alone puts you ahead.
+                That&apos;s when I realized: <span className="text-white font-semibold">this isn&apos;t a marketing advantage anymore. It&apos;s the minimum requirement to compete online in 2025.</span> And most businesses still don&apos;t have it.
               </p>
             </div>
           </motion.div>
@@ -152,8 +153,8 @@ export default function RankFlowPage() {
           >
             <SectionLabel>Real Results</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              This Is What Happens When<br />
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">You Stop Being Invisible.</span>
+              Here&apos;s What Happens When<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">The System Runs for Your Business.</span>
             </h2>
           </motion.div>
 
@@ -179,17 +180,17 @@ export default function RankFlowPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.04] text-center max-w-2xl mx-auto"
+            className="p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center max-w-2xl mx-auto"
           >
             <p className="text-gray-300 text-lg leading-relaxed italic mb-4">
-              &ldquo;I didn&apos;t believe SEO could work this fast. By month two I was getting calls from people who found me on Google — people I never would have reached with ads alone.&rdquo;
+              &ldquo;I didn&apos;t believe organic SEO could move this fast. By month two I was getting calls from people who found me on Google — people I never would have reached with ads.&rdquo;
             </p>
             <p className="text-emerald-400 font-bold text-sm">— Marcus T., HVAC Contractor</p>
           </motion.div>
         </div>
       </section>
 
-      {/* OFFER — What You Get */}
+      {/* OFFER — What They Get */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-5xl mx-auto">
@@ -200,10 +201,10 @@ export default function RankFlowPage() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-center mb-16"
           >
-            <SectionLabel>What&apos;s Included</SectionLabel>
+            <SectionLabel>The System</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              Everything Done For You.<br />
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Every Single Day.</span>
+              Everything the Agency Did Manually —<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Now Running Automatically for You.</span>
             </h2>
           </motion.div>
 
@@ -256,13 +257,13 @@ export default function RankFlowPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-            Your Competitor Is Publishing<br />Right Now.<br />
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Are You?</span>
+            Your Competitor Is Getting<br />This Done Right Now.<br />
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">What About You?</span>
           </h2>
-          <p className="text-gray-500 text-lg mb-4 max-w-xl mx-auto">
-            Send us a message on WhatsApp. We&apos;ll show you exactly where you stand on Google right now — and what it would take to get you to the top.
+          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
+            Message us on WhatsApp. We&apos;ll check your current Google rankings for free and show you exactly what the system would do for your business.
           </p>
-          <p className="text-gray-600 text-sm mb-10">Takes 2 minutes. No obligation.</p>
+          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
           <motion.a
             href="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
             target="_blank"
@@ -271,7 +272,7 @@ export default function RankFlowPage() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all duration-300"
           >
-            I Want More Customers from Google
+            Check My Google Rankings — Free
           </motion.a>
           <p className="mt-4 text-xs text-gray-600">No contracts · No setup fees · EN + ES included</p>
         </motion.div>
