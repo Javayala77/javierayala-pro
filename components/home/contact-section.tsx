@@ -105,13 +105,9 @@ export function HomeContact() {
           className="mt-24 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-1.5">
-            <span className="text-lg font-black text-white">Javier Ayala</span>
-            <span className="text-cyan-400 text-xl leading-none">.</span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-400/50 border border-cyan-500/20 px-1.5 py-0.5 rounded ml-1">
-              PRO
-            </span>
+            <span className="text-[11px] font-bold tracking-[0.2em] text-cyan-400/70 border border-cyan-500/30 px-2.5 py-1 rounded">javierayala.pro</span>
           </div>
-          <p className="text-xs text-gray-700 uppercase tracking-widest">AI Marketing · Automation · Growth Frameworks</p>
+          <p className="text-xs text-gray-700 uppercase tracking-widest">Google Ads · Meta Ads · SEO · AI Automation</p>
           <div className="flex items-center gap-4">
             <a
               href="https://www.linkedin.com/in/javierayala1/"

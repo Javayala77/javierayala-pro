@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Logo/Name */}
           <div>
-            <p className="text-lg font-bold text-foreground">Javier Ayala</p>
+            <p className="text-lg font-bold text-foreground flex items-center gap-1.5">javierayala<span className="text-[10px] font-bold tracking-[0.2em] text-cyan-400/70 border border-cyan-500/30 px-1.5 py-0.5 rounded">.pro</span></p>
             <p className="text-sm text-muted-foreground">AI-Powered Google Ads Management</p>
           </div>
           
