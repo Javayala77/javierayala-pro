@@ -23,8 +23,8 @@ const timeline = [
   },
   {
     year: "2024",
-    title: "Built my own frameworks",
-    description: "Created the AI Acquisition System™ and StoryFunnel Framework™. Now I only build systems, not campaigns.",
+    title: "Full AI-powered systems",
+    description: "Rebuilt everything around AI — ads, automation, content, lead qualification. Clients get more customers without working more hours.",
   },
 ]
 
@@ -32,7 +32,7 @@ const credentials = [
   { value: "$2M+", label: "Ad Spend Managed" },
   { value: "50+", label: "Businesses Helped" },
   { value: "8+", label: "Years Experience" },
-  { value: "4", label: "Proprietary Frameworks" },
+  { value: "3.2x", label: "Avg. ROI in 90 Days" },
 ]
 
 export function HomeAbout() {
@@ -54,9 +54,9 @@ export function HomeAbout() {
               About Javier
             </span>
             <h2 className="text-4xl sm:text-5xl font-black leading-tight text-white mb-6">
-              I&apos;m Not a Marketer.<br />
+              I Get Businesses<br />
               <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                I&apos;m a Growth Architect.
+                More Customers.
               </span>
             </h2>
 
@@ -71,7 +71,7 @@ export function HomeAbout() {
                 When AI went mainstream, I didn&apos;t just adopt it — I rebuilt everything around it. Today I run AI-powered acquisition systems that generate leads 24/7, qualify prospects automatically, and optimize themselves while my clients sleep.
               </p>
               <p className="text-white font-medium">
-                My goal: make you the undisputed authority in your market — and build the machine that keeps you there.
+                My goal is simple: more calls, more jobs, more revenue. Everything else is noise.
               </p>
             </div>
 

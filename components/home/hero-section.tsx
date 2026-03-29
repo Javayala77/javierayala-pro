@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, ChevronDown, Sparkles, TrendingUp, Zap, Brain } from "lucide-react"
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -13,13 +13,6 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ]
 
-const frameworks = [
-  "AI Acquisition System™",
-  "StoryFunnel Framework™",
-  "Local Domination Blueprint™",
-  "Automated Authority Engine™",
-]
-
 const proofItems = [
   { icon: TrendingUp, value: "$2M+", label: "Ad Spend Managed" },
   { icon: Zap, value: "50+", label: "Businesses Scaled" },
@@ -27,33 +20,6 @@ const proofItems = [
   { icon: Sparkles, value: "24/7", label: "AI Systems Running" },
 ]
 
-function RotatingText() {
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % frameworks.length)
-    }, 2800)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <span className="relative block overflow-hidden h-[1.3em] w-full">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          initial={{ y: "100%", opacity: 0 }}
-          animate={{ y: "0%", opacity: 1 }}
-          exit={{ y: "-100%", opacity: 0 }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent"
-        >
-          {frameworks[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  )
-}
 
 function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -209,7 +175,7 @@ export function HomeHero() {
                 AI Marketing Expert
               </span>
               <span className="text-gray-600 text-xs hidden sm:block">·</span>
-              <span className="text-gray-500 text-xs hidden sm:block">Framework Creator · Automation Architect · Funnel Strategist</span>
+              <span className="text-gray-500 text-xs hidden sm:block">Google Ads · Meta Ads · WhatsApp · SEO · AI Automation</span>
             </motion.div>
 
             {/* Headline */}
@@ -237,25 +203,17 @@ export function HomeHero() {
               <span className="text-white">Customers.</span>
             </motion.h1>
 
-            {/* Rotating framework line */}
-            <motion.div variants={itemVariants} className="mb-3">
-              <span className="text-lg sm:text-xl text-gray-500 font-medium">Creator of the</span>
-              <div className="text-lg sm:text-xl font-bold mt-0.5">
-                <RotatingText />
-              </div>
-            </motion.div>
-
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
               className="text-base sm:text-lg text-gray-500 max-w-2xl mb-10 leading-relaxed"
             >
-              I&apos;ve spent 8 years studying what makes businesses grow — and built proprietary
-              frameworks that combine{" "}
-              <span className="text-white font-medium">story-driven funnels</span>,{" "}
+              I help contractors, roofers, doctors, and lawyers get more customers — with{" "}
+              <span className="text-white font-medium">Google Ads</span>,{" "}
+              <span className="text-white font-medium">Meta Ads</span>,{" "}
               <span className="text-white font-medium">AI automation</span>, and{" "}
-              <span className="text-white font-medium">paid acquisition</span>{" "}
-              into one system that runs 24/7.
+              <span className="text-white font-medium">SEO</span>{" "}
+              working together as one system, 24/7.
             </motion.p>
 
             {/* CTAs */}
@@ -279,7 +237,7 @@ export function HomeHero() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border border-white/10 text-white text-base font-medium hover:bg-white/5 hover:border-white/20 transition-all duration-300"
               >
-                See My Frameworks
+                See My Services
               </motion.a>
             </motion.div>
 

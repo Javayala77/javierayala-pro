@@ -9,8 +9,8 @@ const steps = [
   {
     number: "01",
     icon: BookOpen,
-    title: "Story-Driven Funnels",
-    description: "People don't buy products — they buy transformations. I build funnels rooted in your story, your client's pain, and the bridge between the two. Every touchpoint is engineered to convert.",
+    title: "Understand Your Business First",
+    description: "Before touching a single ad or tool, I learn your market, your competitors, and what your best customers look like. The strategy is built on data, not guesswork.",
     accent: "border-l-cyan-500",
   },
   {
@@ -23,8 +23,8 @@ const steps = [
   {
     number: "03",
     icon: Target,
-    title: "Proprietary Frameworks",
-    description: "Everything I build follows proven frameworks I've developed over 8 years. The AI Acquisition System™. The StoryFunnel Framework™. Tested, refined, and battle-proven across 50+ businesses.",
+    title: "Campaigns That Get Results",
+    description: "Ads go live with the right targeting, the right message, and the right budget structure from day one. No wasted spend learning the basics. I've already done that across 50+ businesses.",
     accent: "border-l-emerald-500",
   },
   {
