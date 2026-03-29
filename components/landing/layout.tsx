@@ -47,8 +47,8 @@ export function LandingLayout({
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="font-black text-white">Javier Ayala</span>
-            <span className={`text-xl leading-none ${accentColor}`}>.</span>
+            <span className="font-black text-white">javierayala</span>
+            <span className={`text-[10px] font-bold tracking-[0.2em] border px-1.5 py-0.5 rounded ml-0.5 ${accentColor} border-current opacity-70`}>.pro</span>
           </Link>
 
           <motion.a

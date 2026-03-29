@@ -101,16 +101,9 @@ export function HomeHero() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative z-20 w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto"
       >
-        <Link href="/" className="flex items-center gap-1.5 group">
-          <span className="text-xl font-black tracking-tight text-white">Javier Ayala</span>
-          <motion.span
-            animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="text-cyan-400 text-2xl leading-none"
-          >.</motion.span>
-          <span className="ml-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-400/70 border border-cyan-500/30 px-1.5 py-0.5 rounded">
-            PRO
-          </span>
+        <Link href="/" className="flex items-center gap-0 group">
+          <span className="text-xl font-black tracking-tight text-white">javierayala</span>
+          <span className="text-[10px] font-bold tracking-[0.2em] text-cyan-400/70 border border-cyan-500/30 px-1.5 py-0.5 rounded ml-0.5">.pro</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
