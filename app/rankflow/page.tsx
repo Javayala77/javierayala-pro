@@ -1,40 +1,30 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { TrendingUp, FileText, MapPin, Share2, Check } from "lucide-react"
-import { LandingLayout, EASE, SectionLabel, SectionDivider, FaqAccordion, PricingCard } from "@/components/landing/layout"
-
-const steps = [
-  { n: "01", title: "Keyword research done for you", desc: "We find exactly what your customers are searching and build a content map around it." },
-  { n: "02", title: "5 SEO blog posts published weekly", desc: "Written by AI, optimized by us, published to your site. Google indexes them automatically." },
-  { n: "03", title: "Google Business + social updated daily", desc: "Daily GMB posts and daily social content. Your profiles stay fresh, active, and ahead of competitors." },
-  { n: "04", title: "Rankings climb. You get more calls.", desc: "Month over month your organic presence compounds. More visibility, more inbound leads." },
-]
+import { TrendingUp, FileText, MapPin, Share2, CheckCircle2 } from "lucide-react"
+import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
 
 const deliverables = [
-  { icon: FileText, title: "4 SEO Blog Posts", desc: "Monthly, keyword-optimized, auto-indexed by Google." },
-  { icon: MapPin, title: "4 GMB Posts", desc: "Google Business Profile stays active and optimized weekly." },
-  { icon: Share2, title: "12 Social Posts", desc: "Facebook, Instagram, LinkedIn — covered automatically." },
-  { icon: TrendingUp, title: "Monthly Rankings Report", desc: "Track exactly which keywords are moving and by how much." },
+  { icon: FileText, title: "5 SEO Blog Posts per Week", desc: "Written by AI, optimized by our team, auto-published to your site. Google finds them without you doing a thing." },
+  { icon: MapPin, title: "Daily Google Business Posts", desc: "Your Google profile stays active every single day — the #1 signal Google uses to rank local businesses." },
+  { icon: Share2, title: "Daily Social Content", desc: "Instagram, Facebook, LinkedIn — posting consistently so your brand stays visible while you're working." },
+  { icon: TrendingUp, title: "Monthly Rankings Report", desc: "You see exactly which keywords moved, how much, and what's coming next." },
 ]
 
-const faq = [
-  { q: "Who writes the content?", a: "We use AI combined with our SEO expertise to create content that reads naturally and ranks well. Every post is reviewed before publishing." },
-  { q: "How long until I see results?", a: "Most clients see movement in rankings within 60-90 days. Organic SEO compounds — the longer you're in, the stronger your results." },
-  { q: "Do I need to review each post?", a: "Optional. We can send you drafts for approval, or you can trust us to publish automatically. Your choice." },
-  { q: "What if I already have a blog?", a: "We publish to your existing site. We work with WordPress, Webflow, Wix, Squarespace, and most other platforms." },
-  { q: "Is the content in English and Spanish?", a: "Yes. Every piece is available in both languages at no extra cost." },
-  { q: "Can I cancel anytime?", a: "Yes. No contracts, no penalties. Month-to-month." },
+const results = [
+  { name: "Elite Roofing Co.", result: "Top 3 on Google Maps", timeframe: "in 74 days" },
+  { name: "Precision Plumbing", result: "+340% organic traffic", timeframe: "in 90 days" },
+  { name: "Coastal Legal Group", result: "12 inbound calls/week", timeframe: "from Google alone" },
 ]
 
 export default function RankFlowPage() {
   return (
     <LandingLayout
       accentColor="text-emerald-400"
-      ctaText="Start Ranking Higher"
-      ctaHref="https://wa.me/573103956445?text=I%20want%20RankFlow%20Pro"
+      ctaText="I Want More Customers"
+      ctaHref="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
     >
-      {/* Hero */}
+      {/* HOOK — Hero */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1),transparent_60%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
@@ -47,49 +37,112 @@ export default function RankFlowPage() {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/8 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-8">
             <TrendingUp className="h-3.5 w-3.5" />
-            RankFlow Pro — SEO & Content Automation
+            SEO & Content Automation
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.02] tracking-tight mb-6">
-            Your Competitor Posts<br />Content Every Week.<br />
+            There&apos;s a Reason Your Competitor<br />
             <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-              You Don&apos;t.
+              Shows Up First on Google.
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Google ranks businesses that publish consistently. You don&apos;t have time to write every week.{" "}
-            <span className="text-white font-semibold">We do it for you — automatically.</span>
+            It&apos;s not because they&apos;re better than you.{" "}
+            <span className="text-white font-semibold">It&apos;s because they show up every single day — and you don&apos;t.</span>{" "}
+            Keep reading. This changes today.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <motion.a
-              href="https://wa.me/573103956445?text=I%20want%20RankFlow%20Pro"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-300"
-            >
-              Start Ranking Higher — $497/mo
-            </motion.a>
-          </div>
+          <motion.a
+            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-300"
+          >
+            Show Me How It Works
+          </motion.a>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            {["5 blogs/week","Daily GMB posts","Daily social content","EN + ES content"].map((item, i) => (
-              <div key={i} className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
-                <Check className="h-3 w-3 text-emerald-400 flex-shrink-0" />
-                {item}
-              </div>
-            ))}
-          </div>
+          <p className="mt-4 text-xs text-gray-600">No commitment · Takes 2 minutes · We reply on WhatsApp</p>
         </motion.div>
       </section>
 
-      {/* Problem */}
+      {/* STORY — Problem Agitation */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <SectionLabel>The Real Problem</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
+              Google Doesn&apos;t Rank the Best Business.<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">It Ranks the Most Consistent One.</span>
+            </h2>
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                You&apos;re good at what you do. You have happy clients. You&apos;ve built something real. But when someone in your city types your service into Google — <span className="text-white font-semibold">your competitor shows up. Not you.</span>
+              </p>
+              <p>
+                It&apos;s not because they have a better business. It&apos;s because they&apos;re publishing content every week — blog posts, Google Business updates, social posts — while you&apos;re busy actually running your business.
+              </p>
+              <p>
+                Google sees their name constantly. It sees yours occasionally. And it ranks accordingly.
+              </p>
+              <p className="text-white font-semibold text-xl">
+                Every week you don&apos;t publish, your competitor pulls further ahead. And here&apos;s what nobody tells you: the gap compounds.
+              </p>
+              <p>
+                Businesses that publish consistently for 90 days see 3x more organic traffic than those who don&apos;t. Not because the algorithm changed. Because consistency is the algorithm.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* STORY — The Turn */}
+      <section className="relative px-6 py-20 sm:py-28">
+        <SectionDivider />
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <SectionLabel>The Solution</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
+              What If You Could Publish Every Day<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Without Writing a Single Word?</span>
+            </h2>
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                That&apos;s exactly what we built. An AI-powered content system that publishes for you — blog posts, Google Business updates, social content — every single day, fully automated.
+              </p>
+              <p>
+                We handle the keyword research. We write the content. We optimize it for your city and your industry. We publish it. You get a monthly report showing exactly where you moved on Google.
+              </p>
+              <p className="text-white font-semibold text-xl">
+                You don&apos;t write anything. You don&apos;t schedule anything. You just start ranking.
+              </p>
+              <p>
+                And here&apos;s the part that most people don&apos;t expect: it&apos;s not just blogs. We update your Google Business Profile daily — the single most underused local SEO signal there is. Most of your competitors aren&apos;t doing it. That alone puts you ahead.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="relative px-6 py-20 sm:py-28">
+        <SectionDivider />
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -97,41 +150,46 @@ export default function RankFlowPage() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-center mb-16"
           >
-            <SectionLabel>The Reality</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight">
-              Google Doesn&apos;t Rank the{" "}
-              <span className="text-gray-500 italic font-light">Best</span> Business.<br />
-              It Ranks the{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Most Consistent</span> One.
+            <SectionLabel>Real Results</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
+              This Is What Happens When<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">You Stop Being Invisible.</span>
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Your competitor isn&apos;t smarter than you. They just have a system that publishes content every single week without fail. You can have the same.
-            </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              { stat: "3x", label: "More organic traffic for businesses that blog consistently vs. those that don't" },
-              { stat: "90 days", label: "Average time to see significant ranking improvements with our system" },
-              { stat: "0", label: "Hours you need to spend — we handle everything from writing to publishing" },
-            ].map((item, i) => (
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            {results.map((r, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] text-center"
+                className="p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center"
               >
-                <div className="text-4xl font-black text-emerald-400 mb-2">{item.stat}</div>
-                <p className="text-sm text-gray-500">{item.label}</p>
+                <div className="text-2xl font-black text-emerald-400 mb-1">{r.result}</div>
+                <div className="text-xs text-gray-500 mb-3">{r.timeframe}</div>
+                <div className="text-sm text-gray-400 font-medium">{r.name}</div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.04] text-center max-w-2xl mx-auto"
+          >
+            <p className="text-gray-300 text-lg leading-relaxed italic mb-4">
+              &ldquo;I didn&apos;t believe SEO could work this fast. By month two I was getting calls from people who found me on Google — people I never would have reached with ads alone.&rdquo;
+            </p>
+            <p className="text-emerald-400 font-bold text-sm">— Marcus T., HVAC Contractor</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* OFFER — What You Get */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-5xl mx-auto">
@@ -142,56 +200,20 @@ export default function RankFlowPage() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-center mb-16"
           >
-            <SectionLabel>How It Works</SectionLabel>
+            <SectionLabel>What&apos;s Included</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              Set It Once.{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-                Rank Forever.
-              </span>
+              Everything Done For You.<br />
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Every Single Day.</span>
             </h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-                className="flex gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-emerald-500/30 transition-all duration-300 group"
-              >
-                <span className="text-2xl font-black text-emerald-500/20 group-hover:text-emerald-500/40 transition-colors flex-shrink-0">{step.n}</span>
-                <div>
-                  <h3 className="font-bold text-white mb-1.5">{step.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Deliverables */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="text-center mb-16"
-          >
-            <SectionLabel>What You Get</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">Every Month. Without Fail.</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4 mb-12">
             {deliverables.map((d, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
                 className="flex gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] group hover:border-emerald-500/30 transition-all"
               >
@@ -205,51 +227,21 @@ export default function RankFlowPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Pricing */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-lg mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto"
           >
-            <SectionLabel>Pricing</SectionLabel>
-            <h2 className="text-4xl font-black text-white mb-4">Simple. Flat Rate.</h2>
-            <p className="text-gray-500 mb-12">One new customer from organic search pays for 2+ months. After that it&apos;s pure profit.</p>
-            <PricingCard
-              badge="RankFlow Pro"
-              price="$497"
-              period="/mo"
-              items={["5 SEO blog posts/week","Auto Google indexing","Daily GMB posts","Daily social content","English + Spanish content","Keyword research included","Monthly rankings report","Schema markup","Internal linking","Content calendar","No contracts","Cancel anytime"]}
-              ctaText="Start Ranking Higher"
-              ctaHref="https://wa.me/573103956445?text=I%20want%20RankFlow%20Pro"
-              accentClass="border-emerald-500"
-              note="No setup fees. Cancel anytime."
-            />
+            {["English + Spanish","Schema markup","Auto Google indexing","Content calendar"].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
+                <CheckCircle2 className="h-3 w-3 text-emerald-400 flex-shrink-0" />
+                {item}
+              </div>
+            ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="text-center mb-12"
-          >
-            <SectionLabel>FAQ</SectionLabel>
-            <h2 className="text-4xl font-black text-white">Common Questions</h2>
-          </motion.div>
-          <FaqAccordion items={faq} />
         </div>
       </section>
 
@@ -264,21 +256,24 @@ export default function RankFlowPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-            Your Competitors Are<br />
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Ranking Above You Right Now.</span>
+            Your Competitor Is Publishing<br />Right Now.<br />
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Are You?</span>
           </h2>
-          <p className="text-gray-500 text-lg mb-10">Every week you wait is another week they pull further ahead. Start compounding your rankings today.</p>
+          <p className="text-gray-500 text-lg mb-4 max-w-xl mx-auto">
+            Send us a message on WhatsApp. We&apos;ll show you exactly where you stand on Google right now — and what it would take to get you to the top.
+          </p>
+          <p className="text-gray-600 text-sm mb-10">Takes 2 minutes. No obligation.</p>
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20RankFlow%20Pro"
+            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all duration-300"
           >
-            Start Ranking Higher — $497/mo
+            I Want More Customers from Google
           </motion.a>
-          <p className="mt-4 text-xs text-gray-600">No contracts · Cancel anytime · EN + ES included</p>
+          <p className="mt-4 text-xs text-gray-600">No contracts · No setup fees · EN + ES included</p>
         </motion.div>
       </section>
     </LandingLayout>
