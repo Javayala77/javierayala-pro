@@ -6,8 +6,8 @@ import { LandingLayout, EASE, SectionLabel, SectionDivider, FaqAccordion, Pricin
 
 const steps = [
   { n: "01", title: "Keyword research done for you", desc: "We find exactly what your customers are searching and build a content map around it." },
-  { n: "02", title: "4 SEO blog posts published monthly", desc: "Written by AI, optimized by us, published to your site. Google indexes them automatically." },
-  { n: "03", title: "Google Business + social updated weekly", desc: "4 GMB posts and 12 social posts per month. Your profiles stay fresh and active." },
+  { n: "02", title: "5 SEO blog posts published weekly", desc: "Written by AI, optimized by us, published to your site. Google indexes them automatically." },
+  { n: "03", title: "Google Business + social updated daily", desc: "Daily GMB posts and daily social content. Your profiles stay fresh, active, and ahead of competitors." },
   { n: "04", title: "Rankings climb. You get more calls.", desc: "Month over month your organic presence compounds. More visibility, more inbound leads." },
 ]
 
@@ -76,7 +76,7 @@ export default function RankFlowPage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            {["4 blog posts/mo","4 GMB posts/mo","12 social posts/mo","EN + ES content"].map((item, i) => (
+            {["5 blogs/week","Daily GMB posts","Daily social content","EN + ES content"].map((item, i) => (
               <div key={i} className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
                 <Check className="h-3 w-3 text-emerald-400 flex-shrink-0" />
                 {item}
@@ -225,7 +225,7 @@ export default function RankFlowPage() {
               badge="RankFlow Pro"
               price="$497"
               period="/mo"
-              items={["4 SEO blog posts/month","Auto Google indexing","4 GMB posts/month","12 social posts/month","English + Spanish content","Keyword research included","Monthly rankings report","Schema markup","Internal linking","Content calendar","No contracts","Cancel anytime"]}
+              items={["5 SEO blog posts/week","Auto Google indexing","Daily GMB posts","Daily social content","English + Spanish content","Keyword research included","Monthly rankings report","Schema markup","Internal linking","Content calendar","No contracts","Cancel anytime"]}
               ctaText="Start Ranking Higher"
               ctaHref="https://wa.me/573103956445?text=I%20want%20RankFlow%20Pro"
               accentClass="border-emerald-500"
