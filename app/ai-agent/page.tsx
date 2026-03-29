@@ -1,43 +1,35 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Bot, Clock, MessageSquare, Globe, Zap, Check, ChevronDown } from "lucide-react"
-import { LandingLayout, EASE, SectionLabel, SectionDivider, FaqAccordion, PricingCard } from "@/components/landing/layout"
+import { Bot, MessageSquare, Globe, Zap, CalendarCheck, CheckCircle2, Users } from "lucide-react"
+import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
 
-const steps = [
-  { n: "01", title: "You send us your business info", desc: "Services, FAQs, pricing, your calendar link. Takes 20 minutes." },
-  { n: "02", title: "We train your AI agent", desc: "Custom-built for your business. Knows your services, speaks your language, follows your sales process." },
-  { n: "03", title: "We connect it everywhere", desc: "WhatsApp, your website, Instagram DMs, Facebook. One agent, all channels." },
-  { n: "04", title: "It works. You get notified", desc: "Every time a booking is made or a lead is qualified, you get a notification. No manual work." },
+const deliverables = [
+  { icon: Bot, title: "AI Agent Built for Your Business", desc: "Trained on your services, FAQs, pricing, and sales process. It answers exactly the way you would — every time." },
+  { icon: MessageSquare, title: "WhatsApp + Website + Social", desc: "One agent deployed across every channel where your leads reach out. No message left unanswered." },
+  { icon: Users, title: "Lead Qualification Flows", desc: "Asks your qualification questions automatically — filters time-wasters and surfaces real buyers before they ever reach you." },
+  { icon: CalendarCheck, title: "Calendar Booking", desc: "Books appointments directly into your calendar. No back-and-forth, no missed calls, no manual scheduling." },
+  { icon: Zap, title: "Follow-Up Sequences", desc: "Leads that don&apos;t book immediately get followed up automatically — so you capture deals that would have slipped through." },
+  { icon: Globe, title: "24/7 Operation in EN + ES", desc: "Your agent never sleeps, never has a bad day, and can handle ten conversations simultaneously — in both English and Spanish." },
 ]
 
-const capabilities = [
-  { icon: MessageSquare, title: "Answers instantly", desc: "Responds in under 60 seconds, 24/7. No more 'sorry I missed your message'." },
-  { icon: Bot, title: "Qualifies leads", desc: "Asks the right questions to filter time-wasters from real buyers." },
-  { icon: Clock, title: "Books appointments", desc: "Syncs with your calendar and books slots automatically." },
-  { icon: Globe, title: "English + Spanish", desc: "Serves every customer in their language without you lifting a finger." },
-]
-
-const faq = [
-  { q: "Do I need to be technical to set this up?", a: "No. We handle everything — setup, training, and integration. You just answer a few questions about your business and we do the rest." },
-  { q: "What if the AI says something wrong?", a: "We train it specifically on your business and run test scenarios before going live. You also get a dashboard to review conversations and we make adjustments at no cost." },
-  { q: "Which platforms does it work on?", a: "WhatsApp, your website (chat widget), Instagram DMs, Facebook Messenger, and SMS. We'll set up the ones that matter most to you." },
-  { q: "How long until it's live?", a: "48 hours after you send us your business information. Most clients are up and running by day 3." },
-  { q: "Can I cancel anytime?", a: "Yes. No contracts, no cancellation fees. Month-to-month." },
-  { q: "What if I already have a booking system?", a: "We connect the AI to whatever you're already using — Calendly, Acuity, Google Calendar, or custom systems." },
+const results = [
+  { name: "Apex Legal Group", result: "15 hrs/wk saved", timeframe: "on intake calls" },
+  { name: "Clearwater Roofing", result: "0 missed leads", timeframe: "after hours or weekends" },
+  { name: "Summit Home Services", result: "3x booked calls", timeframe: "in first 30 days" },
 ]
 
 export default function AIAgentPage() {
   return (
     <LandingLayout
-      accentColor="text-violet-400"
-      ctaText="Get My AI Agent"
-      ctaHref="https://wa.me/573103956445?text=I%20want%20the%20AI%20Booking%20Agent"
+      accentColor="text-purple-400"
+      ctaText="Build My AI Agent"
+      ctaHref="https://wa.me/573103956445?text=I%20want%20an%20AI%20booking%20agent"
     >
-      {/* Hero */}
+      {/* HOOK */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(124,58,237,0.12),transparent_60%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.1),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -45,95 +37,109 @@ export default function AIAgentPage() {
           transition={{ duration: 0.8, ease: EASE }}
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/25 bg-violet-500/8 text-violet-400 text-xs font-bold uppercase tracking-widest mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/8 text-purple-400 text-xs font-bold uppercase tracking-widest mb-8">
             <Bot className="h-3.5 w-3.5" />
-            AutoBook Pro — AI Booking Agent
+            AI Booking Agent
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.02] tracking-tight mb-6">
-            How Many Leads Are<br />
-            You Losing{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">
-              While You Sleep?
+            What Happens to the Leads<br />That Come In{" "}
+            <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">
+              When You&apos;re Busy Working?
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Your competitors are booking jobs at 3am. Not because they work harder — because they have an
-            <span className="text-white font-semibold"> AI that never sleeps</span>. You can too.
+            The best leads — the ones ready to book — often reach out at the worst times: during a job, after hours, on weekends.
+            If they don&apos;t get a response fast,{" "}
+            <span className="text-white font-semibold">they call the next business on the list.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <motion.a
-              href="https://wa.me/573103956445?text=I%20want%20the%20AI%20Booking%20Agent"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(124,58,237,0.4)] transition-all duration-300"
-            >
-              Get My AI Agent — $497/mo
-            </motion.a>
-          </div>
+          <motion.a
+            href="https://wa.me/573103956445?text=I%20want%20an%20AI%20booking%20agent"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition-all duration-300"
+          >
+            Build My AI Agent
+          </motion.a>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            {[
-              { icon: Zap, label: "Live in 48 hours" },
-              { icon: Clock, label: "24/7 availability" },
-              { icon: MessageSquare, label: "WhatsApp + Web" },
-              { icon: Globe, label: "EN + ES" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
-                <item.icon className="h-3.5 w-3.5 text-violet-400 flex-shrink-0" />
-                {item.label}
-              </div>
-            ))}
-          </div>
+          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
         </motion.div>
       </section>
 
-      {/* Problem */}
+      {/* EPIPHANY BRIDGE — The Backstory */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            <SectionLabel>The Problem</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight">
-              A Lead That Doesn&apos;t Get a Response<br />
-              <span className="text-gray-500 italic font-light">in 5 Minutes</span> Goes to Your Competitor.
+            <SectionLabel>The Story</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
+              Service Businesses Have<br />
+              <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">a Timing Problem.</span>
             </h2>
-            <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
-              Studies show 78% of customers go with the first business that responds. If you&apos;re not responding instantly — every hour of every day — you&apos;re handing jobs to someone else.
-            </p>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
-            className="mt-12 grid sm:grid-cols-3 gap-4"
-          >
-            {[
-              { stat: "78%", label: "Customers go with the first business that responds" },
-              { stat: "5 min", label: "Is the window before a lead goes cold" },
-              { stat: "0%", label: "Of your competitors sleep less than you" },
-            ].map((item, i) => (
-              <div key={i} className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-                <div className="text-4xl font-black text-violet-400 mb-2">{item.stat}</div>
-                <p className="text-sm text-gray-500">{item.label}</p>
-              </div>
-            ))}
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                Here&apos;s the brutal reality of running a service business: the moment a potential customer decides they need help is rarely a convenient moment for you. You&apos;re on a job. It&apos;s 9pm. It&apos;s Saturday. You&apos;re dealing with a crew issue.
+              </p>
+              <p>
+                And that lead — the person who was ready to book right now — waited 20 minutes for a reply. Then they refreshed their search results and called the next business, who picked up immediately.
+              </p>
+              <p>
+                This isn&apos;t a hypothetical. It&apos;s happening to your business every week. Studies consistently show that <span className="text-white font-semibold">78% of customers go with the first business that responds</span>. Speed is the entire game.
+              </p>
+              <p className="text-white font-semibold text-xl">
+                Hiring someone to answer leads around the clock is expensive — and even then, humans miss messages, have bad days, and can&apos;t handle ten conversations at once. There had to be a better way.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* EPIPHANY BRIDGE — The Epiphany */}
+      <section className="relative px-6 py-20 sm:py-28">
+        <SectionDivider />
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <div className="p-8 rounded-2xl border border-purple-500/20 bg-purple-500/[0.04] mb-10">
+              <p className="text-purple-400 text-xs font-bold uppercase tracking-widest mb-3">The Epiphany</p>
+              <p className="text-white text-2xl font-bold leading-relaxed">
+                &ldquo;An AI agent trained on your business can respond to any lead in under 60 seconds — qualify them, handle objections, book the appointment, and escalate to you only when a human is actually needed.&rdquo;
+              </p>
+            </div>
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                It&apos;s not a chatbot that says &ldquo;Thanks for reaching out, someone will be in touch.&rdquo; It&apos;s an agent that knows your services, your service area, your pricing range, your availability — and can carry an actual sales conversation from first message to booked appointment without you ever getting involved.
+              </p>
+              <p>
+                It works on WhatsApp, your website, Instagram DMs, and Facebook Messenger simultaneously. When ten leads message you at 11pm on a Friday, all ten get a response within 60 seconds. All ten get qualified. The ones who are a fit get a booking link. The rest get nurtured until they&apos;re ready.
+              </p>
+              <p>
+                A legal firm was spending 3 hours a day on initial intake calls. Seventy percent of callers weren&apos;t even qualified. Their AI agent now handles the entire intake process — asks about case type, timeline, and urgency. Only qualified prospects ever reach the attorney.
+              </p>
+              <p className="text-white font-semibold text-xl">
+                They saved 15 hours a week. Their attorneys spend that time on billable work instead of screening calls.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-5xl mx-auto">
@@ -144,118 +150,98 @@ export default function AIAgentPage() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-center mb-16"
           >
-            <SectionLabel>How It Works</SectionLabel>
+            <SectionLabel>Real Results</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              Live in{" "}
-              <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">
-                48 Hours.
-              </span>
+              Here&apos;s What Happens When<br />
+              <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">Every Lead Gets a Response in 60 Seconds.</span>
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-                className="flex gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-violet-500/30 transition-all duration-300 group"
-              >
-                <span className="text-2xl font-black text-violet-500/20 group-hover:text-violet-500/40 transition-colors flex-shrink-0">{step.n}</span>
-                <div>
-                  <h3 className="font-bold text-white mb-1.5">{step.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="text-center mb-16"
-          >
-            <SectionLabel>Capabilities</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              It Doesn&apos;t Just Chat.<br />
-              <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">It Converts.</span>
-            </h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {capabilities.map((cap, i) => (
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            {results.map((r, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
-                className="flex gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] group hover:border-violet-500/30 transition-all duration-300"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+                className="p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-violet-500/20 transition-colors">
-                  <cap.icon className="h-5 w-5 text-violet-400" />
+                <div className="text-2xl font-black text-purple-400 mb-1">{r.result}</div>
+                <div className="text-xs text-gray-500 mb-3">{r.timeframe}</div>
+                <div className="text-sm text-gray-400 font-medium">{r.name}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center max-w-2xl mx-auto"
+          >
+            <p className="text-gray-300 text-lg leading-relaxed italic mb-4">
+              &ldquo;I used to dread Mondays because I&apos;d have a pile of messages I missed over the weekend. Now every message gets handled while I&apos;m focused on the job. I haven&apos;t lost a weekend lead since we turned it on.&rdquo;
+            </p>
+            <p className="text-purple-400 font-bold text-sm">— Carlos M., Residential Contractor</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* OFFER — What They Get */}
+      <section className="relative px-6 py-20 sm:py-28">
+        <SectionDivider />
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="text-center mb-16"
+          >
+            <SectionLabel>What&apos;s Included</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
+              A Complete AI Agent That Works<br />
+              <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">So You Don&apos;t Have To.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-12">
+            {deliverables.map((d, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
+                className="flex gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] group hover:border-purple-500/30 transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-colors">
+                  <d.icon className="h-5 w-5 text-purple-400" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white mb-1">{cap.title}</h3>
-                  <p className="text-sm text-gray-500">{cap.desc}</p>
+                  <h3 className="font-bold text-white mb-1">{d.title}</h3>
+                  <p className="text-sm text-gray-500">{d.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Pricing */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-lg mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto"
           >
-            <SectionLabel>Pricing</SectionLabel>
-            <h2 className="text-4xl font-black text-white mb-4">One Price. Zero Confusion.</h2>
-            <p className="text-gray-500 mb-12">One missed $500 job pays for your first month. How many are you missing?</p>
-            <PricingCard
-              badge="AI Booking Agent"
-              price="$497"
-              period="/mo"
-              items={["AI agent built for your business","Trained on your services","Connected to your calendar","WhatsApp + website + social","English + Spanish","Appointment reminders","Lead qualification","24/7 availability","Monthly report","No contracts","Cancel anytime","Setup in 48 hours"]}
-              ctaText="Get My AI Agent"
-              ctaHref="https://wa.me/573103956445?text=I%20want%20the%20AI%20Booking%20Agent"
-              accentClass="border-violet-500"
-              note="No setup fees. Cancel anytime."
-            />
+            {["Live in 48 hours", "Monthly optimization", "No setup fees", "No contracts"].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
+                <CheckCircle2 className="h-3 w-3 text-purple-400 flex-shrink-0" />
+                {item}
+              </div>
+            ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="text-center mb-12"
-          >
-            <SectionLabel>FAQ</SectionLabel>
-            <h2 className="text-4xl font-black text-white">Common Questions</h2>
-          </motion.div>
-          <FaqAccordion items={faq} />
         </div>
       </section>
 
@@ -270,21 +256,24 @@ export default function AIAgentPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-            Stop Losing Leads<br />
-            <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">While You Sleep.</span>
+            The Next Lead That Comes In<br />While You&apos;re on the Job —<br />
+            <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">Will It Get a Response?</span>
           </h2>
-          <p className="text-gray-500 text-lg mb-10">Your AI agent can be live in 48 hours. Message Javier to get started.</p>
+          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
+            Message us on WhatsApp. We&apos;ll map out exactly how an AI agent would work for your specific business and show you what it would have captured last week.
+          </p>
+          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20the%20AI%20Booking%20Agent"
+            href="https://wa.me/573103956445?text=I%20want%20an%20AI%20booking%20agent"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] transition-all duration-300"
+            className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(168,85,247,0.5)] transition-all duration-300"
           >
-            Get My AI Agent — $497/mo
+            Build My AI Agent
           </motion.a>
-          <p className="mt-4 text-xs text-gray-600">No contracts · Cancel anytime · Live in 48 hours</p>
+          <p className="mt-4 text-xs text-gray-600">No contracts · Live in 48 hours · EN + ES included</p>
         </motion.div>
       </section>
     </LandingLayout>

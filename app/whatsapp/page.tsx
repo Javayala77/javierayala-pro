@@ -1,32 +1,22 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MessageCircle, Zap, Clock, Globe, Users, Check } from "lucide-react"
-import { LandingLayout, EASE, SectionLabel, SectionDivider, FaqAccordion, PricingCard } from "@/components/landing/layout"
+import { MessageCircle, Clock, Users, CalendarCheck, Globe, CheckCircle2 } from "lucide-react"
+import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
 
-const steps = [
-  { n: "01", title: "WhatsApp Business API setup", desc: "We connect your number to the WhatsApp Cloud API. Verified business account, green checkmark, no limitations." },
-  { n: "02", title: "Bot built for your business", desc: "Custom conversation flows trained on your services, pricing, FAQs, and sales process. Speaks your language." },
-  { n: "03", title: "Lead qualification automated", desc: "The bot asks the right questions, filters time-wasters, and only escalates serious buyers to you." },
-  { n: "04", title: "Goes live. Works 24/7.", desc: "Instantly responds to every message. Books appointments. Follows up. You get notified when human action is needed." },
+const deliverables = [
+  { icon: Clock, title: "Instant Response, 24/7", desc: "Every message gets answered in under 60 seconds — at 2am, on weekends, during your busiest job. No lead waits, no lead leaves." },
+  { icon: Users, title: "Smart Lead Qualification", desc: "The bot asks your pre-screening questions automatically, filters time-wasters, and only surfaces serious buyers to you." },
+  { icon: CalendarCheck, title: "Calendar Integration & Booking", desc: "Connects directly to Google Calendar, Calendly, or Acuity. Prospects book confirmed appointments without ever talking to you first." },
+  { icon: MessageCircle, title: "Automated Follow-Up Sequences", desc: "Leads who don't respond get gentle nudges on autopilot. Nothing falls through the cracks while you're on the job." },
+  { icon: Globe, title: "English + Spanish", desc: "The bot detects the language your customer writes in and responds accordingly. No setup needed from you." },
+  { icon: MessageCircle, title: "Built on WhatsApp Cloud API", desc: "The same infrastructure WhatsApp uses internally. Verified business account, green checkmark, no limitations on volume." },
 ]
 
-const capabilities = [
-  { icon: Clock, title: "Instant response, 24/7", desc: "No more 'I'll reply tomorrow'. Every lead gets a response in under 60 seconds, any time of day." },
-  { icon: Users, title: "Smart lead qualification", desc: "Asks your pre-screening questions automatically. Only warm, qualified leads reach you." },
-  { icon: MessageCircle, title: "Automated follow-up sequences", desc: "Prospects who don't respond get gentle nudges on autopilot. No more leads falling through the cracks." },
-  { icon: Globe, title: "English + Spanish", desc: "Serves customers in both languages automatically based on how they write to you." },
-  { icon: Zap, title: "Meta Ads integration", desc: "Run Click-to-WhatsApp ads that open directly in a chat. Highest-converting format for service businesses." },
-  { icon: Check, title: "No extra app needed", desc: "Customers chat on WhatsApp — the app they already use. Zero friction for them." },
-]
-
-const faq = [
-  { q: "Do I need a new phone number?", a: "No. We can use your existing WhatsApp Business number. We'll migrate it to the API so the bot can respond automatically while you keep the same number." },
-  { q: "What's the difference between WhatsApp Business and WhatsApp Cloud API?", a: "WhatsApp Business (the free app) can only be used manually. The WhatsApp Cloud API (what we use) allows automation — bots, auto-replies, flows, and integrations. Much more powerful." },
-  { q: "Will it sound robotic?", a: "No. We write the conversation flows to match your tone and brand. Most customers don't realize they're talking to a bot — and many don't care because they get answered instantly." },
-  { q: "Can it book appointments directly?", a: "Yes. We integrate it with your calendar (Google Calendar, Calendly, Acuity, etc.) to book confirmed appointments automatically." },
-  { q: "What industries does this work best for?", a: "Any service business with inbound inquiries: HVAC, plumbing, legal, medical, real estate, coaching, agencies. If people message you asking about prices or availability, the bot pays for itself immediately." },
-  { q: "Is there a setup fee?", a: "No. The $397/mo covers everything — setup, training, launch, and ongoing management." },
+const results = [
+  { name: "HVAC Contractor", result: "7 booked appointments", timeframe: "first week, outside business hours" },
+  { name: "Real Estate Agency", result: "60% fewer missed leads", timeframe: "in the first 30 days" },
+  { name: "Legal Consultation Firm", result: "Under 60 sec reply time", timeframe: "around the clock" },
 ]
 
 export default function WhatsAppPage() {
@@ -36,7 +26,7 @@ export default function WhatsAppPage() {
       ctaText="Get My WhatsApp Bot"
       ctaHref="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
     >
-      {/* Hero */}
+      {/* HOOK */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.1),transparent_60%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
@@ -49,170 +39,240 @@ export default function WhatsAppPage() {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-green-500/25 bg-green-500/8 text-green-400 text-xs font-bold uppercase tracking-widest mb-8">
             <MessageCircle className="h-3.5 w-3.5" />
-            WhatsApp Chatbot — Cloud API Automation
+            WhatsApp Automation — Cloud API
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.02] tracking-tight mb-6">
-            Turn Every WhatsApp<br />Message Into a<br />
+            A Lead Came In at 2:17am.<br />The Business Replied at 9am.<br />
             <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
-              Booked Appointment.
+              The Customer Had Already Booked Someone Else.
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            WhatsApp is where your customers already are. A bot built on the WhatsApp Cloud API responds instantly, qualifies leads, and books appointments —
-            <span className="text-white font-semibold"> without you touching your phone.</span>
+            WhatsApp has a 98% open rate. Your customers are already there. The only question is whether{" "}
+            <span className="text-white font-semibold">someone answers them in 60 seconds — or in 7 hours.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <motion.a
-              href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-gradient-to-r from-green-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(34,197,94,0.4)] transition-all duration-300"
-            >
-              Get My WhatsApp Bot — $397/mo
-            </motion.a>
-          </div>
+          <motion.a
+            href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(34,197,94,0.4)] transition-all duration-300"
+          >
+            Get My WhatsApp Bot
+          </motion.a>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            {["WhatsApp Cloud API","24/7 auto-response","Lead qualification","EN + ES"].map((item, i) => (
-              <div key={i} className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
-                <Check className="h-3 w-3 text-green-400 flex-shrink-0" />
-                {item}
-              </div>
-            ))}
-          </div>
+          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
         </motion.div>
       </section>
 
-      {/* Problem */}
+      {/* EPIPHANY BRIDGE — The Backstory */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }}>
-            <SectionLabel>The Problem</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight">
-              You&apos;re Losing Customers<br />
-              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Between the Message and the Reply.</span>
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <SectionLabel>The Story</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-10 leading-tight">
+              Great Business. Slow Reply.<br />
+              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Gone Customer.</span>
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              WhatsApp is the first channel customers go to. But when you&apos;re busy working, those messages wait. By the time you reply, they&apos;ve already booked with someone else.
-            </p>
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                Service businesses run during business hours. Leads don&apos;t. I kept seeing the same pattern over and over while working with service businesses — an owner with years of experience, great reviews, a real reputation in their market. And a WhatsApp inbox full of messages they hadn&apos;t gotten to yet.
+              </p>
+              <p>
+                The messages weren&apos;t from people browsing. They were from people ready to hire. &ldquo;How much would it cost to fix my AC?&rdquo; &ldquo;Do you have availability this week?&rdquo; &ldquo;I need someone today.&rdquo; Sent at 8pm. At midnight. On Saturday morning. While the owner was on a job, or asleep, or simply living their life.
+              </p>
+              <p>
+                By the time they replied — three hours later, six hours later — the customer had already found someone else. Not because the competitor was better. Just because <span className="text-white font-semibold">they answered first.</span>
+              </p>
+              <p className="text-white font-semibold text-xl">
+                WhatsApp is the number one channel customers use to ask about services. It has a 98% open rate. But it requires instant replies to convert. No human team can do that 24/7.
+              </p>
+            </div>
           </motion.div>
-          <div className="mt-12 grid sm:grid-cols-3 gap-4">
-            {[
-              { stat: "2B+", label: "WhatsApp active users worldwide — the most used messaging app on the planet" },
-              { stat: "98%", label: "Of WhatsApp messages are opened — vs. 20% for email" },
-              { stat: "60 sec", label: "Is all the time you have to respond before a lead goes to your competitor" },
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }} className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-                <div className="text-4xl font-black text-green-400 mb-2">{item.stat}</div>
-                <p className="text-sm text-gray-500">{item.label}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* EPIPHANY BRIDGE — The Epiphany */}
+      <section className="relative px-6 py-20 sm:py-28">
+        <SectionDivider />
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <div className="p-8 rounded-2xl border border-green-500/20 bg-green-500/[0.04] mb-10">
+              <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-3">The Epiphany</p>
+              <p className="text-white text-2xl font-bold leading-relaxed">
+                &ldquo;WhatsApp Cloud API allows full automation — a bot that responds in under 60 seconds, asks qualifying questions, filters time-wasters, and books appointments. Built on the same infrastructure WhatsApp itself uses.&rdquo;
+              </p>
+            </div>
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                The WhatsApp Cloud API isn&apos;t a third-party workaround or a gray-area tool. It&apos;s Meta&apos;s official business infrastructure — the same backbone that powers WhatsApp itself. And it allows you to build a fully automated assistant that lives inside your existing WhatsApp number.
+              </p>
+              <p>
+                A message comes in at 2am. The bot responds in under a minute. It asks the right questions — what service they need, where they&apos;re located, when they want to be seen. It filters out the price-shoppers and spam. It books confirmed appointments directly into your calendar. And it follows up automatically with leads who didn&apos;t convert the first time.
+              </p>
+              <p className="text-white font-semibold text-xl">
+                One HVAC client was missing more than sixty percent of his leads because he was on the roof when they messaged. The bot went live on a Monday. By Friday, he had seven booked appointments from messages that had come in outside business hours — leads he would have lost completely the week before.
+              </p>
+              <p>
+                His business didn&apos;t change. His pricing didn&apos;t change. His availability didn&apos;t change. <span className="text-white font-semibold">The only thing that changed was that someone was finally answering.</span>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }} className="text-center mb-16">
-            <SectionLabel>How It Works</SectionLabel>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="text-center mb-16"
+          >
+            <SectionLabel>Real Results</SectionLabel>
             <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
-              Built on WhatsApp Cloud API.{" "}
-              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Runs 24/7.</span>
+              What Happens When Every Message<br />
+              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Gets Answered in Under 60 Seconds.</span>
             </h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {steps.map((step, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }} className="flex gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-green-500/30 transition-all group">
-                <span className="text-2xl font-black text-green-500/20 group-hover:text-green-500/40 transition-colors flex-shrink-0">{step.n}</span>
-                <div>
-                  <h3 className="font-bold text-white mb-1.5">{step.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-                </div>
+
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            {results.map((r, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+                className="p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center"
+              >
+                <div className="text-2xl font-black text-green-400 mb-1">{r.result}</div>
+                <div className="text-xs text-gray-500 mb-3">{r.timeframe}</div>
+                <div className="text-sm text-gray-400 font-medium">{r.name}</div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-center max-w-2xl mx-auto"
+          >
+            <p className="text-gray-300 text-lg leading-relaxed italic mb-4">
+              &ldquo;I used to lose jobs every week just because I was busy when someone messaged. Now the bot handles it and I just show up to the appointments. It paid for itself in the first week.&rdquo;
+            </p>
+            <p className="text-green-400 font-bold text-sm">— Carlos M., HVAC Contractor</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* OFFER — What They Get */}
       <section className="relative px-6 py-20 sm:py-28">
         <SectionDivider />
         <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }} className="text-center mb-16">
-            <SectionLabel>What It Does</SectionLabel>
-            <h2 className="text-4xl sm:text-5xl font-black text-white">More Than a Chatbot.<br /><span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">A Sales Machine.</span></h2>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="text-center mb-16"
+          >
+            <SectionLabel>What You Get</SectionLabel>
+            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">
+              A Bot That Works While You Work —<br />
+              <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">And While You Sleep.</span>
+            </h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {capabilities.map((cap, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE, delay: i * 0.06 }} className="flex gap-4 p-5 rounded-2xl border border-white/[0.07] bg-white/[0.02] group hover:border-green-500/30 transition-all">
-                <div className="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
-                  <cap.icon className="h-4 w-4 text-green-400" />
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-12">
+            {deliverables.map((d, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
+                className="flex gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] group hover:border-green-500/30 transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
+                  <d.icon className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-sm mb-1">{cap.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{cap.desc}</p>
+                  <h3 className="font-bold text-white mb-1">{d.title}</h3>
+                  <p className="text-sm text-gray-500">{d.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Pricing */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-lg mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }}>
-            <SectionLabel>Pricing</SectionLabel>
-            <h2 className="text-4xl font-black text-white mb-4">Everything Included.</h2>
-            <p className="text-gray-500 mb-12">No setup fee. No extra charges. One missed job pays for 6+ months of the bot.</p>
-            <PricingCard
-              badge="WhatsApp Bot"
-              price="$397"
-              period="/mo"
-              items={["WhatsApp Cloud API setup","Custom bot built for your business","Lead qualification flows","Calendar integration","Automated follow-up sequences","English + Spanish","Click-to-WhatsApp ads compatible","Monthly optimization","No setup fee","No contracts","Cancel anytime","Live in 48 hours"]}
-              ctaText="Get My WhatsApp Bot"
-              ctaHref="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
-              accentClass="border-green-500"
-              note="No setup fees. Cancel anytime."
-            />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto"
+          >
+            {["WhatsApp Cloud API", "Lead qualification", "EN + ES", "24/7 response"].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-xs text-gray-400">
+                <CheckCircle2 className="h-3 w-3 text-green-400 flex-shrink-0" />
+                {item}
+              </div>
+            ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="relative px-6 py-20 sm:py-28">
-        <SectionDivider />
-        <div className="max-w-2xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }} className="text-center mb-12">
-            <SectionLabel>FAQ</SectionLabel>
-            <h2 className="text-4xl font-black text-white">Common Questions</h2>
-          </motion.div>
-          <FaqAccordion items={faq} />
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="relative px-6 py-24 sm:py-32">
         <SectionDivider />
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: EASE }} className="max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="max-w-3xl mx-auto text-center"
+        >
           <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-            Your Next Customer<br />Is Messaging You<br />
-            <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Right Now.</span>
+            Your Next Customer Is Messaging You<br />
+            <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Right Now. Are You Answering?</span>
           </h2>
-          <p className="text-gray-500 text-lg mb-10">Are they getting an instant response — or finding someone who does?</p>
-          <motion.a href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-green-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(34,197,94,0.5)] transition-all duration-300">
-            Get My WhatsApp Bot — $397/mo
+          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
+            Message us on WhatsApp. We&apos;ll show you exactly how the bot would work for your business and what it would say to your first customer.
+          </p>
+          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. No tech jargon.</p>
+          <motion.a
+            href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(34,197,94,0.5)] transition-all duration-300"
+          >
+            Get My WhatsApp Bot
           </motion.a>
-          <p className="mt-4 text-xs text-gray-600">No setup fee · No contracts · Live in 48 hours</p>
+          <p className="mt-4 text-xs text-gray-600">No contracts · WhatsApp Cloud API · EN + ES</p>
         </motion.div>
       </section>
     </LandingLayout>
