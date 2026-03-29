@@ -11,34 +11,66 @@ export default function Icon() {
           width: 32,
           height: 32,
           background: "#060609",
+          borderRadius: 8,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 6,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Cyan glow top-left */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "1.5px solid rgba(6,182,212,0.5)",
-            borderRadius: 4,
-            padding: "2px 4px",
+            position: "absolute",
+            top: -6,
+            left: -6,
+            width: 20,
+            height: 20,
+            borderRadius: "50%",
+            background: "rgba(6,182,212,0.35)",
+            filter: "blur(6px)",
+          }}
+        />
+        {/* Violet glow bottom-right */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: -6,
+            right: -6,
+            width: 16,
+            height: 16,
+            borderRadius: "50%",
+            background: "rgba(139,92,246,0.3)",
+            filter: "blur(5px)",
+          }}
+        />
+        {/* JA text */}
+        <span
+          style={{
+            fontSize: 13,
+            fontWeight: 900,
+            color: "white",
+            letterSpacing: "-0.5px",
+            lineHeight: 1,
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          <span
-            style={{
-              color: "rgba(6,182,212,0.8)",
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              lineHeight: 1,
-            }}
-          >
-            .pro
-          </span>
-        </div>
+          JA
+        </span>
+        {/* Cyan dot accent */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 5,
+            right: 5,
+            width: 4,
+            height: 4,
+            borderRadius: "50%",
+            background: "#06b6d4",
+          }}
+        />
       </div>
     ),
     { ...size }
