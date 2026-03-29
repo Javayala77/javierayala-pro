@@ -10,6 +10,119 @@ export type BlogPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "ai-marketing-stack-local-businesses-double-leads",
+    title: "The AI Marketing Stack That's Helping Local Businesses Double Their Leads in 90 Days",
+    date: "2026-03-29",
+    description: "Google Ads, Meta Ads, WhatsApp automation, and SEO — most businesses run one of these. The ones winning in 2025 run all four connected. Here's exactly how the stack works.",
+    category: "AI Marketing",
+    readTime: "8 min read",
+    content: `
+<p>There's a contractor in your city right now getting 40–60 inbound leads per month from Google. He's not spending more than his competitors. He's not smarter. He doesn't have a bigger team.</p>
+
+<p>What he has is a connected system — Google Ads, Meta Ads, WhatsApp automation, and SEO all working together, feeding each other, running 24/7 without him touching it.</p>
+
+<p>Most local businesses run one of these channels. Maybe two. They wonder why results are inconsistent. They boost a Facebook post, run some Google Ads, get a few calls, then nothing. The problem isn't the channels. It's that they're running them in isolation.</p>
+
+<p>This is the exact AI marketing stack we build for local service businesses — contractors, roofers, HVAC companies, lawyers, medical practices — and why it produces results that single-channel marketing never will.</p>
+
+<h2>Layer 1: Google Ads — Capture Intent at the Exact Moment They're Ready to Buy</h2>
+
+<p>Google Ads is the only marketing channel where you can reach someone at the precise moment they're actively searching for what you offer. Someone types "emergency roof repair [city]" — they need help now. That search is worth 10x any social media impression.</p>
+
+<p>But here's what most businesses get wrong: they set up a single campaign with broad match keywords, no negative keyword list, no conversion tracking, and wonder why they're spending $3,000/month and getting 4 calls.</p>
+
+<p>The right structure looks like this:</p>
+
+<ul>
+<li><strong>Exact match campaigns</strong> targeting your highest-intent keywords ("roof repair [city]", "emergency plumber [city]")</li>
+<li><strong>Negative keyword lists</strong> blocking irrelevant searches (DIY queries, competitor names, wrong service types)</li>
+<li><strong>Conversion tracking</strong> tied to actual phone calls and form submissions — not just clicks</li>
+<li><strong>AI bid optimization</strong> (Target CPA or Maximize Conversions) feeding on real conversion data</li>
+</ul>
+
+<p>When structured correctly, Google's AI optimizes toward your best leads automatically. We've seen cost per lead drop from $340 to $67 simply by rebuilding account structure — same budget, same city, completely different result.</p>
+
+<h2>Layer 2: Meta Ads — Build Demand Before They Know They Need You</h2>
+
+<p>Google captures existing demand. Meta creates it.</p>
+
+<p>Facebook and Instagram put your business in front of 3.2 billion people who aren't actively searching — but match the exact profile of your best customers. A homeowner in your service area, aged 35–55, who recently searched home improvement content. A business owner who follows legal advice pages. A parent who just moved into a new home.</p>
+
+<p>The biggest mistake: boosting posts. Boosted posts have no funnel structure. They reach people with no targeting, no conversion objective, and no follow-up. You're paying for reach to people who will never buy.</p>
+
+<p>Real Meta Ads run as a three-layer funnel:</p>
+
+<ul>
+<li><strong>Awareness campaigns</strong> — cold custom audiences (interest + demographic targeting)</li>
+<li><strong>Retargeting campaigns</strong> — people who visited your website or engaged with your content</li>
+<li><strong>Conversion campaigns</strong> — warm leads pushed to call or message directly</li>
+</ul>
+
+<p>The retargeting layer is where most of the ROI lives. Someone who saw your Google Ad, visited your site but didn't call — now they see your Meta ad. That touchpoint closes leads that would have gone cold.</p>
+
+<h2>Layer 3: WhatsApp Automation — Convert Leads Before They Go Cold</h2>
+
+<p>This is where most businesses leak the most money.</p>
+
+<p>A lead comes in at 7pm. You're finishing a job. You see it at 9am. By then, they've already booked with whoever replied first. Studies show 78% of customers book with the first business that responds. If you're not responding in under 5 minutes, you're losing to someone who is.</p>
+
+<p>WhatsApp Cloud API automation solves this completely. A bot built on your business — trained on your services, pricing range, FAQs, availability — responds to every message in under 60 seconds, 24/7. It qualifies the lead, asks the right questions, books directly to your calendar if they're ready, and escalates to you only when a human is genuinely needed.</p>
+
+<p>The impact is immediate. One HVAC contractor we work with was missing roughly 60% of his inbound leads because he was on jobs during business hours. First week with the bot: 7 appointments booked from messages that came in after 6pm.</p>
+
+<p>WhatsApp also connects directly to Meta Ads through Click-to-WhatsApp campaigns — the highest-converting ad format for service businesses. Someone clicks your ad and opens a chat with your bot instantly. No landing page friction. No form. Straight into a conversation.</p>
+
+<h2>Layer 4: SEO & Content — Build an Asset That Compounds Forever</h2>
+
+<p>Google Ads and Meta Ads stop the moment you stop paying. SEO doesn't.</p>
+
+<p>Every blog post, every Google Business update, every keyword you rank for organically is a permanent asset generating leads at zero ongoing cost. The businesses dominating their local market in 2027 are the ones building this asset today.</p>
+
+<p>The AI-powered content system we run for clients publishes:</p>
+
+<ul>
+<li><strong>5 SEO blog posts per week</strong> — keyword-targeted, city-specific, written by AI and optimized by our team</li>
+<li><strong>Daily Google Business posts</strong> — the single most underused local SEO signal</li>
+<li><strong>Daily social content</strong> — consistency that the algorithm rewards</li>
+</ul>
+
+<p>Within 60–90 days, clients start appearing in organic results for keywords they'd never ranked for. The traffic is free. It doesn't stop when the budget does. And it compounds — 50 posts in a year means 50 permanent entry points to your business on Google.</p>
+
+<h2>Why the Stack Beats Any Single Channel</h2>
+
+<p>Here's what happens when all four layers run together:</p>
+
+<p>Someone searches "roof repair [city]" — they see your Google Ad (Layer 1). They click, visit your site, don't call yet. Later that day, they're on Instagram — they see your retargeting ad (Layer 2). They click and open a WhatsApp chat. Your bot responds instantly, qualifies them, books an estimate (Layer 3). Meanwhile, your blog post about "average roof repair cost in [city]" is ranking on page 1 of Google, bringing in people who never even saw your ads (Layer 4).</p>
+
+<p>That contractor isn't smarter than his competitors. He just shows up everywhere, at every stage of the buying journey, with a system that never sleeps.</p>
+
+<h2>The ROI Math</h2>
+
+<p>A single new roofing job: $8,000–$15,000 revenue.<br/>
+A single new HVAC installation: $5,000–$12,000.<br/>
+A single retained legal client: $3,000–$50,000+.</p>
+
+<p>The entire stack — Google Ads management, Meta Ads, WhatsApp automation, SEO content — costs less than one job per month for most service businesses. Everything after the first conversion is pure profit on your marketing spend.</p>
+
+<p>The businesses that figure this out in 2025 will spend the next decade defending market position while their competitors wonder why they can't compete on Google anymore.</p>
+
+<h2>Where to Start</h2>
+
+<p>You don't have to launch all four layers at once. Most clients start with the channel closest to their immediate need:</p>
+
+<ul>
+<li><strong>Need leads now?</strong> Start with Google Ads — fastest path to inbound calls</li>
+<li><strong>Losing leads to slow response?</strong> Start with WhatsApp automation</li>
+<li><strong>Want long-term organic growth?</strong> Start with SEO content</li>
+<li><strong>Want to build brand and retarget?</strong> Start with Meta Ads</li>
+</ul>
+
+<p>Then connect the layers as you scale. Each one makes the others more effective.</p>
+
+<p>If you want to know which layer your business needs most right now — and what the full stack would look like for your specific market — message us on WhatsApp. We'll map it out for free.</p>
+    `.trim(),
+  },
+  {
     slug: "how-roofers-get-more-leads-from-google",
     title: "How Roofers Get More Leads from Google (Without Paying for Every Click)",
     date: "2026-03-29",
