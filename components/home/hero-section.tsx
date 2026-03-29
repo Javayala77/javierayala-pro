@@ -8,8 +8,8 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Results", href: "#results" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "#about" },
-  { label: "Newsletter", href: "#newsletter" },
   { label: "Contact", href: "#contact" },
 ]
 
