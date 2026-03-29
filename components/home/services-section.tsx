@@ -2,107 +2,149 @@
 
 import Link from "next/link"
 import { ArrowUpRight, Target, Search, Bot, Rocket, MapPin, Zap } from "lucide-react"
+import { motion } from "framer-motion"
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const services = [
   {
+    number: "01",
     icon: Target,
     title: "Google Ads Management",
-    description: "AI-powered campaign optimization that turns your ad spend into predictable, profitable customer acquisition.",
+    tag: "Paid Acquisition",
+    description: "AI-powered campaign optimization that turns ad spend into predictable, profitable customer acquisition. No wasted budget.",
     href: "/googleadsai",
-    color: "cyan",
+    accent: "hover:border-cyan-500/40 group-hover:bg-cyan-500/[0.03]",
+    iconBg: "bg-cyan-500/10 text-cyan-400",
+    tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
   },
   {
+    number: "02",
     icon: Search,
     title: "SEO & Content Automation",
-    description: "Weekly blog posts, optimized content, and automated submissions that compound your organic rankings month after month.",
+    tag: "Organic Growth",
+    description: "Weekly AI-generated blog posts, optimized content and automated submissions that compound your rankings month after month.",
     href: "/rankflow",
-    color: "green",
+    accent: "hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.03]",
+    iconBg: "bg-emerald-500/10 text-emerald-400",
+    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
   },
   {
+    number: "03",
     icon: MapPin,
     title: "Google Maps Domination",
-    description: "Optimize your Google Business Profile, automate review responses, and rank higher in the local pack.",
+    tag: "Local SEO",
+    description: "Optimize your Google Business Profile, automate review responses, and rank in the top 3 local pack within 90 days.",
     href: "/seo",
-    color: "blue",
+    accent: "hover:border-blue-500/40 group-hover:bg-blue-500/[0.03]",
+    iconBg: "bg-blue-500/10 text-blue-400",
+    tagColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
   },
   {
+    number: "04",
     icon: Bot,
     title: "AI Booking Agents",
-    description: "AI that answers leads 24/7, qualifies them, and books appointments while you sleep. Never miss another customer.",
+    tag: "Automation",
+    description: "AI that answers leads 24/7, qualifies them, and books appointments while you sleep. Never miss another customer again.",
     href: "/ai-agent",
-    color: "purple",
+    accent: "hover:border-violet-500/40 group-hover:bg-violet-500/[0.03]",
+    iconBg: "bg-violet-500/10 text-violet-400",
+    tagColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
   },
   {
+    number: "05",
     icon: Rocket,
     title: "48-Hour Business Launch",
-    description: "Landing page + Google Ads live in 48 hours. For new businesses that need customers immediately.",
+    tag: "Fast Track",
+    description: "Landing page + Google Ads live in 48 hours. For new businesses that need customers immediately. No delays.",
     href: "/launch",
-    color: "orange",
+    accent: "hover:border-orange-500/40 group-hover:bg-orange-500/[0.03]",
+    iconBg: "bg-orange-500/10 text-orange-400",
+    tagColor: "text-orange-400 bg-orange-500/10 border-orange-500/20",
   },
   {
+    number: "06",
     icon: Zap,
     title: "Local Domination Bundle",
-    description: "The complete system: SEO + Google Ads + GMB. Everything working together to dominate your local market.",
+    tag: "Full System",
+    description: "The complete system: SEO + Google Ads + GMB + AI Agent. Everything working together to dominate your local market.",
     href: "/domination",
-    color: "yellow",
+    accent: "hover:border-yellow-500/40 group-hover:bg-yellow-500/[0.03]",
+    iconBg: "bg-yellow-500/10 text-yellow-400",
+    tagColor: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20",
   },
 ]
 
-const colorMap = {
-  cyan: "group-hover:text-cyan-400 group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10",
-  green: "group-hover:text-green-400 group-hover:border-green-500/50 group-hover:bg-green-500/10",
-  blue: "group-hover:text-blue-400 group-hover:border-blue-500/50 group-hover:bg-blue-500/10",
-  purple: "group-hover:text-purple-400 group-hover:border-purple-500/50 group-hover:bg-purple-500/10",
-  orange: "group-hover:text-orange-400 group-hover:border-orange-500/50 group-hover:bg-orange-500/10",
-  yellow: "group-hover:text-yellow-400 group-hover:border-yellow-500/50 group-hover:bg-yellow-500/10",
-}
-
-const iconColorMap = {
-  cyan: "text-cyan-400",
-  green: "text-green-400",
-  blue: "text-blue-400",
-  purple: "text-purple-400",
-  orange: "text-orange-400",
-  yellow: "text-yellow-400",
-}
-
 export function HomeServices() {
   return (
-    <section id="services" className="px-6 py-24 sm:py-32">
+    <section id="services" className="px-6 py-24 sm:py-32 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       <div className="max-w-7xl mx-auto">
-        <div className="max-w-2xl mb-16">
-          <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4 block">Services</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">
-            Everything You Need To
-            <br />
-            <span className="text-cyan-400">Dominate Your Market</span>
-          </h2>
-          <p className="text-lg text-gray-400">
-            I build complete marketing systems. Not one-off tactics. Every service works together 
-            to bring you more customers, more consistently.
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16"
+        >
+          <div>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1 rounded-full mb-4">
+              Frameworks & Services
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-white">
+              Every Tool You Need<br />
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                To Own Your Market.
+              </span>
+            </h2>
+          </div>
+          <p className="text-gray-500 max-w-xs text-sm leading-relaxed sm:text-right">
+            Not one-off tactics. Complete systems built to compound over time and run without you.
           </p>
-        </div>
-        
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Link
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((service, i) => (
+            <motion.div
               key={service.title}
-              href={service.href}
-              className={`group relative p-8 rounded-2xl border border-gray-800 bg-gray-900/50 hover:bg-gray-900 transition-all duration-300 ${colorMap[service.color as keyof typeof colorMap]}`}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
             >
-              <div className={`w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center mb-6 transition-colors ${iconColorMap[service.color as keyof typeof iconColorMap]}`}>
-                <service.icon className="h-6 w-6" />
-              </div>
-              
-              <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                {service.title}
-                <ArrowUpRight className="h-5 w-5 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-              </h3>
-              
-              <p className="text-gray-400 leading-relaxed">
-                {service.description}
-              </p>
-            </Link>
+              <Link
+                href={service.href}
+                className={`group relative flex flex-col h-full p-7 rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 overflow-hidden ${service.accent}`}
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${service.iconBg} transition-transform group-hover:scale-110 duration-300`}>
+                    <service.icon className="h-5 w-5" />
+                  </div>
+                  <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${service.tagColor}`}>
+                    {service.tag}
+                  </span>
+                </div>
+
+                <span className="text-[80px] font-black leading-none text-white/[0.025] absolute right-4 top-2 select-none pointer-events-none">
+                  {service.number}
+                </span>
+
+                <h3 className="text-lg font-bold text-white mb-3 leading-snug">{service.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors flex-1">
+                  {service.description}
+                </p>
+
+                <div className="mt-6 pt-5 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors font-medium uppercase tracking-wider">
+                    Explore Framework
+                  </span>
+                  <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-300">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-gray-500 group-hover:text-white transition-colors" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

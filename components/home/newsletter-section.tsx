@@ -1,99 +1,139 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Check, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowRight, Check, Sparkles } from "lucide-react"
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const perks = [
+  "1 AI marketing tactic per week — proven, not theoretical",
+  "Behind-the-scenes of my client campaigns",
+  "New frameworks before they're public",
+  "Tools I actually use, with honest reviews",
+]
 
 export function HomeNewsletter() {
   const [email, setEmail] = useState("")
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState<"idle" | "loading" | "done">("idle")
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
-    
-    setIsLoading(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsLoading(false)
-    setIsSubmitted(true)
+    setStatus("loading")
+    await new Promise((r) => setTimeout(r, 1000))
+    setStatus("done")
   }
 
   return (
-    <section id="newsletter" className="px-6 py-24 sm:py-32">
-      <div className="max-w-4xl mx-auto">
-        <div className="relative p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-cyan-500/10 via-gray-900 to-gray-900 border border-cyan-500/20 overflow-hidden">
+    <section id="newsletter" className="px-6 py-24 sm:py-32 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="relative rounded-3xl border border-white/[0.08] bg-white/[0.02] overflow-hidden p-8 sm:p-12 lg:p-16"
+        >
           {/* Background glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          
-          <div className="relative">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
-                <Mail className="h-6 w-6 text-cyan-400" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+
+          <div className="relative grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6">
+                <Sparkles className="h-3 w-3" />
+                The AI Marketing Letter
               </div>
-              <span className="text-cyan-400 font-semibold">The AI Marketing Letter</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
+                Get the Tactics<br />
+                <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                  Before Everyone Else.
+                </span>
+              </h2>
+              <p className="text-gray-500 leading-relaxed mb-8">
+                Every week — one AI marketing insight that&apos;s actually working right now. No fluff, no theory. Just what&apos;s producing results for real businesses.
+              </p>
+
+              <ul className="space-y-3">
+                {perks.map((perk, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
+                    <div className="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="h-3 w-3 text-cyan-400" />
+                    </div>
+                    {perk}
+                  </li>
+                ))}
+              </ul>
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl font-black leading-tight mb-4">
-              AI Marketing Secrets
-              <br />
-              <span className="text-cyan-400">Delivered Weekly</span>
-            </h2>
-            
-            <p className="text-lg text-gray-400 mb-8 max-w-xl">
-              Every week I share one AI marketing tactic, tool, or strategy that&apos;s actually working 
-              for local businesses right now. No fluff. No theory. Just stuff you can use.
-            </p>
-            
-            {isSubmitted ? (
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/30">
-                <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
-                  <Check className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <div className="font-semibold text-white">You&apos;re in!</div>
-                  <div className="text-sm text-gray-400">Check your inbox for a welcome email.</div>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 h-14 px-6 rounded-xl bg-gray-800 border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
-                />
-                <Button 
-                  type="submit"
-                  size="lg"
-                  disabled={isLoading}
-                  className="h-14 px-8 text-lg font-bold bg-cyan-500 hover:bg-cyan-600 text-black rounded-xl"
-                >
-                  {isLoading ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-                      Subscribing...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      Subscribe Free
-                      <ArrowRight className="h-5 w-5" />
-                    </span>
-                  )}
-                </Button>
-              </form>
-            )}
-            
-            <div className="flex flex-wrap gap-6 mt-6 text-sm text-gray-500">
-              <span>Free forever</span>
-              <span>Unsubscribe anytime</span>
-              <span>No spam, ever</span>
+
+            {/* Right — Form */}
+            <div>
+              <AnimatePresence mode="wait">
+                {status === "done" ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="p-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 text-center"
+                  >
+                    <div className="w-14 h-14 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4">
+                      <Check className="h-6 w-6 text-emerald-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">You&apos;re in.</h3>
+                    <p className="text-gray-400 text-sm">Check your inbox — first issue lands this week.</p>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    onSubmit={handleSubmit}
+                    className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] space-y-4"
+                  >
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-widest text-gray-500 block mb-2">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@company.com"
+                        required
+                        className="w-full h-12 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="w-full h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all duration-300 disabled:opacity-70"
+                    >
+                      {status === "loading" ? (
+                        <>
+                          <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                          Subscribing...
+                        </>
+                      ) : (
+                        <>
+                          Join Free — Weekly Insights
+                          <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
+                    </button>
+
+                    <p className="text-[11px] text-gray-600 text-center">
+                      Free forever · No spam · Unsubscribe anytime
+                    </p>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

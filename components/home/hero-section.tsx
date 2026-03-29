@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowRight, Linkedin, Mail, Zap, ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowRight, ChevronDown, Sparkles, TrendingUp, Zap, Brain } from "lucide-react"
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion"
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -13,239 +13,370 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ]
 
-function AnimatedCounter({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-    
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-  
-  useEffect(() => {
-    if (!isVisible) return
-    
-    let startTime: number
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-      setCount(Math.floor(progress * target))
-      if (progress < 1) requestAnimationFrame(animate)
-    }
-    requestAnimationFrame(animate)
-  }, [isVisible, target, duration])
-  
-  return <div ref={ref}>{count}{suffix}</div>
-}
+const frameworks = [
+  "AI Acquisition System™",
+  "StoryFunnel Framework™",
+  "Local Domination Blueprint™",
+  "Automated Authority Engine™",
+]
 
-function FloatingOrb({ className, delay = 0 }: { className?: string; delay?: number }) {
+const proofItems = [
+  { icon: TrendingUp, value: "$2M+", label: "Ad Spend Managed" },
+  { icon: Zap, value: "50+", label: "Businesses Scaled" },
+  { icon: Brain, value: "8+", label: "Years in Marketing" },
+  { icon: Sparkles, value: "24/7", label: "AI Systems Running" },
+]
+
+function RotatingText() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % frameworks.length)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <div 
-      className={`absolute rounded-full blur-3xl opacity-20 animate-pulse ${className}`}
-      style={{ animationDelay: `${delay}ms`, animationDuration: '4s' }}
-    />
+    <span className="relative block overflow-hidden h-[1.3em] w-full">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.45, ease: EASE }}
+          className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent"
+        >
+          {frameworks[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   )
 }
 
-export function HomeHero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 150, damping: 15 })
+  const springY = useSpring(y, { stiffness: 150, damping: 15 })
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.3)
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.3)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(139,92,246,0.1),transparent_50%)]" />
-      
-      {/* Floating Orbs */}
-      <FloatingOrb className="w-96 h-96 bg-cyan-500 top-20 -left-48" delay={0} />
-      <FloatingOrb className="w-80 h-80 bg-purple-500 top-40 right-0" delay={1000} />
-      <FloatingOrb className="w-64 h-64 bg-cyan-400 bottom-20 left-1/3" delay={2000} />
-      
-      {/* Grid Pattern */}
-      <div 
-        className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"
-        style={{
-          transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
-          transition: 'transform 0.3s ease-out'
-        }}
-      />
-      
+    <motion.div
+      ref={ref}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+  },
+}
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+}
+
+export function HomeHero() {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const rotateX = useTransform(mouseY, [-300, 300], [4, -4])
+  const rotateY = useTransform(mouseX, [-300, 300], [-4, 4])
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX - window.innerWidth / 2)
+      mouseY.set(e.clientY - window.innerHeight / 2)
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [mouseX, mouseY])
+
+  return (
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#060609]">
+
+      {/* Background layers */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-[-20%] left-[30%] w-[700px] h-[700px] rounded-full bg-cyan-500/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] rounded-full bg-violet-600/10 blur-[100px]" />
+        <div className="absolute top-[40%] left-[-10%] w-[400px] h-[400px] rounded-full bg-sky-500/[0.08] blur-[90px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.04)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+      </div>
+
       {/* Navigation */}
-      <nav className="relative z-20 w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="relative">
-            <span className="text-2xl font-black text-white">Javier Ayala</span>
-            <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300" />
-          </div>
-          <span className="text-cyan-400 text-2xl animate-pulse">.</span>
-        </div>
-        
+      <motion.nav
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative z-20 w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto"
+      >
+        <Link href="/" className="flex items-center gap-1.5 group">
+          <span className="text-xl font-black tracking-tight text-white">Javier Ayala</span>
+          <motion.span
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="text-cyan-400 text-2xl leading-none"
+          >.</motion.span>
+          <span className="ml-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-400/70 border border-cyan-500/30 px-1.5 py-0.5 rounded">
+            PRO
+          </span>
+        </Link>
+
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a 
+          {navLinks.map((link, i) => (
+            <motion.a
               key={link.href}
               href={link.href}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 + i * 0.06 }}
               className="relative text-gray-400 hover:text-white transition-colors text-sm group"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300" />
-            </a>
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-cyan-400 to-violet-400 group-hover:w-full transition-all duration-300" />
+            </motion.a>
           ))}
         </div>
-        
-        <div className="flex items-center gap-4">
-          <a 
-            href="https://www.linkedin.com/in/javierayala1/" 
-            target="_blank" 
+
+        <div className="flex items-center gap-3">
+          <motion.a
+            href="https://www.linkedin.com/in/javierayala1/"
+            target="_blank"
             rel="noopener noreferrer"
-            className="relative p-2 text-gray-400 hover:text-cyan-400 transition-colors group"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 text-gray-500 hover:text-cyan-400 transition-colors"
           >
-            <Linkedin className="h-5 w-5" />
-            <div className="absolute inset-0 rounded-full bg-cyan-400/20 scale-0 group-hover:scale-100 transition-transform" />
-          </a>
-          <Button 
-            size="sm" 
-            className="relative bg-gradient-to-r from-cyan-500 to-cyan-400 hover:from-cyan-400 hover:to-cyan-300 text-black font-semibold rounded-full px-5 overflow-hidden group"
-            asChild
-          >
-            <a href="https://wa.me/573103956445" target="_blank" rel="noopener noreferrer">
-              <span className="relative z-10">Let&apos;s Talk</span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </a>
-          </Button>
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </motion.a>
+          <MagneticButton>
+            <motion.a
+              href="https://wa.me/573103956445"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-sm font-bold hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-shadow"
+            >
+              Let&apos;s Talk
+              <ArrowRight className="h-3.5 w-3.5" />
+            </motion.a>
+          </MagneticButton>
         </div>
-      </nav>
-      
-      {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-center px-6">
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-8 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+      </motion.nav>
+
+      {/* Hero Body */}
+      <div className="relative z-10 flex-1 flex items-center px-6 pb-16">
+        <div className="max-w-7xl mx-auto w-full">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl"
+          >
+            {/* Badge */}
+            <motion.div variants={itemVariants} className="mb-8 flex items-center gap-3 flex-wrap">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/[0.08] backdrop-blur-sm text-cyan-400 text-xs font-semibold uppercase tracking-widest">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-400" />
+                </span>
+                AI Marketing Expert
               </span>
-              <span className="text-cyan-400 text-sm font-medium">Available for new projects</span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6">
-              <span className="inline-block animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-                I Help Local Businesses
+              <span className="text-gray-600 text-xs hidden sm:block">·</span>
+              <span className="text-gray-500 text-xs hidden sm:block">Framework Creator · Automation Architect · Funnel Strategist</span>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-[82px] font-black leading-[1.02] tracking-tight mb-6"
+            >
+              <span className="text-white">I Don&apos;t Run Ads.</span>
+              <br />
+              <span className="text-white">I Build </span>
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent">
+                  AI Systems
+                </span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-px w-full bg-gradient-to-r from-cyan-400 to-violet-400"
+                  initial={{ scaleX: 0, originX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1, duration: 0.8, ease: EASE }}
+                />
               </span>
               <br />
-              <span 
-                className="inline-block bg-gradient-to-r from-cyan-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0"
-                style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
-              >
-                Get More Customers
-              </span>
-              <br />
-              <span className="inline-block animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-                Using AI.
-              </span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-gray-400 max-w-xl mb-8 leading-relaxed animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-              Google Ads management, SEO automation, AI booking agents, and marketing systems 
-              that work while you sleep. For service businesses that want to grow.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-              <Button 
-                size="lg" 
-                className="group h-14 px-8 text-lg font-bold bg-gradient-to-r from-cyan-500 to-cyan-400 hover:from-cyan-400 hover:to-cyan-300 text-black rounded-full overflow-hidden relative"
-                asChild
-              >
-                <a href="#services">
-                  <span className="relative z-10 flex items-center">
-                    See How I Can Help
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
-                </a>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="group h-14 px-8 text-lg font-medium border-gray-700 text-white hover:border-cyan-500/50 hover:bg-cyan-500/5 rounded-full transition-all duration-300"
-                asChild
-              >
-                <a href="#newsletter">
-                  <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                  Join Newsletter
-                </a>
-              </Button>
-            </div>
-          </div>
-          
-          {/* Right Column - Animated Stats */}
-          <div className="hidden lg:grid grid-cols-2 gap-6">
-            {[
-              { value: 2, suffix: "M+", label: "Ad spend managed", prefix: "$" },
-              { value: 50, suffix: "+", label: "Businesses helped", prefix: "" },
-              { value: 8, suffix: "+", label: "Years in marketing", prefix: "" },
-              { value: 24, suffix: "/7", label: "AI automation", prefix: "" },
-            ].map((stat, index) => (
-              <div 
-                key={index}
-                className="group relative p-8 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-all duration-500 overflow-hidden animate-[fadeInUp_0.6s_ease-out_forwards] opacity-0"
-                style={{ animationDelay: `${1.1 + index * 0.1}s`, animationFillMode: 'forwards' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative">
-                  <div className="text-5xl font-black text-cyan-400 mb-2 flex items-baseline">
-                    {stat.prefix}<AnimatedCounter target={stat.value} suffix={stat.suffix} duration={2000 + index * 200} />
-                  </div>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">{stat.label}</p>
-                </div>
-                <Zap className="absolute top-4 right-4 h-5 w-5 text-cyan-500/30 group-hover:text-cyan-400 group-hover:scale-125 transition-all" />
+              <span className="text-white">That </span>
+              <span className="text-gray-400 italic font-light">Print </span>
+              <span className="text-white">Customers.</span>
+            </motion.h1>
+
+            {/* Rotating framework line */}
+            <motion.div variants={itemVariants} className="mb-3">
+              <span className="text-lg sm:text-xl text-gray-500 font-medium">Creator of the</span>
+              <div className="text-lg sm:text-xl font-bold mt-0.5">
+                <RotatingText />
               </div>
-            ))}
-          </div>
+            </motion.div>
+
+            {/* Sub-headline */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg text-gray-500 max-w-2xl mb-10 leading-relaxed"
+            >
+              I&apos;ve spent 8 years studying what makes businesses grow — and built proprietary
+              frameworks that combine{" "}
+              <span className="text-white font-medium">story-driven funnels</span>,{" "}
+              <span className="text-white font-medium">AI automation</span>, and{" "}
+              <span className="text-white font-medium">paid acquisition</span>{" "}
+              into one system that runs 24/7.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-16">
+              <MagneticButton>
+                <motion.a
+                  href="https://wa.me/573103956445"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-base font-bold hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 group"
+                >
+                  Apply to Work With Me
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+              </MagneticButton>
+              <motion.a
+                href="#services"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border border-white/10 text-white text-base font-medium hover:bg-white/5 hover:border-white/20 transition-all duration-300"
+              >
+                See My Frameworks
+              </motion.a>
+            </motion.div>
+
+            {/* Social proof bar */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-6 sm:gap-8 items-center"
+            >
+              {proofItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -2 }}
+                  className="flex items-center gap-2.5 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:border-cyan-500/40 group-hover:bg-cyan-500/[0.08] transition-all">
+                    <item.icon className="h-4 w-4 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{item.value}</div>
+                    <div className="text-[10px] text-gray-600 uppercase tracking-wide leading-none mt-0.5">{item.label}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Floating results card — large screens */}
+          <motion.div
+            style={{ rotateX, rotateY, transformPerspective: 1000 }}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8, duration: 0.9, ease: EASE }}
+            className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 w-[340px]"
+          >
+            <div className="relative p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-violet-500/[0.08] pointer-events-none" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+
+              <div className="relative">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Live Results</span>
+                  <span className="flex items-center gap-1.5 text-[10px] text-emerald-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Active Clients
+                  </span>
+                </div>
+
+                {[
+                  { name: "Unclog Plumbing", metric: "+275%", detail: "Leads in 60 days", color: "text-emerald-400" },
+                  { name: "Precision Blinds", metric: "-62%", detail: "Cost per lead", color: "text-cyan-400" },
+                  { name: "Elite HVAC", metric: "47 jobs", detail: "First month AI agent", color: "text-violet-400" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.2 + i * 0.15 }}
+                    className="flex items-center justify-between py-3 border-b border-white/5 last:border-0"
+                  >
+                    <div>
+                      <div className="text-sm font-semibold text-white">{item.name}</div>
+                      <div className="text-[11px] text-gray-600">{item.detail}</div>
+                    </div>
+                    <span className={`text-lg font-black ${item.color}`}>{item.metric}</span>
+                  </motion.div>
+                ))}
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.8 }}
+                  className="mt-5 p-3 rounded-xl bg-cyan-500/[0.08] border border-cyan-500/15"
+                >
+                  <div className="text-[11px] text-gray-400 mb-1">Average client result</div>
+                  <div className="text-2xl font-black text-white">3.2x ROI</div>
+                  <div className="text-[11px] text-cyan-400">in the first 90 days</div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-gray-500 text-xs uppercase tracking-widest">Scroll</span>
-        <ChevronDown className="h-5 w-5 text-cyan-400" />
-      </div>
-      
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ChevronDown className="h-5 w-5 text-cyan-400/50" />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

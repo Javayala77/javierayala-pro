@@ -1,90 +1,138 @@
-import { MapPin, Briefcase, Zap } from "lucide-react"
+"use client"
+
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const timeline = [
+  {
+    year: "2016",
+    title: "Started in traditional agencies",
+    description: "Managing campaigns for local businesses. Realized most 'strategy' was just guesswork in a fancy deck.",
+  },
+  {
+    year: "2019",
+    title: "Went deep on paid acquisition",
+    description: "Managed $2M+ in Google Ads spend. Learned exactly what moves the needle — and what's just noise.",
+  },
+  {
+    year: "2022",
+    title: "Discovered the AI edge",
+    description: "Started integrating AI into every layer. Lead qualification, content, ad optimization. Results doubled.",
+  },
+  {
+    year: "2024",
+    title: "Built my own frameworks",
+    description: "Created the AI Acquisition System™ and StoryFunnel Framework™. Now I only build systems, not campaigns.",
+  },
+]
+
+const credentials = [
+  { value: "$2M+", label: "Ad Spend Managed" },
+  { value: "50+", label: "Businesses Helped" },
+  { value: "8+", label: "Years Experience" },
+  { value: "4", label: "Proprietary Frameworks" },
+]
 
 export function HomeAbout() {
   return (
-    <section id="about" className="px-6 py-24 sm:py-32 bg-gradient-to-b from-transparent via-gray-900/50 to-transparent">
+    <section id="about" className="px-6 py-24 sm:py-32 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Content */}
-          <div>
-            <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4 block">About Me</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">
-              From Marketing Agency
-              <br />
-              <span className="text-cyan-400">To AI Specialist</span>
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+          {/* Left — Story */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1 rounded-full mb-6">
+              About Javier
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black leading-tight text-white mb-6">
+              I&apos;m Not a Marketer.<br />
+              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                I&apos;m a Growth Architect.
+              </span>
             </h2>
-            
-            <div className="space-y-6 text-gray-400 leading-relaxed">
+
+            <div className="space-y-4 text-gray-500 leading-relaxed text-sm sm:text-base">
               <p>
-                I started in traditional marketing agencies, managing campaigns for businesses of all sizes. 
-                But I kept seeing the same problem: most marketing &quot;strategies&quot; were just guesswork 
-                dressed up in fancy reports.
+                I spent years inside agencies watching smart people waste client budgets on tactics that felt good in presentations but didn&apos;t move a single needle.
               </p>
               <p>
-                When AI tools started getting good, I saw an opportunity to fix that. To build marketing 
-                systems that actually optimize themselves. That respond to leads at 3am. That write content 
-                consistently without you lifting a finger.
+                That frustration became my obsession: <span className="text-white font-medium">build systems that actually work</span>. Not based on opinions — based on data, automation, and the fundamental psychology of why people buy.
               </p>
               <p>
-                Now I focus exclusively on local service businesses — because that&apos;s where I can make the 
-                biggest impact. Plumbers, contractors, clinics, agencies. People who are great at their craft 
-                but don&apos;t have time to become marketing experts.
+                When AI went mainstream, I didn&apos;t just adopt it — I rebuilt everything around it. Today I run AI-powered acquisition systems that generate leads 24/7, qualify prospects automatically, and optimize themselves while my clients sleep.
               </p>
               <p className="text-white font-medium">
-                My job is to build the marketing system that brings you customers. Your job is to serve them.
+                My goal: make you the undisputed authority in your market — and build the machine that keeps you there.
               </p>
             </div>
-          </div>
-          
-          {/* Right - Info Cards */}
+
+            <div className="mt-8">
+              <a
+                href="https://wa.me/573103956445"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group"
+              >
+                Talk to me directly
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right — Timeline + Credentials */}
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                  <MapPin className="h-6 w-6 text-cyan-400" />
+            {/* Credentials */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="grid grid-cols-2 gap-3"
+            >
+              {credentials.map((c, i) => (
+                <div key={i} className="p-4 rounded-xl border border-white/[0.07] bg-white/[0.02] text-center">
+                  <div className="text-2xl font-black text-white mb-1">{c.value}</div>
+                  <div className="text-xs text-gray-600 uppercase tracking-wide">{c.label}</div>
                 </div>
-                <div>
-                  <div className="font-semibold text-white">Working Worldwide</div>
-                  <div className="text-sm text-gray-400">Remote-first, results-focused</div>
-                </div>
+              ))}
+            </motion.div>
+
+            {/* Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+              className="p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02]"
+            >
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-600 mb-6">The Journey</p>
+              <div className="space-y-0">
+                {timeline.map((item, i) => (
+                  <div key={i} className="relative flex gap-4 pb-6 last:pb-0">
+                    {/* Line */}
+                    {i < timeline.length - 1 && (
+                      <div className="absolute left-[27px] top-8 bottom-0 w-px bg-white/[0.06]" />
+                    )}
+                    {/* Dot */}
+                    <div className="w-[14px] h-[14px] rounded-full border-2 border-cyan-500/50 bg-cyan-500/10 flex-shrink-0 mt-1.5 ml-[21px]" />
+                    <div>
+                      <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest">{item.year}</span>
+                      <h4 className="text-sm font-bold text-white mt-0.5 mb-1">{item.title}</h4>
+                      <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <p className="text-gray-400 text-sm">
-                I understand the local service business landscape — the seasonality, the competition, 
-                the customer psychology. It&apos;s different from e-commerce or SaaS, and I specialize in it.
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                  <Briefcase className="h-6 w-6 text-cyan-400" />
-                </div>
-                <div>
-                  <div className="font-semibold text-white">8+ Years Experience</div>
-                  <div className="text-sm text-gray-400">Google Ads, SEO, Marketing Automation</div>
-                </div>
-              </div>
-              <p className="text-gray-400 text-sm">
-                I&apos;ve managed over $2M in ad spend and helped 50+ businesses build profitable 
-                customer acquisition systems.
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                  <Zap className="h-6 w-6 text-cyan-400" />
-                </div>
-                <div>
-                  <div className="font-semibold text-white">AI-First Approach</div>
-                  <div className="text-sm text-gray-400">Always learning, always optimizing</div>
-                </div>
-              </div>
-              <p className="text-gray-400 text-sm">
-                I test every new AI tool that comes out. If it can help my clients get better results, 
-                I integrate it into their systems.
-              </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
