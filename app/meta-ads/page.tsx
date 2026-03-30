@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Target, Users, RefreshCw, BarChart2, CheckCircle2 } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Target, title: "Facebook + Instagram Ads", desc: "Full campaign build across both platforms — creatives, copy, targeting, and launch. One cohesive strategy that works across the entire Meta ecosystem." },
@@ -240,6 +241,21 @@ export default function MetaAdsPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-orange-400 text-xs font-bold uppercase tracking-widest mb-3">Free Competitor Analysis</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            See Exactly What Your Competitors<br />Are Spending on Meta Ads Right Now
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Their ad copy, their targeting, and the gaps they&apos;re leaving open. Full report — free.
+          </p>
+          <EmailCapture tag="competitor-spy" ctaText="Get My Free Competitor Report" accentClass="border-orange-500/30 focus:border-orange-500/60" btnClass="from-orange-600 to-orange-500" />
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { MapPin, Star, Building2, Phone, BarChart3, CheckCircle2 } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Building2, title: "Full GMB Optimization", desc: "Every section of your Google Business Profile configured to signal authority — categories, services, attributes, Q&A, and more." },
@@ -242,6 +243,21 @@ export default function SeoPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">Free 90-Day Roadmap</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            The Plan That Takes a Local Business<br />From 5 Leads to 50
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Month-by-month system: Google Maps → Google Ads → WhatsApp → Meta. Stop guessing, start with a proven system.
+          </p>
+          <EmailCapture tag="roadmap" ctaText="Send Me the Free Roadmap" accentClass="border-violet-500/30 focus:border-violet-500/60" btnClass="from-violet-600 to-violet-500" />
         </div>
       </section>
 

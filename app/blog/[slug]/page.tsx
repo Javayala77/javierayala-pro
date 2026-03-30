@@ -3,6 +3,7 @@ import Link from "next/link"
 import { getPostBySlug, getAllPosts } from "@/lib/blog"
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react"
 import type { Metadata } from "next"
+import EmailCapture from "@/components/email-capture"
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
@@ -79,6 +80,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
 
+            {/* Inline Email Capture */}
+            <div className="my-12 p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04]">
+              <p className="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2">Free Weekly Insights</p>
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 leading-tight">
+                Get 1 AI Marketing Tactic Every Week — Free
+              </h3>
+              <p className="text-gray-400 text-sm mb-6">
+                Behind-the-scenes of real campaigns. No fluff. Just what&apos;s producing results right now.
+              </p>
+              <EmailCapture
+                tag="newsletter"
+                ctaText="Send Me the Tactics"
+                accentClass="border-cyan-500/30 focus:border-cyan-500/60"
+                btnClass="from-cyan-600 to-cyan-500"
+              />
+            </div>
+
             {/* Author */}
             <div className="mt-16 pt-8 border-t border-white/[0.06] flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
@@ -92,22 +110,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             {/* CTA */}
             <div className="mt-12">
-              <div className="p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04] text-center">
-                <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
-                  Want This Done for Your Business?
+              <div className="p-8 rounded-2xl border border-violet-500/20 bg-violet-500/[0.04]">
+                <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-center">
+                  Want the Full 90-Day Roadmap?
                 </h2>
-                <p className="text-gray-400 mb-6 max-w-lg mx-auto">
-                  We handle everything automatically — Google Ads, Meta Ads, WhatsApp automation, SEO. Message us and we&apos;ll show you what&apos;s possible in your market.
+                <p className="text-gray-400 mb-6 text-center max-w-lg mx-auto">
+                  Month-by-month system: Google Ads → WhatsApp automation → Meta → SEO. Get the exact plan we use with clients — free.
                 </p>
-                <a
-                  href="https://wa.me/573103956445?text=I%20want%20more%20leads%20from%20Google"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-sm hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300"
-                >
-                  Get My Free Google Ranking Check
-                </a>
-                <p className="mt-3 text-xs text-gray-600">No commitment · Replies in minutes</p>
+                <EmailCapture
+                  tag="roadmap"
+                  ctaText="Send Me the Roadmap — Free"
+                  accentClass="border-violet-500/30 focus:border-violet-500/60"
+                  btnClass="from-violet-600 to-violet-500"
+                />
               </div>
             </div>
           </article>
@@ -164,19 +179,36 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
 
-            {/* WhatsApp CTA */}
-            <div className="p-4 rounded-xl border border-cyan-500/20 bg-cyan-500/[0.04] text-center">
-              <p className="text-xs font-bold text-white mb-1">Get more customers</p>
-              <p className="text-[11px] text-gray-500 mb-3">Free Google ranking check — no commitment</p>
-              <a
-                href="https://wa.me/573103956445?text=I%20want%20more%20leads%20from%20Google"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-9 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-xs flex items-center justify-center hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all"
-              >
-                Message on WhatsApp
-              </a>
-            </div>
+            {/* Contextual Lead Magnet */}
+            {(() => {
+              const s = post.slug
+              const cat = post.category.toLowerCase()
+              let badge = "Free Competitor Analysis"
+              let headline = "See What Your Competitors Are Spending on Google Ads"
+              let sub = "Their keywords, budget, and the gaps they're leaving open — free."
+              let tag = "competitor-spy"
+              let cta = "Get My Free Report"
+              let accent = "border-orange-500/20 bg-orange-500/[0.04]"
+              let accentClass = "border-orange-500/30 focus:border-orange-500/60"
+              let btnClass = "from-orange-600 to-orange-500"
+
+              if (cat.includes("google") || s.includes("google-ads") || s.includes("lawyers") || s.includes("doctors") || s.includes("electrician")) {
+                badge = "Free Google Ads Checklist"; headline = "Find Out Exactly Where Your Ad Budget Is Being Wasted"; sub = "The 6 mistakes draining most local ad accounts — 15-min checklist."; tag = "google-ads-checklist"; cta = "Get the Free Checklist"; accent = "border-cyan-500/20 bg-cyan-500/[0.04]"; accentClass = "border-cyan-500/30 focus:border-cyan-500/60"; btnClass = "from-cyan-600 to-cyan-500"
+              } else if (cat.includes("automation") || s.includes("whatsapp") || s.includes("follow-up") || s.includes("booking")) {
+                badge = "Free Bot Demo"; headline = "Watch a Bot Book Jobs While You Sleep"; sub = "Experience the exact automation your customers would see."; tag = "whatsapp-demo"; cta = "Show Me the Demo"; accent = "border-green-500/20 bg-green-500/[0.04]"; accentClass = "border-green-500/30 focus:border-green-500/60"; btnClass = "from-green-600 to-green-500"
+              } else if (cat.includes("seo") || s.includes("maps") || s.includes("reviews") || s.includes("plumber") || s.includes("hvac")) {
+                badge = "Free 90-Day Roadmap"; headline = "The Plan That Takes a Business From 5 Leads to 50"; sub = "Google Ads → WhatsApp → Meta → SEO. Stop guessing."; tag = "roadmap"; cta = "Send Me the Roadmap"; accent = "border-violet-500/20 bg-violet-500/[0.04]"; accentClass = "border-violet-500/30 focus:border-violet-500/60"; btnClass = "from-violet-600 to-violet-500"
+              }
+
+              return (
+                <div className={`p-4 rounded-xl border ${accent}`}>
+                  <span className="inline-block text-[9px] font-bold uppercase tracking-widest text-gray-500 mb-2">{badge}</span>
+                  <p className="text-xs font-bold text-white mb-1 leading-snug">{headline}</p>
+                  <p className="text-[11px] text-gray-500 mb-3 leading-relaxed">{sub}</p>
+                  <EmailCapture tag={tag} ctaText={cta} accentClass={accentClass} btnClass={btnClass} />
+                </div>
+              )
+            })()}
           </aside>
         </div>
       </div>

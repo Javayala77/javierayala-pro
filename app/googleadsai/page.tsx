@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Target, TrendingUp, Zap, BarChart3, CheckCircle2, MessageCircle, Search } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Target, title: "Campaign Strategy & Setup", desc: "Tight ad groups, exact match keywords, and a structure that makes Google's algorithm work for you — not against you." },
@@ -239,6 +240,21 @@ export default function GoogleAdsPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-3">Free Google Ads Checklist</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            Find Out Exactly Where Your<br />Ad Budget Is Being Wasted
+          </h2>
+          <p className="text-gray-400 mb-8">
+            A 15-min checklist that reveals the 6 mistakes draining most local Google Ads accounts. Free — delivered instantly.
+          </p>
+          <EmailCapture tag="google-ads-checklist" ctaText="Send Me the Free Checklist" accentClass="border-cyan-500/30 focus:border-cyan-500/60" btnClass="from-cyan-600 to-cyan-500" />
         </div>
       </section>
 

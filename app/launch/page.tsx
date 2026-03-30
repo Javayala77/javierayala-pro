@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Rocket, Globe, Target, Clock, Check } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider, FaqAccordion } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const included = [
   { icon: Globe, title: "Landing Page Built", desc: "Conversion-optimized page designed specifically to turn visitors into calls and leads." },
@@ -179,6 +180,21 @@ export default function LaunchPage() {
             <h2 className="text-4xl font-black text-white">Common Questions</h2>
           </motion.div>
           <FaqAccordion items={faq} />
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-orange-400 text-xs font-bold uppercase tracking-widest mb-3">Free Google Ads Checklist</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            Before You Launch — Know Exactly<br />What Makes a Google Ads Campaign Work
+          </h2>
+          <p className="text-gray-400 mb-8">
+            The 6-point checklist we run on every new account. Free — so your first month gets results from day one.
+          </p>
+          <EmailCapture tag="google-ads-checklist" ctaText="Send Me the Launch Checklist" accentClass="border-orange-500/30 focus:border-orange-500/60" btnClass="from-orange-500 to-amber-500" />
         </div>
       </section>
 

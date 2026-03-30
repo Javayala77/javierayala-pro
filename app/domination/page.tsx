@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Crown, Target, Search, MapPin, TrendingUp, BarChart3, CheckCircle2 } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Target, title: "Google Ads Management", desc: "High-intent campaigns targeting buyers who are actively searching for your service right now. Leads from week one." },
@@ -239,6 +240,21 @@ export default function DominationPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-yellow-400 text-xs font-bold uppercase tracking-widest mb-3">Free 90-Day Roadmap</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            Get the Month-by-Month Plan<br />to Dominate Your Local Market
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Google Ads → WhatsApp → Meta → SEO. The exact sequence we use to take businesses from invisible to #1 in their market.
+          </p>
+          <EmailCapture tag="roadmap" ctaText="Send Me the Domination Roadmap" accentClass="border-yellow-500/30 focus:border-yellow-500/60" btnClass="from-yellow-500 to-amber-400" />
         </div>
       </section>
 

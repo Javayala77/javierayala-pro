@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Bot, MessageSquare, Globe, Zap, CalendarCheck, CheckCircle2, Users } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Bot, title: "AI Agent Built for Your Business", desc: "Trained on your services, FAQs, pricing, and sales process. It answers exactly the way you would — every time." },
@@ -242,6 +243,21 @@ export default function AIAgentPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-purple-400 text-xs font-bold uppercase tracking-widest mb-3">Free Bot Demo</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            See Exactly How an AI Agent<br />Would Handle Your Next Lead
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Drop your email and we&apos;ll show you a live demo customized to your business — what it says, how it qualifies, and how it books.
+          </p>
+          <EmailCapture tag="whatsapp-demo" ctaText="Show Me the AI Agent Demo" accentClass="border-purple-500/30 focus:border-purple-500/60" btnClass="from-purple-600 to-purple-500" />
         </div>
       </section>
 

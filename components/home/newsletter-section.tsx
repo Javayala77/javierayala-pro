@@ -15,14 +15,23 @@ const perks = [
 
 export function HomeNewsletter() {
   const [email, setEmail] = useState("")
-  const [status, setStatus] = useState<"idle" | "loading" | "done">("idle")
+  const [name, setName] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
     setStatus("loading")
-    await new Promise((r) => setTimeout(r, 1000))
-    setStatus("done")
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name, tag: "newsletter" }),
+      })
+      setStatus(res.ok ? "done" : "error")
+    } catch {
+      setStatus("error")
+    }
   }
 
   return (
@@ -95,6 +104,18 @@ export function HomeNewsletter() {
                   >
                     <div>
                       <label className="text-xs font-bold uppercase tracking-widest text-gray-500 block mb-2">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="First name"
+                        className="w-full h-12 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-widest text-gray-500 block mb-2">
                         Your Email
                       </label>
                       <input
@@ -106,6 +127,10 @@ export function HomeNewsletter() {
                         className="w-full h-12 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors"
                       />
                     </div>
+
+                    {status === "error" && (
+                      <p className="text-xs text-red-400">Something went wrong. Try again.</p>
+                    )}
 
                     <button
                       type="submit"

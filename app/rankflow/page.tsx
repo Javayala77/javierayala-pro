@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { TrendingUp, FileText, MapPin, Share2, CheckCircle2 } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: FileText, title: "5 SEO Blog Posts per Week", desc: "Written by AI, optimized for your city and industry, auto-published. Google indexes them without you lifting a finger." },
@@ -243,6 +244,21 @@ export default function RankFlowPage() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-3">Free 90-Day Roadmap</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            The Exact System We Use to Rank<br />Local Businesses on Google — Free
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Month-by-month content + SEO plan. See the full strategy before you commit to anything.
+          </p>
+          <EmailCapture tag="roadmap" ctaText="Send Me the Free Roadmap" accentClass="border-emerald-500/30 focus:border-emerald-500/60" btnClass="from-emerald-600 to-emerald-500" />
         </div>
       </section>
 
