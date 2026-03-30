@@ -101,7 +101,7 @@ export const posts: BlogPost[] = [
     slug: "ai-marketing-stack-local-businesses-double-leads",
     title: "The AI Marketing Stack That's Helping Local Businesses Double Their Leads in 90 Days",
     date: "2026-03-29",
-    description: "Google Ads, Meta Ads, WhatsApp automation, and SEO — most businesses run one of these. The ones winning in 2025 run all four connected. Here's exactly how the stack works.",
+    description: "Google Ads, Meta Ads, WhatsApp automation, and SEO — most businesses run one of these. The ones winning in 2026 run all four connected. Here's exactly how the stack works.",
     category: "AI Marketing",
     readTime: "8 min read",
     content: `
@@ -272,7 +272,7 @@ A single retained legal client: $3,000–$50,000+.</p>
 <p>The organic results below the map pack are driven by your website's content. Examples of posts that rank and convert:</p>
 
 <ul>
-<li>"Average roof replacement cost in [City] 2025"</li>
+<li>"Average roof replacement cost in [City] 2026"</li>
 <li>"Best roofing contractors in [City] — what to look for"</li>
 <li>"How to file a roof insurance claim in [State]"</li>
 <li>"Signs you need a new roof vs. a repair"</li>
