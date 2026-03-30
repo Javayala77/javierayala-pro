@@ -39,6 +39,9 @@ export default function EmailCapture({
 
       if (res.ok) {
         setStatus("success")
+        if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
+          ;(window as any).fbq("track", "Lead")
+        }
       } else {
         const data = await res.json()
         setErrorMsg(data.error || "Something went wrong. Try again.")
