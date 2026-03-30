@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-import { X, ArrowRight } from "lucide-react"
+import { X } from "lucide-react"
+import EmailCapture from "@/components/email-capture"
 
 const STORAGE_KEY = "lead_popup_dismissed"
 const DELAY_MS = 15000
@@ -11,67 +12,68 @@ type Offer = {
   badge: string
   headline: string
   sub: string
-  cta: string
-  href: string
-  accent: string
+  tag: string
+  accentColor: string
+  accentClass: string
+  btnClass: string
   glow: string
+  successText: string
 }
 
 const OFFERS: Record<string, Offer> = {
   audit: {
-    badge: "Free Google Ads Audit Checklist",
+    badge: "Free Google Ads Audit",
     headline: "Find Out Exactly Where Your Google Ads Budget Is Being Wasted",
-    sub: "A 15-minute checklist that reveals the 6 mistakes draining most local business ad accounts — and how to fix them today.",
-    cta: "Send Me the Free Checklist",
-    href: "https://wa.me/573103956445?text=I%20want%20my%20free%20Google%20Ads%20audit%20checklist",
-    accent: "text-cyan-400",
+    sub: "Enter your email and we'll book a free audit — we'll show you exactly where money is leaking and what we'd do differently.",
+    tag: "google-ads-audit",
+    accentColor: "text-cyan-400",
+    accentClass: "border-cyan-500/30 focus:border-cyan-500/60",
+    btnClass: "from-cyan-600 to-cyan-500",
     glow: "from-cyan-600 to-cyan-500",
+    successText: "Check your inbox — we'll send you a link to book your free audit.",
   },
   whatsapp: {
-    badge: "Free Live Bot Demo",
-    headline: "Watch a Bot Book a $4,000 Job While the Owner Was Sleeping",
-    sub: "Message us right now and experience exactly what your customers would — a bot that qualifies, books, and follows up in 60 seconds.",
-    cta: "Show Me the Demo",
-    href: "https://wa.me/573103956445?text=I%20want%20to%20see%20the%20WhatsApp%20bot%20demo",
-    accent: "text-green-400",
+    badge: "Free Bot Consultation",
+    headline: "Book a Free Demo — See Exactly How a Bot Would Work for Your Business",
+    sub: "Enter your email and we'll set up a demo customized to your business — what it says, how it qualifies, how it books.",
+    tag: "whatsapp-bot",
+    accentColor: "text-green-400",
+    accentClass: "border-green-500/30 focus:border-green-500/60",
+    btnClass: "from-green-600 to-green-500",
     glow: "from-green-600 to-green-500",
+    successText: "Check your inbox — we'll send you a link to schedule your free demo.",
   },
-  roadmap: {
-    badge: "Free 90-Day Roadmap",
-    headline: "The Exact Plan That Takes a Local Business From 5 Leads to 50",
-    sub: "Month-by-month: Google Ads → WhatsApp → Meta Ads → SEO. Stop running random campaigns. Start running a system.",
-    cta: "Send Me the Roadmap",
-    href: "https://wa.me/573103956445?text=I%20want%20the%2090-day%20local%20domination%20roadmap",
-    accent: "text-violet-400",
+  seo: {
+    badge: "Free SEO Consultation",
+    headline: "Book a Free Call — We'll Check Your Google Maps Ranking and Show You the Path to Top 3",
+    sub: "Enter your email and we'll review where you currently rank and map out exactly what it takes to reach the top 3.",
+    tag: "seo",
+    accentColor: "text-violet-400",
+    accentClass: "border-violet-500/30 focus:border-violet-500/60",
+    btnClass: "from-violet-600 to-violet-500",
     glow: "from-violet-600 to-violet-500",
+    successText: "Check your inbox — we'll send you a link to book your free SEO call.",
   },
-  competitor: {
-    badge: "Free Competitor Analysis",
-    headline: "See Exactly What Your Competitors Are Spending on Google Ads Right Now",
-    sub: "Their keywords, their estimated budget, their ad copy — and the gaps they're leaving open for you to take.",
-    cta: "Spy on My Competitors — Free",
-    href: "https://wa.me/573103956445?text=I%20want%20a%20free%20competitor%20analysis",
-    accent: "text-orange-400",
-    glow: "from-orange-600 to-orange-500",
-  },
-  response: {
-    badge: "Free Lead Response Audit",
-    headline: "I Messaged 47 Local Businesses as a Fake Lead. Only 3 Responded Correctly.",
-    sub: "We'll secretly test your lead response and send you a full report — response time, quality score, follow-up sequence, and exactly what to fix.",
-    cta: "Audit My Lead Response — Free",
-    href: "https://wa.me/573103956445?text=I%20want%20a%20free%20lead%20response%20audit",
-    accent: "text-pink-400",
+  meta: {
+    badge: "Free Meta Ads Consultation",
+    headline: "Book a Free Call — We'll Show You What a Real Meta Ads Campaign Would Change for Your Business",
+    sub: "Enter your email and we'll review your current setup and show you exactly how to get real leads from Facebook and Instagram.",
+    tag: "meta-ads",
+    accentColor: "text-pink-400",
+    accentClass: "border-pink-500/30 focus:border-pink-500/60",
+    btnClass: "from-pink-600 to-pink-500",
     glow: "from-pink-600 to-pink-500",
+    successText: "Check your inbox — we'll send you a link to book your free Meta Ads call.",
   },
 }
 
 function getOffer(pathname: string): Offer {
   const p = pathname.toLowerCase()
   if (p.includes("google-ads") || p.includes("googleads") || p.includes("free-audit") || p.includes("lawyers") || p.includes("doctors") || p.includes("quality-score") || p.includes("electricians") || p.includes("mistakes")) return OFFERS.audit
-  if (p.includes("whatsapp") || p.includes("whatsapp-demo") || p.includes("click-to-whatsapp") || p.includes("follow-up") || p.includes("booking")) return OFFERS.whatsapp
-  if (p.includes("seo") || p.includes("rankflow") || p.includes("maps") || p.includes("roadmap") || p.includes("google-maps") || p.includes("reviews") || p.includes("plumber") || p.includes("hvac") || p.includes("domination")) return OFFERS.roadmap
-  if (p.includes("meta-ads") || p.includes("facebook") || p.includes("instagram") || p.includes("competitor") || p.includes("retargeting") || p.includes("roofing") || p.includes("roofer")) return OFFERS.competitor
-  return OFFERS.competitor // default — highest curiosity
+  if (p.includes("whatsapp") || p.includes("whatsapp-demo") || p.includes("follow-up") || p.includes("booking") || p.includes("ai-agent")) return OFFERS.whatsapp
+  if (p.includes("seo") || p.includes("rankflow") || p.includes("maps") || p.includes("roadmap") || p.includes("reviews") || p.includes("plumber") || p.includes("hvac") || p.includes("domination")) return OFFERS.seo
+  if (p.includes("meta-ads") || p.includes("facebook") || p.includes("instagram") || p.includes("competitor") || p.includes("retargeting") || p.includes("roofing")) return OFFERS.meta
+  return OFFERS.audit // default
 }
 
 export default function LeadPopup() {
@@ -111,7 +113,7 @@ export default function LeadPopup() {
         </button>
 
         <div className="px-8 py-8">
-          <span className={`inline-block text-[10px] font-bold uppercase tracking-widest ${offer.accent} bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full mb-5`}>
+          <span className={`inline-block text-[10px] font-bold uppercase tracking-widest ${offer.accentColor} bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full mb-5`}>
             {offer.badge}
           </span>
 
@@ -123,15 +125,13 @@ export default function LeadPopup() {
             {offer.sub}
           </p>
 
-          <a
-            href={offer.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={dismiss}
-            className={`flex items-center justify-center gap-2 w-full h-12 rounded-full bg-gradient-to-r ${offer.glow} text-white font-bold text-sm hover:opacity-90 hover:shadow-lg transition-all duration-300`}
-          >
-            {offer.cta} <ArrowRight className="h-4 w-4" />
-          </a>
+          <EmailCapture
+            tag={offer.tag}
+            ctaText="Book My Free Consultation"
+            successText={offer.successText}
+            accentClass={offer.accentClass}
+            btnClass={offer.btnClass}
+          />
 
           <button
             onClick={dismiss}
