@@ -57,17 +57,15 @@ export default function DominationPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20the%20Local%20Domination%20Bundle"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-400 text-black font-bold text-base hover:shadow-[0_0_40px_rgba(234,179,8,0.4)] transition-all duration-300"
           >
-            Dominate My Market
+            Book My Free Strategy Session
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
@@ -254,7 +252,7 @@ export default function DominationPage() {
           <p className="text-gray-400 mb-8">
             Google Ads → WhatsApp → Meta → SEO. The exact sequence we use to take businesses from invisible to #1 in their market.
           </p>
-          <EmailCapture tag="roadmap" ctaText="Send Me the Domination Roadmap" accentClass="border-yellow-500/30 focus:border-yellow-500/60" btnClass="from-yellow-500 to-amber-400" />
+          <EmailCapture tag="newsletter" ctaText="Book My Free Strategy Session" accentClass="border-yellow-500/30 focus:border-yellow-500/60" btnClass="from-yellow-500 to-amber-400" />
         </div>
       </section>
 
@@ -272,20 +270,15 @@ export default function DominationPage() {
             Right Now, Someone in Your Market<br />Is Running All Three Channels.<br />
             <span className="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">Is It You?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll audit your current Google presence across all three channels for free and show you exactly what full domination would look like in your market.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll show you exactly what full domination would look like in your market — free strategy session, no obligation.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20the%20Local%20Domination%20Bundle"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-400 text-black font-bold text-base hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] transition-all duration-300"
           >
-            Dominate My Market
-          </motion.a>
+            Book My Free Strategy Session
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · No setup fees · All three channels included</p>
         </motion.div>
       </section>

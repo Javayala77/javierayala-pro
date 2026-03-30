@@ -55,9 +55,7 @@ export default function RankFlowPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-300"
@@ -258,7 +256,7 @@ export default function RankFlowPage() {
           <p className="text-gray-400 mb-8">
             Month-by-month content + SEO plan. See the full strategy before you commit to anything.
           </p>
-          <EmailCapture tag="roadmap" ctaText="Send Me the Free Roadmap" accentClass="border-emerald-500/30 focus:border-emerald-500/60" btnClass="from-emerald-600 to-emerald-500" />
+          <EmailCapture tag="seo" ctaText="Book My Free SEO Consultation" accentClass="border-emerald-500/30 focus:border-emerald-500/60" btnClass="from-emerald-600 to-emerald-500" />
         </div>
       </section>
 
@@ -276,20 +274,15 @@ export default function RankFlowPage() {
             Your Competitor Is Getting<br />This Done Right Now.<br />
             <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">What About You?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll check your current Google rankings for free and show you exactly what the system would do for your business.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll check your current Google rankings for free and show you exactly what the system would do for your business.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20higher%20on%20Google"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all duration-300"
           >
-            Check My Google Rankings — Free
-          </motion.a>
+            Book My Free SEO Consultation
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · No setup fees · EN + ES included</p>
         </motion.div>
       </section>

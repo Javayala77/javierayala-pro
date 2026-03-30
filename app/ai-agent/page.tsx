@@ -57,17 +57,15 @@ export default function AIAgentPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20an%20AI%20booking%20agent"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition-all duration-300"
           >
-            Build My AI Agent
+            Book My Free AI Agent Demo
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
@@ -257,7 +255,7 @@ export default function AIAgentPage() {
           <p className="text-gray-400 mb-8">
             Drop your email and we&apos;ll show you a live demo customized to your business — what it says, how it qualifies, and how it books.
           </p>
-          <EmailCapture tag="whatsapp-demo" ctaText="Show Me the AI Agent Demo" accentClass="border-purple-500/30 focus:border-purple-500/60" btnClass="from-purple-600 to-purple-500" />
+          <EmailCapture tag="ai-agent" ctaText="Book My Free AI Agent Demo" accentClass="border-purple-500/30 focus:border-purple-500/60" btnClass="from-purple-600 to-purple-500" />
         </div>
       </section>
 
@@ -275,20 +273,15 @@ export default function AIAgentPage() {
             The Next Lead That Comes In<br />While You&apos;re on the Job —<br />
             <span className="bg-gradient-to-r from-purple-400 to-fuchsia-300 bg-clip-text text-transparent">Will It Get a Response?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll map out exactly how an AI agent would work for your specific business and show you what it would have captured last week.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll map out exactly how an AI agent would work for your specific business — free consultation, no obligation.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20an%20AI%20booking%20agent"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(168,85,247,0.5)] transition-all duration-300"
           >
-            Build My AI Agent
-          </motion.a>
+            Book My Free AI Agent Demo
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · Live in 48 hours · EN + ES included</p>
         </motion.div>
       </section>

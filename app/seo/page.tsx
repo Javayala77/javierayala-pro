@@ -57,9 +57,7 @@ export default function SeoPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20on%20Google%20Maps"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] transition-all duration-300"
@@ -257,7 +255,7 @@ export default function SeoPage() {
           <p className="text-gray-400 mb-8">
             Month-by-month system: Google Maps → Google Ads → WhatsApp → Meta. Stop guessing, start with a proven system.
           </p>
-          <EmailCapture tag="roadmap" ctaText="Send Me the Free Roadmap" accentClass="border-violet-500/30 focus:border-violet-500/60" btnClass="from-violet-600 to-violet-500" />
+          <EmailCapture tag="seo" ctaText="Book My Free SEO Consultation" accentClass="border-blue-500/30 focus:border-blue-500/60" btnClass="from-blue-600 to-blue-500" />
         </div>
       </section>
 
@@ -275,20 +273,15 @@ export default function SeoPage() {
             Someone in Your Market<br />Is Going to Own That Spot.<br />
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">It Should Be You.</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll check where you currently rank on Google Maps for free and show you exactly what it takes to reach the top 3.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll check where you currently rank on Google Maps — free — and show you exactly what it takes to reach the top 3.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20to%20rank%20on%20Google%20Maps"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] transition-all duration-300"
           >
-            Get Into the Top 3 on Google Maps
-          </motion.a>
+            Book My Free SEO Consultation
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · No setup fees · EN + ES included</p>
         </motion.div>
       </section>

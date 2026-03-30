@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server"
 
 const GROUP_IDS: Record<string, string> = {
-  "google-ads-checklist": "183376447777277331",
-  "roadmap":              "183376448424248842",
-  "whatsapp-demo":        "183376449010402579",
-  "competitor-spy":       "183376449567196318",
-  "response-audit":       "183376450136573397",
-  "newsletter":           "183381818930628214",
+  "google-ads-audit": "183385341709780775",
+  "meta-ads":         "183385342262379987",
+  "whatsapp-bot":     "183385342906205428",
+  "seo":              "183385343490262499",
+  "ai-agent":         "183385344085853462",
+  "newsletter":       "183385344663618823",
 }
 
 export async function POST(req: NextRequest) {

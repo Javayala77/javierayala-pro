@@ -194,7 +194,7 @@ export default function LaunchPage() {
           <p className="text-gray-400 mb-8">
             The 6-point checklist we run on every new account. Free — so your first month gets results from day one.
           </p>
-          <EmailCapture tag="google-ads-checklist" ctaText="Send Me the Launch Checklist" accentClass="border-orange-500/30 focus:border-orange-500/60" btnClass="from-orange-500 to-amber-500" />
+          <EmailCapture tag="google-ads-audit" ctaText="Book My Free Launch Consultation" accentClass="border-orange-500/30 focus:border-orange-500/60" btnClass="from-orange-500 to-amber-500" />
         </div>
       </section>
 
@@ -207,9 +207,9 @@ export default function LaunchPage() {
             <span className="bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">Your Competitors Get Ahead.</span>
           </h2>
           <p className="text-gray-500 text-lg mb-10">You could have a live business, an active Google Ads campaign, and your first leads in 48 hours.</p>
-          <motion.a href="https://wa.me/573103956445?text=I%20want%20the%2048-Hour%20Launch" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(249,115,22,0.5)] transition-all duration-300">
-            Launch My Business — $800
-          </motion.a>
+          <a href="#email-capture" className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(249,115,22,0.5)] transition-all duration-300">
+            Book My Free Launch Consultation
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · No risk · Live in 48 hours</p>
         </motion.div>
       </section>

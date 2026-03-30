@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Target, TrendingUp, Zap, BarChart3, CheckCircle2, MessageCircle, Search } from "lucide-react"
+import { Target, TrendingUp, Zap, BarChart3, CheckCircle2, Search } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
 import EmailCapture from "@/components/email-capture"
 
@@ -54,17 +54,15 @@ export default function GoogleAdsPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20a%20Google%20Ads%20audit"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] transition-all duration-300"
           >
-            Get My Free Google Ads Audit
+            Book My Free Google Ads Audit
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
@@ -254,7 +252,7 @@ export default function GoogleAdsPage() {
           <p className="text-gray-400 mb-8">
             A 15-min checklist that reveals the 6 mistakes draining most local Google Ads accounts. Free — delivered instantly.
           </p>
-          <EmailCapture tag="google-ads-checklist" ctaText="Send Me the Free Checklist" accentClass="border-cyan-500/30 focus:border-cyan-500/60" btnClass="from-cyan-600 to-cyan-500" />
+          <EmailCapture tag="google-ads-audit" ctaText="Book My Free Google Ads Audit" accentClass="border-cyan-500/30 focus:border-cyan-500/60" btnClass="from-cyan-600 to-cyan-500" />
         </div>
       </section>
 
@@ -272,21 +270,15 @@ export default function GoogleAdsPage() {
             Your Competitors Are Getting<br />The Calls You Should Be Getting.<br />
             <span className="bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">Find Out Why.</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We will audit your current Google Ads account for free and show you exactly where the budget is going and what we would do differently.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll reach out to schedule a free audit of your Google Ads account — you&apos;ll see exactly where the budget is going and what we&apos;d do differently.
           </p>
-          <p className="text-gray-600 text-sm mb-10">Free audit · No obligation · Real answers in 48 hours.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20a%20Google%20Ads%20audit"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] transition-all duration-300"
           >
-            <MessageCircle className="h-5 w-5" />
-            Get My Free Google Ads Audit
-          </motion.a>
+            Book My Free Google Ads Audit
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · Works for new and existing accounts · EN + ES</p>
         </motion.div>
       </section>

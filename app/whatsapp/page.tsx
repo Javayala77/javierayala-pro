@@ -56,17 +56,15 @@ export default function WhatsAppPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(34,197,94,0.4)] transition-all duration-300"
           >
-            Get My WhatsApp Bot
+            Book My Free Bot Consultation
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
@@ -256,7 +254,7 @@ export default function WhatsAppPage() {
           <p className="text-gray-400 mb-8">
             Drop your email and we&apos;ll set up a custom demo for your business — you&apos;ll see exactly what your customers would experience.
           </p>
-          <EmailCapture tag="whatsapp-demo" ctaText="Show Me the Demo — Free" accentClass="border-green-500/30 focus:border-green-500/60" btnClass="from-green-600 to-green-500" />
+          <EmailCapture tag="whatsapp-bot" ctaText="Book My Free Bot Consultation" accentClass="border-green-500/30 focus:border-green-500/60" btnClass="from-green-600 to-green-500" />
         </div>
       </section>
 
@@ -274,20 +272,15 @@ export default function WhatsAppPage() {
             Your Next Customer Is Messaging You<br />
             <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Right Now. Are You Answering?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll show you exactly how the bot would work for your business and what it would say to your first customer.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll set up a free demo showing exactly how the bot would work for your specific business — what it says, how it qualifies, how it books.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. No tech jargon.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20a%20WhatsApp%20chatbot"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(34,197,94,0.5)] transition-all duration-300"
           >
-            Get My WhatsApp Bot
-          </motion.a>
+            Book My Free Bot Consultation
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · WhatsApp Cloud API · EN + ES</p>
         </motion.div>
       </section>
