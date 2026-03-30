@@ -247,7 +247,7 @@ export default function SeoPage() {
       </section>
 
       {/* Email Capture */}
-      <section className="relative px-6 py-20 sm:py-24">
+      <section id="email-capture" className="relative px-6 py-20 sm:py-24">
         <SectionDivider />
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">Free 90-Day Roadmap</p>

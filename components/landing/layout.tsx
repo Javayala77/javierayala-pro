@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useState, useEffect } from "react"
 
 interface LandingLayoutProps {
@@ -51,15 +51,13 @@ export function LandingLayout({
           </Link>
 
           <motion.a
-            href={ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.1] text-white text-sm font-medium hover:bg-white/10 transition-all"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white text-sm font-bold hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all"
           >
-            <MessageCircle className="h-4 w-4" />
             {ctaText}
+            <ArrowRight className="h-3.5 w-3.5" />
           </motion.a>
         </div>
       </motion.header>
@@ -79,12 +77,9 @@ export function LandingLayout({
           >
             <div className="max-w-sm mx-auto pointer-events-auto">
               <a
-                href={ctaHref}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#email-capture"
                 className="flex items-center justify-center gap-2.5 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-base shadow-[0_8px_32px_rgba(6,182,212,0.4)] hover:shadow-[0_8px_40px_rgba(6,182,212,0.6)] transition-all duration-300 group"
               >
-                <MessageCircle className="h-5 w-5" />
                 {ctaText}
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </a>

@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowRight, ChevronDown, Sparkles, TrendingUp, Zap, Brain } from "lucide-react"
+import { ArrowRight, ChevronDown, Sparkles, TrendingUp, Zap, Brain, Check } from "lucide-react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 
 const navLinks = [
@@ -65,6 +65,73 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const itemVariants = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+}
+
+function HeroEmailForm() {
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
+
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!email) return
+    setStatus("loading")
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name, tag: "newsletter" }),
+      })
+      setStatus(res.ok ? "done" : "error")
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  if (status === "done") {
+    return (
+      <div className="flex items-center gap-3 h-14">
+        <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
+          <Check className="h-4 w-4 text-emerald-400" />
+        </div>
+        <div>
+          <p className="text-white font-semibold text-sm">You&apos;re in — check your inbox.</p>
+          <p className="text-gray-500 text-xs">First issue lands this week.</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg">
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="First name"
+        className="h-14 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors w-36 flex-shrink-0"
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="h-14 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors flex-1 min-w-0"
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="h-14 px-7 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 disabled:opacity-70 whitespace-nowrap flex-shrink-0"
+      >
+        {status === "loading" ? (
+          <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+        ) : (
+          <>Get Free Weekly Tactics <ArrowRight className="h-4 w-4" /></>
+        )}
+      </button>
+    </form>
+  )
 }
 
 export function HomeHero() {
@@ -134,14 +201,12 @@ export function HomeHero() {
           </motion.a>
           <MagneticButton>
             <motion.a
-              href="https://wa.me/573103956445"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#newsletter"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-sm font-bold hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-shadow"
             >
-              Let&apos;s Talk
+              Get Free Tactics
               <ArrowRight className="h-3.5 w-3.5" />
             </motion.a>
           </MagneticButton>
@@ -208,29 +273,13 @@ export function HomeHero() {
               working together as one system, 24/7.
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-16">
-              <MagneticButton>
-                <motion.a
-                  href="https://wa.me/573103956445"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black text-base font-bold hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 group"
-                >
-                  Apply to Work With Me
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </motion.a>
-              </MagneticButton>
-              <motion.a
-                href="#services"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border border-white/10 text-white text-base font-medium hover:bg-white/5 hover:border-white/20 transition-all duration-300"
-              >
-                See My Services
-              </motion.a>
+            {/* CTAs — inline email capture */}
+            <motion.div variants={itemVariants} className="mb-16">
+              <HeroEmailForm />
+              <p className="mt-3 text-xs text-gray-600 flex items-center gap-4">
+                <span>Free · No spam · Unsubscribe anytime</span>
+                <a href="#services" className="text-gray-500 hover:text-white transition-colors underline underline-offset-2">See my services →</a>
+              </p>
             </motion.div>
 
             {/* Social proof bar */}
