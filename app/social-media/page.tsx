@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Zap, Calendar, BarChart3, Globe, CheckCircle2, Users, MessageCircle } from "lucide-react"
+import { Zap, Calendar, BarChart3, Globe, CheckCircle2, Users } from "lucide-react"
 import { LandingLayout, EASE, SectionLabel, SectionDivider } from "@/components/landing/layout"
+import EmailCapture from "@/components/email-capture"
 
 const deliverables = [
   { icon: Zap, title: "30 AI-Generated Posts per Month", desc: "Hooks, captions, and hashtags written by AI trained on your brand voice — structured for each platform, ready to publish." },
@@ -21,8 +22,9 @@ export default function SocialMediaPage() {
   return (
     <LandingLayout
       accentColor="text-violet-400"
+      accentColor="text-violet-400"
       ctaText="Automate My Social Media"
-      ctaHref="https://wa.me/573103956445?text=I%20want%20social%20media%20automation"
+      ctaHref="#email-capture"
     >
       {/* HOOK */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
@@ -53,9 +55,7 @@ export default function SocialMediaPage() {
           </p>
 
           <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20social%20media%20automation"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#email-capture"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all duration-300"
@@ -63,7 +63,7 @@ export default function SocialMediaPage() {
             Automate My Social Media
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
@@ -242,6 +242,21 @@ export default function SocialMediaPage() {
         </div>
       </section>
 
+      {/* Email Capture */}
+      <section id="email-capture" className="relative px-6 py-20 sm:py-24">
+        <SectionDivider />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">Free Social Media Consultation</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+            See Exactly What 30 Days of<br />Automated Content Would Look Like for Your Business
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Enter your email and we&apos;ll book a free call — we&apos;ll audit your current social presence and show you exactly what the system would produce.
+          </p>
+          <EmailCapture tag="newsletter" ctaText="Book My Free Social Media Consultation" accentClass="border-violet-500/30 focus:border-violet-500/60" btnClass="from-violet-600 to-violet-500" />
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="relative px-6 py-24 sm:py-32">
         <SectionDivider />
@@ -256,21 +271,15 @@ export default function SocialMediaPage() {
             Your Competitor Is Posting<br />Every Day Right Now.<br />
             <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">Are You?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-3 max-w-xl mx-auto">
-            Message us on WhatsApp. We&apos;ll look at your current social presence and show you exactly what the automation would do for your business.
+          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+            Enter your email and we&apos;ll audit your current social presence for free — and show you exactly what the automation would do for your business.
           </p>
-          <p className="text-gray-600 text-sm mb-10">2 minutes. No obligation. Real answers.</p>
-          <motion.a
-            href="https://wa.me/573103956445?text=I%20want%20social%20media%20automation"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+          <a
+            href="#email-capture"
             className="inline-flex items-center gap-2 h-14 px-10 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-base hover:shadow-[0_0_50px_rgba(139,92,246,0.5)] transition-all duration-300"
           >
-            <MessageCircle className="h-5 w-5" />
             Automate My Social Media
-          </motion.a>
+          </a>
           <p className="mt-4 text-xs text-gray-600">No contracts · 30 posts/month · EN + ES included</p>
         </motion.div>
       </section>
