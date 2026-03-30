@@ -80,23 +80,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
 
-            {/* Inline Email Capture */}
-            <div className="my-12 p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04]">
-              <p className="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2">Free Weekly Insights</p>
-              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 leading-tight">
-                Get 1 AI Marketing Tactic Every Week — Free
-              </h3>
-              <p className="text-gray-400 text-sm mb-6">
-                Behind-the-scenes of real campaigns. No fluff. Just what&apos;s producing results right now.
-              </p>
-              <EmailCapture
-                tag="newsletter"
-                ctaText="Send Me the Tactics"
-                accentClass="border-cyan-500/30 focus:border-cyan-500/60"
-                btnClass="from-cyan-600 to-cyan-500"
-              />
-            </div>
-
             {/* Author */}
             <div className="mt-16 pt-8 border-t border-white/[0.06] flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
@@ -109,7 +92,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             {/* CTA */}
-            <div className="mt-12">
+            <div id="blog-cta" className="mt-12">
               <div className="p-8 rounded-2xl border border-violet-500/20 bg-violet-500/[0.04]">
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-center">
                   Want a Free 1-on-1 Strategy Call?
@@ -179,36 +162,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
 
-            {/* Contextual Lead Magnet */}
-            {(() => {
-              const s = post.slug
-              const cat = post.category.toLowerCase()
-              let badge = "Free Meta Ads Consultation"
-              let headline = "Book a Free 1-on-1 Meta Ads Strategy Call"
-              let sub = "We'll look at your current setup and tell you exactly what a real campaign structure would change."
-              let tag = "meta-ads"
-              let cta = "Book My Free Consultation"
-              let accent = "border-pink-500/20 bg-pink-500/[0.04]"
-              let accentClass = "border-pink-500/30 focus:border-pink-500/60"
-              let btnClass = "from-pink-600 to-pink-500"
-
-              if (cat.includes("google") || s.includes("google-ads") || s.includes("lawyers") || s.includes("doctors") || s.includes("electrician")) {
-                badge = "Free Google Ads Audit"; headline = "Book a Free Google Ads Audit"; sub = "We'll review your account and show you exactly where budget is leaking."; tag = "google-ads-audit"; cta = "Book My Free Audit"; accent = "border-cyan-500/20 bg-cyan-500/[0.04]"; accentClass = "border-cyan-500/30 focus:border-cyan-500/60"; btnClass = "from-cyan-600 to-cyan-500"
-              } else if (cat.includes("automation") || s.includes("whatsapp") || s.includes("follow-up") || s.includes("booking")) {
-                badge = "Free Bot Consultation"; headline = "Book a Free WhatsApp Bot Demo"; sub = "We'll show you exactly how the bot would work for your specific business."; tag = "whatsapp-bot"; cta = "Book My Free Demo"; accent = "border-green-500/20 bg-green-500/[0.04]"; accentClass = "border-green-500/30 focus:border-green-500/60"; btnClass = "from-green-600 to-green-500"
-              } else if (cat.includes("seo") || s.includes("maps") || s.includes("reviews") || s.includes("plumber") || s.includes("hvac")) {
-                badge = "Free SEO Consultation"; headline = "Book a Free Local SEO Strategy Call"; sub = "We'll check your Google Maps ranking and show you exactly what it takes to reach the top 3."; tag = "seo"; cta = "Book My Free SEO Call"; accent = "border-blue-500/20 bg-blue-500/[0.04]"; accentClass = "border-blue-500/30 focus:border-blue-500/60"; btnClass = "from-blue-600 to-blue-500"
-              }
-
-              return (
-                <div className={`p-4 rounded-xl border ${accent}`}>
-                  <span className="inline-block text-[9px] font-bold uppercase tracking-widest text-gray-500 mb-2">{badge}</span>
-                  <p className="text-xs font-bold text-white mb-1 leading-snug">{headline}</p>
-                  <p className="text-[11px] text-gray-500 mb-3 leading-relaxed">{sub}</p>
-                  <EmailCapture tag={tag} ctaText={cta} accentClass={accentClass} btnClass={btnClass} />
-                </div>
-              )
-            })()}
+            {/* Sidebar CTA */}
+            <div className="p-4 rounded-xl border border-cyan-500/20 bg-cyan-500/[0.04]">
+              <p className="text-[9px] font-bold uppercase tracking-widest text-cyan-400 mb-2">Free Strategy Call</p>
+              <p className="text-xs font-bold text-white mb-1 leading-snug">Get a free 1-on-1 review of your marketing</p>
+              <p className="text-[11px] text-gray-500 mb-3 leading-relaxed">30 minutes. Honest answers. No pitch.</p>
+              <a
+                href="#blog-cta"
+                className="block w-full text-center py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-xs hover:opacity-90 transition-all"
+              >
+                Book My Free Call
+              </a>
+            </div>
           </aside>
         </div>
       </div>
