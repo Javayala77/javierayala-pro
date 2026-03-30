@@ -112,14 +112,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="mt-12">
               <div className="p-8 rounded-2xl border border-violet-500/20 bg-violet-500/[0.04]">
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-center">
-                  Want the Full 90-Day Roadmap?
+                  Want a Free 1-on-1 Strategy Call?
                 </h2>
                 <p className="text-gray-400 mb-6 text-center max-w-lg mx-auto">
-                  Month-by-month system: Google Ads → WhatsApp automation → Meta → SEO. Get the exact plan we use with clients — free.
+                  Enter your email and we&apos;ll send you a link to book a free 30-minute call — we&apos;ll audit your current marketing and map out exactly what to build.
                 </p>
                 <EmailCapture
-                  tag="roadmap"
-                  ctaText="Send Me the Roadmap — Free"
+                  tag="newsletter"
+                  ctaText="Book My Free Strategy Call"
                   accentClass="border-violet-500/30 focus:border-violet-500/60"
                   btnClass="from-violet-600 to-violet-500"
                 />
@@ -183,21 +183,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {(() => {
               const s = post.slug
               const cat = post.category.toLowerCase()
-              let badge = "Free Competitor Analysis"
-              let headline = "See What Your Competitors Are Spending on Google Ads"
-              let sub = "Their keywords, budget, and the gaps they're leaving open — free."
-              let tag = "competitor-spy"
-              let cta = "Get My Free Report"
-              let accent = "border-orange-500/20 bg-orange-500/[0.04]"
-              let accentClass = "border-orange-500/30 focus:border-orange-500/60"
-              let btnClass = "from-orange-600 to-orange-500"
+              let badge = "Free Meta Ads Consultation"
+              let headline = "Book a Free 1-on-1 Meta Ads Strategy Call"
+              let sub = "We'll look at your current setup and tell you exactly what a real campaign structure would change."
+              let tag = "meta-ads"
+              let cta = "Book My Free Consultation"
+              let accent = "border-pink-500/20 bg-pink-500/[0.04]"
+              let accentClass = "border-pink-500/30 focus:border-pink-500/60"
+              let btnClass = "from-pink-600 to-pink-500"
 
               if (cat.includes("google") || s.includes("google-ads") || s.includes("lawyers") || s.includes("doctors") || s.includes("electrician")) {
-                badge = "Free Google Ads Checklist"; headline = "Find Out Exactly Where Your Ad Budget Is Being Wasted"; sub = "The 6 mistakes draining most local ad accounts — 15-min checklist."; tag = "google-ads-checklist"; cta = "Get the Free Checklist"; accent = "border-cyan-500/20 bg-cyan-500/[0.04]"; accentClass = "border-cyan-500/30 focus:border-cyan-500/60"; btnClass = "from-cyan-600 to-cyan-500"
+                badge = "Free Google Ads Audit"; headline = "Book a Free Google Ads Audit"; sub = "We'll review your account and show you exactly where budget is leaking."; tag = "google-ads-audit"; cta = "Book My Free Audit"; accent = "border-cyan-500/20 bg-cyan-500/[0.04]"; accentClass = "border-cyan-500/30 focus:border-cyan-500/60"; btnClass = "from-cyan-600 to-cyan-500"
               } else if (cat.includes("automation") || s.includes("whatsapp") || s.includes("follow-up") || s.includes("booking")) {
-                badge = "Free Bot Demo"; headline = "Watch a Bot Book Jobs While You Sleep"; sub = "Experience the exact automation your customers would see."; tag = "whatsapp-demo"; cta = "Show Me the Demo"; accent = "border-green-500/20 bg-green-500/[0.04]"; accentClass = "border-green-500/30 focus:border-green-500/60"; btnClass = "from-green-600 to-green-500"
+                badge = "Free Bot Consultation"; headline = "Book a Free WhatsApp Bot Demo"; sub = "We'll show you exactly how the bot would work for your specific business."; tag = "whatsapp-bot"; cta = "Book My Free Demo"; accent = "border-green-500/20 bg-green-500/[0.04]"; accentClass = "border-green-500/30 focus:border-green-500/60"; btnClass = "from-green-600 to-green-500"
               } else if (cat.includes("seo") || s.includes("maps") || s.includes("reviews") || s.includes("plumber") || s.includes("hvac")) {
-                badge = "Free 90-Day Roadmap"; headline = "The Plan That Takes a Business From 5 Leads to 50"; sub = "Google Ads → WhatsApp → Meta → SEO. Stop guessing."; tag = "roadmap"; cta = "Send Me the Roadmap"; accent = "border-violet-500/20 bg-violet-500/[0.04]"; accentClass = "border-violet-500/30 focus:border-violet-500/60"; btnClass = "from-violet-600 to-violet-500"
+                badge = "Free SEO Consultation"; headline = "Book a Free Local SEO Strategy Call"; sub = "We'll check your Google Maps ranking and show you exactly what it takes to reach the top 3."; tag = "seo"; cta = "Book My Free SEO Call"; accent = "border-blue-500/20 bg-blue-500/[0.04]"; accentClass = "border-blue-500/30 focus:border-blue-500/60"; btnClass = "from-blue-600 to-blue-500"
               }
 
               return (

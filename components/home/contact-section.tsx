@@ -1,12 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Mail, MessageCircle } from "lucide-react"
+import { MessageCircle } from "lucide-react"
+import EmailCapture from "@/components/email-capture"
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const steps = [
-  { step: "01", title: "Message me on WhatsApp", desc: "Tell me about your business and what you want to achieve." },
+  { step: "01", title: "Enter your email below", desc: "Tell me about your business and what you want to achieve." },
   { step: "02", title: "Free strategy call", desc: "We talk for 30 minutes. I audit your current marketing and map out exactly what to build." },
   { step: "03", title: "I build. You grow.", desc: "You focus on delivering your service. I build the system that brings you customers." },
 ]
@@ -36,33 +37,29 @@ export function HomeContact() {
                 on the Table?
               </span>
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-10 max-w-md">
+            <p className="text-gray-500 leading-relaxed mb-8 max-w-md">
               Every day without a proper acquisition system is revenue you&apos;re giving to your competition. Let&apos;s fix that.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.a
+            <EmailCapture
+              tag="newsletter"
+              ctaText="Book My Free Strategy Call"
+              successText="Check your inbox — we'll send you a link to book your free call."
+              accentClass="border-cyan-500/30 focus:border-cyan-500/60"
+              btnClass="from-cyan-600 to-cyan-500"
+            />
+
+            <p className="mt-4 text-xs text-gray-700 text-center">
+              Or message directly on{" "}
+              <a
                 href="https://wa.me/573103956445?text=Hi%20Javier,%20I%20want%20to%20learn%20more%20about%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-base hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 group"
+                className="text-gray-500 hover:text-white transition-colors inline-flex items-center gap-1"
               >
-                <MessageCircle className="h-4 w-4" />
-                Message on WhatsApp
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="mailto:ads@upstreamagency.io"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border border-white/10 text-white font-medium text-base hover:bg-white/5 hover:border-white/20 transition-all duration-300"
-              >
-                <Mail className="h-4 w-4" />
-                Send an Email
-              </motion.a>
-            </div>
+                <MessageCircle className="h-3 w-3" /> WhatsApp
+              </a>
+            </p>
           </motion.div>
 
           {/* Right — What happens next */}

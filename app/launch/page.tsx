@@ -66,14 +66,12 @@ export default function LaunchPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <motion.a
-              href="https://wa.me/573103956445?text=I%20want%20the%2048-Hour%20Launch"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#email-capture"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-base hover:shadow-[0_0_40px_rgba(249,115,22,0.4)] transition-all duration-300"
             >
-              Launch My Business — $800
+              Book My Free Launch Consultation
             </motion.a>
           </div>
 
@@ -162,8 +160,8 @@ export default function LaunchPage() {
                   </div>
                 ))}
               </div>
-              <a href="https://wa.me/573103956445?text=I%20want%20the%2048-Hour%20Launch" target="_blank" rel="noopener noreferrer" className="block w-full py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-center hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all duration-300">
-                Launch My Business — $800
+              <a href="#email-capture" className="block w-full py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-center hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all duration-300">
+                Book My Free Launch Consultation
               </a>
               <p className="mt-4 text-xs text-gray-600 text-center">After month 1: continue for $1,000/mo or walk away. Your choice.</p>
             </div>

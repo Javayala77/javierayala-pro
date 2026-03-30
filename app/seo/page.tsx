@@ -65,7 +65,7 @@ export default function SeoPage() {
             Get Into the Top 3 on Google Maps
           </motion.a>
 
-          <p className="mt-4 text-xs text-gray-600">No commitment · Replies in minutes on WhatsApp</p>
+          <p className="mt-4 text-xs text-gray-600">Free · No obligation · Takes 30 seconds</p>
         </motion.div>
       </section>
 
