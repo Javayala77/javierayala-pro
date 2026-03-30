@@ -103,26 +103,28 @@ function HeroEmailForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg">
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="First name"
-        className="h-14 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors w-36 flex-shrink-0"
-      />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        required
-        className="h-14 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors flex-1 min-w-0"
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-lg">
+      <div className="flex flex-col sm:flex-row gap-3">
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="First name"
+          className="h-12 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors w-full sm:w-32 sm:flex-shrink-0"
+        />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          required
+          className="h-12 px-4 rounded-full bg-white/[0.05] border border-white/[0.1] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors w-full sm:flex-1 sm:min-w-0"
+        />
+      </div>
       <button
         type="submit"
         disabled={status === "loading"}
-        className="h-14 px-7 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 disabled:opacity-70 whitespace-nowrap flex-shrink-0"
+        className="h-12 w-full sm:w-auto px-7 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-black font-bold text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_40px_rgba(6,182,212,0.35)] transition-all duration-300 disabled:opacity-70"
       >
         {status === "loading" ? (
           <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />

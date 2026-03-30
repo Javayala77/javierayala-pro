@@ -40,19 +40,19 @@ export function Footer() {
                 <Check className="h-4 w-4" /> You&apos;re in — check your inbox.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex gap-2 w-full sm:w-auto">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="h-10 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors flex-1 sm:w-56 min-w-0"
+                  className="h-10 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 text-sm transition-colors w-full sm:w-56"
                 />
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="h-10 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-all disabled:opacity-60 whitespace-nowrap"
+                  className="h-10 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:opacity-90 transition-all disabled:opacity-60 w-full sm:w-auto"
                 >
                   {status === "loading" ? (
                     <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

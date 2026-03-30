@@ -61,13 +61,13 @@ export default function EmailCapture({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-sm mx-auto text-left">
       <input
         type="text"
         placeholder="Your first name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className={`h-11 px-4 rounded-xl bg-white/[0.04] border text-sm text-white placeholder:text-gray-600 outline-none transition-colors ${accentClass}`}
+        className={`h-12 px-4 rounded-xl bg-white/[0.04] border text-sm text-white placeholder:text-gray-600 outline-none transition-colors w-full ${accentClass}`}
       />
       <input
         type="email"
@@ -75,7 +75,7 @@ export default function EmailCapture({
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className={`h-11 px-4 rounded-xl bg-white/[0.04] border text-sm text-white placeholder:text-gray-600 outline-none transition-colors ${accentClass}`}
+        className={`h-12 px-4 rounded-xl bg-white/[0.04] border text-sm text-white placeholder:text-gray-600 outline-none transition-colors w-full ${accentClass}`}
       />
       {errorMsg && (
         <p className="text-xs text-red-400">{errorMsg}</p>
@@ -83,7 +83,7 @@ export default function EmailCapture({
       <button
         type="submit"
         disabled={status === "loading"}
-        className={`flex items-center justify-center gap-2 h-12 rounded-full bg-gradient-to-r ${btnClass} text-white font-bold text-sm disabled:opacity-60 transition-all hover:opacity-90`}
+        className={`flex items-center justify-center gap-2 h-12 w-full rounded-full bg-gradient-to-r ${btnClass} text-white font-bold text-sm disabled:opacity-60 transition-all hover:opacity-90`}
       >
         {status === "loading" ? (
           <Loader2 className="h-4 w-4 animate-spin" />
