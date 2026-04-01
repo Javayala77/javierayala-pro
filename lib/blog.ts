@@ -412,6 +412,211 @@ Month 6+: Self-reinforcing. More reviews → higher ranking → more calls → m
 <p>That's exactly why we built an automated system that handles all of it. If you want to see what this would look like for your specific market, message us on WhatsApp — we'll check your current Google rankings for free.</p>
     `.trim(),
   },
+  {
+    slug: "google-ads-quality-score-local-businesses",
+    title: "Google Ads Quality Score Explained for Local Service Businesses",
+    date: "2026-04-01",
+    description: "Your Quality Score controls how much you pay per click and where your ad shows. Most local businesses ignore it — and overpay by 40% as a result. Here's how to fix it.",
+    category: "Google Ads",
+    readTime: "7 min read",
+    content: `
+<p>If your Google Ads cost per click keeps climbing while your results stay flat, Quality Score is almost certainly the reason — and almost no one talks about it.</p>
+
+<p>Quality Score is Google's internal rating of how relevant and useful your ad is to the person searching. It's scored from 1 to 10 for each keyword, and it directly controls two things: how much you pay per click and where your ad appears.</p>
+
+<p>A business with a Quality Score of 8 can pay less per click than a competitor with a Score of 4 — and still outrank them. This is the lever most local service businesses never touch, and it's costing them thousands of dollars a month.</p>
+
+<h2>How Quality Score Actually Works</h2>
+
+<p>Google calculates Quality Score from three components:</p>
+
+<ul>
+<li><strong>Expected Click-Through Rate (CTR)</strong> — how likely someone is to click your ad when they see it, relative to competitors</li>
+<li><strong>Ad Relevance</strong> — how closely your ad copy matches the intent of the search query</li>
+<li><strong>Landing Page Experience</strong> — how useful and relevant your landing page is to someone who clicked the ad</li>
+</ul>
+
+<p>Each of these is rated Below Average, Average, or Above Average. All three feed into your final score. A 10/10 is rare — aim for 7 or above on your most important keywords.</p>
+
+<h2>Why Low Quality Score Is Destroying Your Budget</h2>
+
+<p>Google's auction isn't just about who bids the most. Your actual cost per click is determined by this formula:</p>
+
+<p><em>Cost per click = (competitor's Ad Rank) / (your Quality Score) + $0.01</em></p>
+
+<p>In practical terms: a plumber with a Quality Score of 4 might pay $28 per click for "emergency plumber Miami." A competitor with a Quality Score of 8, bidding the same amount, might pay $14 for the same click — and rank higher.</p>
+
+<p>We rebuilt an HVAC contractor's account last year. Same budget, same city, same keywords. After fixing Quality Score issues, cost per lead dropped from $187 to $74. The budget didn't change. The structure did.</p>
+
+<h2>How to Improve Expected CTR</h2>
+
+<p>Your expected CTR is based on how compelling your ad is compared to what's typically shown for that query. To improve it:</p>
+
+<ul>
+<li><strong>Use the keyword in your headline</strong> — if someone searches "roof repair Austin," your headline should say "Roof Repair in Austin" not just "We Fix Roofs"</li>
+<li><strong>Add numbers and specifics</strong> — "Free Estimate in 24 Hours" outperforms "Contact Us Today" every time</li>
+<li><strong>Use all available extensions</strong> — sitelinks, callouts, call extensions, location extensions all increase ad real estate and CTR</li>
+<li><strong>Test at least 3 RSA variations</strong> — Google needs data to determine which headline combinations perform best</li>
+</ul>
+
+<h2>How to Improve Ad Relevance</h2>
+
+<p>Ad relevance suffers when you use one generic ad for 50 different keywords. The fix is tighter ad groups.</p>
+
+<p>Instead of one ad group called "Roofing" with 40 keywords, break it into:</p>
+
+<ul>
+<li>"Roof Repair" — ad group with keywords and ad copy specifically about repair</li>
+<li>"Roof Replacement" — separate ad group with completely different copy</li>
+<li>"Emergency Roofing" — its own ad group, its own urgency-focused copy</li>
+<li>"Roof Inspection" — separate, inspection-focused messaging</li>
+</ul>
+
+<p>When the keyword, the ad copy, and the landing page all match the same intent, ad relevance goes to Above Average. This is called Single Keyword Ad Groups (SKAGs) or tight thematic grouping — and it's one of the highest-impact structural changes you can make to a Google Ads account.</p>
+
+<h2>How to Improve Landing Page Experience</h2>
+
+<p>Google evaluates your landing page on three things: relevance to the ad, load speed, and user experience. Common issues that tank landing page scores:</p>
+
+<ul>
+<li><strong>Sending all ads to your homepage</strong> — your homepage is for everyone, not for someone who just searched "emergency AC repair at night." Build dedicated landing pages for your main service categories.</li>
+<li><strong>Slow load speed</strong> — every second of load time reduces Quality Score. Use Google PageSpeed Insights to find issues.</li>
+<li><strong>No clear conversion path</strong> — the page needs an obvious call to action above the fold: a phone number, a form, a book-now button. If someone has to scroll to find how to contact you, your bounce rate kills your score.</li>
+<li><strong>Mobile experience</strong> — over 70% of local service searches happen on mobile. If your site isn't fast and clean on a phone, your landing page score will be Below Average.</li>
+</ul>
+
+<h2>Where to Check Your Quality Scores</h2>
+
+<p>In Google Ads: Keywords tab → Columns → Modify columns → Quality Score. Add Quality Score, Expected CTR, Ad Relevance, and Landing Page Experience as columns. Sort by Quality Score ascending and start with your worst performers — those are the keywords costing you the most money.</p>
+
+<p>Any keyword below 5 with significant spend is an immediate priority. Fix the ad copy, tighten the ad group, improve the landing page relevance, and watch the score climb over 2–4 weeks as Google recollects data.</p>
+
+<h2>The Compounding Benefit</h2>
+
+<p>Quality Score improvements aren't one-time. They compound. Higher scores → lower CPCs → same budget goes further → more clicks → more data → better optimization → higher scores again.</p>
+
+<p>Most local service businesses running Google Ads themselves have Quality Scores averaging 4–6. Competitors with professionally managed accounts average 7–9. That gap in efficiency explains why one business gets 40 leads per month and another gets 12 from the same spend.</p>
+
+<p>If you want an honest audit of your Quality Scores and a clear picture of what's being wasted in your account, we offer a <a href="/googleadsai">free Google Ads audit</a> — we'll show you exactly where the score problems are and what fixing them would mean for your cost per lead.</p>
+    `.trim(),
+  },
+  {
+    slug: "how-plumbers-rank-top-3-google-maps",
+    title: "How Plumbers Get Into the Top 3 on Google Maps (Real Strategy)",
+    date: "2026-04-01",
+    description: "The Google Maps Local Pack gets 44% of all clicks for local searches. For plumbers, that means calls — free, every day. Here's the exact strategy to get there and stay there.",
+    category: "Local SEO",
+    readTime: "6 min read",
+    content: `
+<p>When someone's pipe bursts at 9pm, they don't scroll through websites. They search "plumber near me" on their phone, see three businesses pinned on a map, and call the first one that looks trustworthy.</p>
+
+<p>That map section — the Local Pack — gets 44% of all clicks for local searches. The three businesses in it are receiving a constant stream of inbound calls, every single day, without paying per click.</p>
+
+<p>The plumbers not in those three spots? They either pay for Google Ads to appear above the map, or they don't get found at all.</p>
+
+<p>This guide covers the exact strategy that gets plumbing businesses into the top 3 and keeps them there. For the paid ads side, our <a href="/googleadsai">Google Ads management</a> works alongside this to give you complete coverage of the search results page.</p>
+
+<h2>How Google Decides Who Gets the Top 3 Spots</h2>
+
+<p>Google's local ranking algorithm weighs three factors:</p>
+
+<ul>
+<li><strong>Relevance</strong> — how well your Google Business Profile matches what the person searched</li>
+<li><strong>Distance</strong> — how close your business is to the searcher's location</li>
+<li><strong>Prominence</strong> — how well-known and trusted your business is, based on reviews, links, citations, and activity</li>
+</ul>
+
+<p>You can't change your physical location. But relevance and prominence are entirely within your control — and most plumbers aren't optimizing either.</p>
+
+<h2>Step 1: Fully Optimize Your Google Business Profile</h2>
+
+<p>Most plumbers set up their profile once and forget it. A fully optimized profile looks like this:</p>
+
+<ul>
+<li><strong>Business name</strong> — use your actual business name, no keyword stuffing ("Joe's Plumbing," not "Joe's Plumbing Emergency Plumber Best Price")</li>
+<li><strong>Primary category</strong> — "Plumber" — and add secondary categories: "Drainage Service," "Water Heater Installation Service," "Emergency Plumber"</li>
+<li><strong>Services section</strong> — list every specific service with descriptions: drain cleaning, water heater repair, pipe replacement, sewer line inspection, leak detection, etc.</li>
+<li><strong>Service area</strong> — list every city and zip code you serve, not just your business address city</li>
+<li><strong>Business description</strong> — 750 characters, include your main services and cities naturally</li>
+<li><strong>Photos</strong> — minimum 20 photos: your truck, your team, completed jobs, before/afters</li>
+</ul>
+
+<p>This alone moves most plumbers from "incomplete" to "competitive" in Google's eyes.</p>
+
+<h2>Step 2: Post to Your Google Business Profile Every Day</h2>
+
+<p>Google Business Posts are the most underused ranking tool in local SEO. Most plumbers have never posted once.</p>
+
+<p>Google rewards profiles that are active. Posting daily signals to the algorithm that your business is legitimate, engaged, and worth surfacing. The businesses in the top 3 of competitive markets almost always post consistently.</p>
+
+<p>What to post:</p>
+
+<ul>
+<li>Completed job photos with a short description ("Replaced water heater in [neighborhood] today — in and out in 3 hours")</li>
+<li>Seasonal tips ("3 signs your pipes might freeze this winter")</li>
+<li>Service spotlights ("We now offer same-day drain cleaning in [City]")</li>
+<li>Customer shout-outs ("Thanks to [First Name] for the great review!")</li>
+</ul>
+
+<p>This is time-consuming to do manually. Our <a href="/seo">Google Maps Domination service</a> automates daily posting, review management, and citation building — the entire system runs without you touching it.</p>
+
+<h2>Step 3: Generate Reviews at a Consistent Pace</h2>
+
+<p>Reviews are the most direct ranking signal Google responds to. Not just quantity — recency matters. A business with 200 reviews and no new ones in 6 months can be outranked by a competitor with 80 reviews and 10 in the last 30 days.</p>
+
+<p>The system that works:</p>
+
+<ol>
+<li>Finish every job → send a WhatsApp message: "Thanks for calling us! If you're happy with the work, a quick Google review helps more than you know — here's the link: [direct review link]"</li>
+<li>If no review in 72 hours → send one follow-up</li>
+<li>Respond to every review within 24 hours — both positive and negative</li>
+</ol>
+
+<p>This follow-up sequence can be fully automated with <a href="/whatsapp">WhatsApp automation</a> — the system sends the request after every job, follows up automatically, and logs results. A plumber using this system consistently generates 8–15 new reviews per month without any manual effort.</p>
+
+<h2>Step 4: Build Local Citations</h2>
+
+<p>A citation is any online mention of your business name, address, and phone number. Google cross-references these to verify your business is legitimate and consistently represented across the web.</p>
+
+<p>Priority directories for plumbers:</p>
+
+<ul>
+<li>Yelp, Angi, HomeAdvisor, Houzz, BBB, Nextdoor</li>
+<li>Your local Chamber of Commerce website</li>
+<li>Apple Maps, Bing Places (often overlooked)</li>
+<li>Industry-specific directories: Plumber.com, FindAPlumber.com</li>
+</ul>
+
+<p>The critical rule: your name, address, and phone number must be <em>identical</em> everywhere. "St." vs "Street," different phone formats, old addresses — inconsistency actively hurts your rankings. Audit all existing citations and fix any mismatches.</p>
+
+<h2>Step 5: Optimize Your Website for Local Keywords</h2>
+
+<p>Your website reinforces your Google Business Profile. Pages that help rankings:</p>
+
+<ul>
+<li>Individual city pages: "Plumber in [City Name]" — one page per major city you serve</li>
+<li>Service pages: "Water Heater Repair," "Drain Cleaning," "Emergency Plumber" — each as a separate page</li>
+<li>Include your city name naturally in page titles, H1s, and the first paragraph of each page</li>
+</ul>
+
+<p>Publishing local content also helps. A blog post about "average cost to replace a water heater in [City]" or "best time of year to get a plumbing inspection" signals local relevance to Google and brings in organic search traffic on top of your Maps ranking.</p>
+
+<h2>What the Timeline Looks Like</h2>
+
+<p>This isn't overnight — but it's completely predictable:</p>
+
+<ul>
+<li><strong>Month 1</strong>: Profile fully optimized, citation building started, daily posting begins, review system live</li>
+<li><strong>Month 2</strong>: Rankings start moving. Appearing in top 5–7 for some keywords</li>
+<li><strong>Month 3</strong>: Top 3 for multiple local searches. Inbound calls from Maps begin</li>
+<li><strong>Month 4+</strong>: Compounding. More reviews → higher ranking → more calls → more reviews</li>
+</ul>
+
+<p>A plumbing company that commits to this system for 90 days consistently outperforms competitors who've been running Google Ads for years — at a fraction of the ongoing cost.</p>
+
+<p>If you want to see where you currently rank on Google Maps and exactly what it would take to reach the top 3, we check rankings for free. <a href="/seo">Book a free consultation here</a> — no obligation, just an honest look at your current position and the gap to close.</p>
+    `.trim(),
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
