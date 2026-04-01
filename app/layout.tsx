@@ -74,7 +74,18 @@ export default function RootLayout({
                   "founder": { "@id": "https://javierayala.pro/#person" },
                   "description": "AI-powered marketing for local service businesses. Google Ads, Meta Ads, WhatsApp automation, and local SEO that generates leads — not just traffic.",
                   "areaServed": "US",
-                  "serviceType": ["Google Ads Management", "Meta Ads Management", "WhatsApp Automation", "Local SEO", "Google Maps Optimization", "AI Marketing"],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "AI Marketing Services",
+                    "itemListElement": [
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads Management" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads Management" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WhatsApp Automation" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Maps Optimization" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Marketing" } }
+                    ]
+                  },
                   "email": "googleads@javierayala.pro",
                   "priceRange": "$$"
                 },
