@@ -47,6 +47,56 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
         <link rel="icon" href="/logo.png?v=3" type="image/png" sizes="192x192" />
         <link rel="apple-touch-icon" href="/logo.png?v=3" />
+        {/* Structured Data — Organization + Person + WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://javierayala.pro/#person",
+                  "name": "Javier Ayala",
+                  "url": "https://javierayala.pro",
+                  "jobTitle": "AI Marketing Expert",
+                  "description": "AI marketing specialist with 8+ years experience and $2M+ in ad spend managed. Specializes in Google Ads, Meta Ads, WhatsApp automation, and local SEO for service businesses.",
+                  "knowsAbout": ["Google Ads", "Meta Ads", "WhatsApp Automation", "Local SEO", "AI Marketing", "PPC Management", "Google Maps SEO"],
+                  "email": "googleads@javierayala.pro",
+                  "sameAs": []
+                },
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://javierayala.pro/#organization",
+                  "name": "Javier Ayala — AI Marketing",
+                  "url": "https://javierayala.pro",
+                  "logo": "https://javierayala.pro/logo.png",
+                  "founder": { "@id": "https://javierayala.pro/#person" },
+                  "description": "AI-powered marketing for local service businesses. Google Ads, Meta Ads, WhatsApp automation, and local SEO that generates leads — not just traffic.",
+                  "areaServed": "US",
+                  "serviceType": ["Google Ads Management", "Meta Ads Management", "WhatsApp Automation", "Local SEO", "Google Maps Optimization", "AI Marketing"],
+                  "email": "googleads@javierayala.pro",
+                  "priceRange": "$$"
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://javierayala.pro/#website",
+                  "url": "https://javierayala.pro",
+                  "name": "Javier Ayala | AI Marketing",
+                  "publisher": { "@id": "https://javierayala.pro/#organization" },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://javierayala.pro/blog?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  }
+                }
+              ]
+            })
+          }}
+        />
         {/* Meta Pixel */}
         <script
           dangerouslySetInnerHTML={{

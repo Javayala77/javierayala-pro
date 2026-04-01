@@ -37,7 +37,40 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     year: "numeric", month: "long", day: "numeric",
   })
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Person",
+      "@id": "https://javierayala.pro/#person",
+      "name": "Javier Ayala",
+      "url": "https://javierayala.pro"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://javierayala.pro/#organization",
+      "name": "Javier Ayala — AI Marketing",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://javierayala.pro/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://javierayala.pro/blog/${post.slug}`
+    }
+  }
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+    />
     <main className="min-h-screen bg-[#060609]">
       {/* Nav */}
       <div className="border-b border-white/[0.05] px-6 py-5">
@@ -178,5 +211,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
     </main>
+    </>
   )
 }
