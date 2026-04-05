@@ -1091,6 +1091,235 @@ Month 6+: Self-reinforcing. More reviews → higher ranking → more calls → m
 <p>If you want to see exactly what an automation would look like for your specific clinic type — what the bot would say, how the flows would run, how it integrates with your existing scheduling — <a href="/whatsapp">book a free demo here</a>. We'll build a sample flow specific to your practice.</p>
     `.trim(),
   },
+  {
+    slug: "seo-aeo-como-aparecer-en-busquedas-de-ia",
+    title: "SEO y AEO: Cómo Hacer que Tu Negocio Aparezca en Google, ChatGPT y las Búsquedas con IA",
+    date: "2026-04-04",
+    description: "El SEO tradicional ya no es suficiente. Los motores de búsqueda con IA como ChatGPT, Perplexity y Google AI Overviews están cambiando quién aparece y quién no. Aquí está lo que necesitas hacer ahora.",
+    category: "SEO",
+    readTime: "8 min read",
+    content: `
+<p>Si tienes un negocio local y alguien busca "el mejor plomero cerca de mí" en Google, lo que ve primero ya no es solo una lista de sitios web. Ve un mapa con tres negocios, respuestas generadas por IA, y en muchos casos, una respuesta directa antes de que haya un solo enlace.</p>
+
+<p>Esto es el resultado de dos fuerzas combinadas: el SEO tradicional y el AEO — Answer Engine Optimization. Y si tu negocio no está optimizado para ambas, estás perdiendo visibilidad frente a competidores que sí lo están.</p>
+
+<h2>¿Qué es el AEO y por qué importa ahora?</h2>
+
+<p>El SEO (Search Engine Optimization) es la práctica de optimizar tu sitio para que aparezca en los resultados de búsqueda. Llevas años escuchando sobre eso.</p>
+
+<p>El AEO (Answer Engine Optimization) es diferente. Es optimizar tu contenido para que motores de búsqueda con inteligencia artificial — como Google AI Overviews, ChatGPT, Perplexity, y Gemini — usen tu negocio como fuente cuando alguien hace una pregunta.</p>
+
+<p>Cuando alguien le pregunta a ChatGPT "¿cuánto cuesta contratar a un plomero en Miami?" o a Google "¿qué es un buen costo por lead en Google Ads para HVAC?", esas herramientas están buscando fuentes confiables para responder. Si tu sitio tiene esas respuestas estructuradas correctamente, tu negocio se convierte en la referencia.</p>
+
+<p>Esto ya no es algo que viene. Está pasando ahora mismo. Y la mayoría de los negocios locales no han hecho nada al respecto.</p>
+
+<h2>La diferencia entre SEO y AEO en la práctica</h2>
+
+<p>El SEO tradicional se enfoca en:</p>
+<ul>
+<li>Palabras clave en títulos y textos</li>
+<li>Backlinks de otros sitios</li>
+<li>Velocidad de carga del sitio</li>
+<li>Estructura técnica del sitio web</li>
+</ul>
+
+<p>El AEO se enfoca en:</p>
+<ul>
+<li>Responder preguntas directas de forma clara y concisa</li>
+<li>Usar datos estructurados (schema markup) para que los motores de IA entiendan quién eres y qué haces</li>
+<li>Tener contenido organizado en formato de preguntas y respuestas</li>
+<li>Señales de autoridad: reseñas, menciones, consistencia de información en toda la web</li>
+</ul>
+
+<p>La buena noticia: muchas de las mismas cosas que mejoran tu SEO local también mejoran tu AEO. No son estrategias separadas — son capas del mismo trabajo.</p>
+
+<h2>Paso 1: Schema Markup — dile a Google exactamente quién eres</h2>
+
+<p>El schema markup es código que agregas a tu sitio web para decirle a los motores de búsqueda — y a los motores de IA — información estructurada sobre tu negocio. No lo ven tus visitantes, pero sí lo procesan Google, ChatGPT y Perplexity.</p>
+
+<p>Para un negocio local, el schema más importante incluye:</p>
+<ul>
+<li><strong>LocalBusiness o ProfessionalService:</strong> nombre, dirección, teléfono, horarios, área de servicio</li>
+<li><strong>FAQPage:</strong> preguntas frecuentes con respuestas directas — esto es oro para AEO</li>
+<li><strong>Person:</strong> quién es el dueño, sus credenciales, experiencia</li>
+<li><strong>Review:</strong> reseñas verificadas que refuerzan la autoridad</li>
+</ul>
+
+<p>Cuando Google AI Overviews o ChatGPT procesan tu sitio, el schema markup les dice de forma explícita: "este negocio presta el servicio X en la ciudad Y, tiene Z años de experiencia, y es la autoridad en este tema." Sin schema, están adivinando.</p>
+
+<h2>Paso 2: Contenido de preguntas y respuestas</h2>
+
+<p>Los motores de IA están diseñados para responder preguntas. Si tu sitio web tiene preguntas reales que hacen tus clientes — y las responde de forma directa y completa — tienes muchas más probabilidades de aparecer como fuente.</p>
+
+<p>Ejemplos de preguntas que debería responder el sitio de un plomero local:</p>
+<ul>
+<li>"¿Cuánto cuesta reparar una tubería rota?"</li>
+<li>"¿Cuándo debo llamar a un plomero de emergencia?"</li>
+<li>"¿Cuánto tarda en llegar un plomero en [ciudad]?"</li>
+<li>"¿Qué incluye una inspección de plomería?"</li>
+</ul>
+
+<p>No necesitas escribir artículos de 3,000 palabras. Necesitas respuestas claras de 2-4 párrafos por pregunta, organizadas en una sección de FAQs con schema FAQPage aplicado.</p>
+
+<h2>Paso 3: Consistencia de información en toda la web</h2>
+
+<p>Una de las señales más importantes tanto para SEO como para AEO es la consistencia de tu NAP: Name, Address, Phone number. Si tu nombre, dirección y teléfono aparecen diferentes en Google Maps, tu sitio web, Yelp, Facebook y directorios locales, los motores de búsqueda pierden confianza en la información.</p>
+
+<p>Los pasos concretos:</p>
+<ol>
+<li>Audita todas las plataformas donde aparece tu negocio</li>
+<li>Unifica el nombre exacto (con o sin "LLC", con o sin abreviaciones)</li>
+<li>Usa exactamente la misma dirección y formato en todos lados</li>
+<li>Verifica que el número de teléfono es el mismo en todas partes</li>
+</ol>
+
+<p>Este trabajo parece aburrido — y lo es — pero tiene un impacto directo en tu posicionamiento local y en qué tan confiablemente apareces en respuestas de IA.</p>
+
+<h2>Paso 4: Google Business Profile como plataforma activa</h2>
+
+<p>El Perfil de Empresa de Google no es solo un directorio. Es uno de los inputs más importantes que usa Google AI para responder preguntas locales.</p>
+
+<p>Si alguien pregunta "¿cuál es el mejor electricista en [ciudad]?" Google AI mira:</p>
+<ul>
+<li>Cuántas reseñas tienes y qué tan recientes son</li>
+<li>Si publicas actualizaciones regulares</li>
+<li>Si tienes fotos actualizadas de tu trabajo</li>
+<li>Si respondes a las reseñas</li>
+<li>Si tu categoría y servicios están correctamente configurados</li>
+</ul>
+
+<p>Un perfil activo con 50+ reseñas recientes, publicaciones semanales y fotos actualizadas tiene muchas más probabilidades de aparecer en respuestas generadas por IA que un perfil configurado hace dos años y abandonado.</p>
+
+<h2>Paso 5: Autoridad de contenido en tu industria</h2>
+
+<p>Los motores de IA como ChatGPT y Perplexity no solo miran tu sitio web. Rastrean toda la web para encontrar las fuentes más autorizadas sobre un tema. Cuanto más contenido relevante tienes publicado sobre tu industria — artículos de blog, guías, estudios de caso — más señales de autoridad acumulas.</p>
+
+<p>Un plomero que ha publicado 20 artículos sobre problemas comunes de plomería, costos locales, y guías de mantenimiento, es tratado por los motores de IA como una autoridad en plomería en su área. Uno que solo tiene una página de inicio y una página de contacto, no.</p>
+
+<p>Esto no significa que tengas que escribir tú mismo. El contenido generado y optimizado por IA — publicado de forma consistente — logra exactamente el mismo efecto en una fracción del tiempo.</p>
+
+<h2>Qué esperar como resultado</h2>
+
+<p>Los negocios que implementan SEO + AEO correctamente ven resultados en tres frentes:</p>
+
+<ol>
+<li><strong>Posicionamiento orgánico:</strong> más tráfico de búsquedas de Google sin pagar por clic</li>
+<li><strong>Local Pack:</strong> aparición más consistente en el mapa de los tres resultados superiores</li>
+<li><strong>Presencia en IA:</strong> el negocio es mencionado como referencia cuando clientes potenciales preguntan a ChatGPT, Perplexity o Google sobre servicios en su área</li>
+</ol>
+
+<p>El tercer punto es el que la mayoría de los competidores todavía no está persiguiendo. Lo que significa que hay una ventana ahora para establecerse como autoridad antes de que el mercado se sature.</p>
+
+<p>Si quieres saber cómo está posicionado actualmente tu negocio — tanto en SEO local como en términos de visibilidad en búsquedas de IA — <a href="/es/seo">solicita una auditoría gratuita aquí</a>. Revisamos tu perfil, tu schema, tu consistencia de NAP y tu contenido, y te mostramos exactamente qué está faltando.</p>
+    `.trim(),
+  },
+  {
+    slug: "google-ads-con-ia-negocios-locales",
+    title: "Google Ads con IA para Negocios Locales: Por Qué la Mayoría Pierde Dinero y Cómo Evitarlo",
+    date: "2026-04-04",
+    description: "La IA en Google Ads no es un botón mágico. Es una herramienta poderosa que amplifica lo que ya hay en tu cuenta — para bien o para mal. Aquí está la diferencia entre usarla a tu favor y dejar que trabaje en tu contra.",
+    category: "Google Ads",
+    readTime: "9 min read",
+    content: `
+<p>Cuando los dueños de negocios locales escuchan "Google Ads con inteligencia artificial", piensan en una de dos cosas: o que es una solución mágica que generará leads automáticamente, o que es una palabra de moda que no significa nada.</p>
+
+<p>La realidad está en el medio — y entenderla puede ser la diferencia entre una campaña que genera llamadas todos los días y una que quema presupuesto sin resultados.</p>
+
+<h2>Cómo funciona realmente la IA en Google Ads</h2>
+
+<p>Google lleva años incorporando inteligencia artificial en su plataforma de publicidad. No es algo nuevo — es algo que ha evolucionado significativamente y que ahora forma el núcleo de cómo funciona el sistema de pujas.</p>
+
+<p>La IA de Google Ads opera principalmente en dos áreas:</p>
+
+<p><strong>1. Smart Bidding (Pujas Inteligentes):</strong> En lugar de establecer una puja fija por clic, el sistema analiza cientos de señales en tiempo real — dispositivo, ubicación, hora del día, historial del usuario, tipo de búsqueda, comportamiento previo en tu sitio — y ajusta la puja para maximizar conversiones o valor de conversión. Esto lo hace en milisegundos, antes de que el anuncio aparezca.</p>
+
+<p><strong>2. Responsive Search Ads:</strong> En lugar de escribir un anuncio fijo, proporcionas hasta 15 títulos y 4 descripciones. El sistema prueba combinaciones automáticamente y aprende qué combinación funciona mejor para cada tipo de búsqueda y usuario.</p>
+
+<p>El problema fundamental: <strong>la IA amplifica lo que ya existe en tu cuenta</strong>. Si la estructura es correcta — palabras clave bien segmentadas, seguimiento de conversiones funcionando, páginas de destino relevantes — la IA puede multiplicar tus resultados. Si la estructura está mal, la IA aprende a optimizar hacia el objetivo incorrecto y el desperdicio crece más rápido.</p>
+
+<h2>El error más común: activar Smart Bidding sin datos de conversión</h2>
+
+<p>Este es el error que vemos en la mayoría de las cuentas que auditamos para negocios locales. El dueño activa "Maximizar conversiones" o "CPA objetivo" porque Google lo recomienda, pero el seguimiento de conversiones nunca fue configurado correctamente.</p>
+
+<p>¿Qué pasa entonces? La IA no sabe qué es una conversión para tu negocio. Empieza a optimizar hacia lo que puede medir — clics, tiempo en página, páginas vistas — que no tiene nada que ver con llamadas telefónicas o formularios completados.</p>
+
+<p>El resultado: muchos clics, presupuesto gastado, y prácticamente cero clientes nuevos. Y cuando el dueño revisa la cuenta, ve que "las conversiones están subiendo" porque el sistema está contando métricas de engagement como conversiones.</p>
+
+<p>Antes de activar cualquier estrategia de puja inteligente, el seguimiento de conversiones debe estar correctamente configurado para medir lo que realmente importa: llamadas telefónicas desde el anuncio, llamadas desde el sitio web, formularios enviados, chats iniciados.</p>
+
+<h2>Estructura de campaña: lo que la IA necesita para funcionar</h2>
+
+<p>La IA de Google no puede compensar una mala estructura de campaña. De hecho, una estructura deficiente con IA activada es peor que una estructura deficiente sin IA — porque el sistema aprende más rápido en la dirección equivocada.</p>
+
+<p>Una estructura correcta para un negocio de servicios locales incluye:</p>
+
+<ul>
+<li><strong>Grupos de anuncios por servicio específico:</strong> No un grupo de anuncios para "plomería". Un grupo para "reparación de tuberías", otro para "instalación de calentador de agua", otro para "plomería de emergencia". Cada grupo tiene sus propias palabras clave, sus propios anuncios, y su propia página de destino.</li>
+<li><strong>Palabras clave de coincidencia exacta y de frase:</strong> La concordancia amplia le da demasiado control al algoritmo demasiado pronto. Empieza con coincidencia exacta y frase para controlar qué búsquedas activan tus anuncios.</li>
+<li><strong>Lista de palabras clave negativas desde el primer día:</strong> Sin una lista robusta de negativos, tus anuncios aparecerán para búsquedas completamente irrelevantes. "Plomero juguete", "curso de plomería", "plomero empleo" — ninguna de esas búsquedas es un cliente potencial para ti.</li>
+<li><strong>Páginas de destino específicas por servicio:</strong> Si alguien busca "instalación de calentador de agua" y llega a tu página de inicio genérica, la tasa de conversión cae drásticamente. La página debe coincidir exactamente con la intención de búsqueda.</li>
+</ul>
+
+<h2>Cómo la IA mejora los resultados cuando la base es correcta</h2>
+
+<p>Cuando la estructura está bien construida y el seguimiento de conversiones funciona correctamente, la IA de Google empieza a hacer algo notable: aprende quién convierte en tu mercado específico.</p>
+
+<p>Con el tiempo, el sistema identifica patrones. Personas que buscan desde ciertos códigos postales tienen más probabilidades de convertir. Ciertos horarios del día generan más llamadas. Ciertos dispositivos tienen tasas de conversión más altas. Ciertas combinaciones de títulos en los anuncios convierten mejor para búsquedas de emergencia vs. búsquedas de planificación.</p>
+
+<p>Todo esto lo ajusta automáticamente el sistema. Una campaña bien configurada que lleva 60-90 días activa se vuelve progresivamente más eficiente — el costo por lead baja, el volumen de leads sube, y el presupuesto se distribuye de forma cada vez más inteligente.</p>
+
+<p>Un cliente de servicios para el hogar que auditamos tenía un costo por lead de $340. La cuenta llevaba seis meses activa con concordancia amplia, sin negativos, y sin seguimiento de conversiones real. Reconstruimos la estructura, configuramos el seguimiento correctamente, y activamos Smart Bidding solo después de tener datos suficientes. En el primer mes con la nueva estructura, el costo por lead cayó a $67.</p>
+
+<h2>Performance Max: la herramienta más poderosa y más mal usada</h2>
+
+<p>Performance Max es el tipo de campaña más nuevo de Google — y el que más confusión genera entre los anunciantes locales. Google lo promueve agresivamente porque le da al algoritmo control total sobre dónde, cuándo y cómo aparecen tus anuncios: Búsqueda, Display, YouTube, Gmail, Maps, y Discovery, todo en una sola campaña.</p>
+
+<p>Para negocios locales con presupuestos pequeños y servicios muy específicos, Performance Max puede ser contraproducente si se activa antes de tiempo. El algoritmo necesita datos de conversión suficientes para optimizar correctamente, y en las primeras semanas puede distribuir el presupuesto de forma muy ineficiente.</p>
+
+<p>La estrategia correcta para la mayoría de los negocios locales:</p>
+<ol>
+<li>Empieza con campañas de búsqueda estándar, bien estructuradas</li>
+<li>Acumula datos de conversión reales (mínimo 30-50 conversiones)</li>
+<li>Activa Smart Bidding una vez que el sistema tiene suficientes datos para aprender</li>
+<li>Considera Performance Max solo cuando las campañas de búsqueda estén optimizadas y haya presupuesto disponible para expandir</li>
+</ol>
+
+<h2>El rol de los anuncios responsivos de búsqueda</h2>
+
+<p>Los Responsive Search Ads (RSA) son donde la IA de Google brilla más para los anunciantes locales. En lugar de adivinar qué combinación de título y descripción funciona mejor, el sistema prueba automáticamente todas las combinaciones posibles y aprende.</p>
+
+<p>Para maximizar el rendimiento de tus RSA:</p>
+<ul>
+<li>Usa los 15 títulos disponibles — no te quedes con 5</li>
+<li>Incluye la palabra clave principal en al menos 3-4 títulos</li>
+<li>Varía los ángulos: urgencia ("Disponible Hoy"), prueba social ("Más de 500 Clientes en [Ciudad]"), beneficio ("Sin Cuota de Diagnóstico"), CTA directo ("Llama Ahora")</li>
+<li>Usa las 4 descripciones con mensajes completamente diferentes para darle al algoritmo más opciones para probar</li>
+</ul>
+
+<p>El sistema aprende cuáles combinaciones generan más clics y conversiones para cada tipo de búsqueda. Una persona que busca "plomero de emergencia" ve un anuncio diferente al que busca "instalar calentador de agua" — aunque estén en el mismo grupo de anuncios.</p>
+
+<h2>Lo que no puede hacer la IA por ti</h2>
+
+<p>Con toda la automatización disponible, es fácil pensar que Google Ads se maneja solo. No es así. Hay cosas que requieren criterio humano:</p>
+
+<ul>
+<li><strong>Auditar los términos de búsqueda regularmente:</strong> La IA puede empezar a mostrar tus anuncios para búsquedas que no debería. Revisar el informe de términos de búsqueda semanalmente y agregar negativos sigue siendo indispensable.</li>
+<li><strong>Ajustar el presupuesto según la temporada:</strong> Un negocio de HVAC debería aumentar presupuesto en julio y enero, no en noviembre. El sistema no sabe cuándo es tu temporada alta — tú sí.</li>
+<li><strong>Probar nuevos ángulos de copy:</strong> La IA optimiza entre las opciones que le das. Si todos tus títulos son mediocres, el mejor título mediocre va a ganar. Traer nuevas ideas creativas sigue siendo trabajo humano.</li>
+<li><strong>Monitorear el costo por lead real:</strong> Google mide lo que puede medir. Si estás generando muchas llamadas de personas que no califican para tu servicio, el sistema no lo sabe — tú necesitas ajustar la segmentación y el messaging.</li>
+</ul>
+
+<h2>El punto de partida correcto</h2>
+
+<p>Si tienes una cuenta de Google Ads activa y no estás viendo resultados consistentes, lo más probable es que el problema no sea el presupuesto ni la plataforma. Es la estructura.</p>
+
+<p>Antes de aumentar gasto, antes de activar más automatización, antes de probar nuevos tipos de campaña: audita la base. ¿El seguimiento de conversiones está midiendo llamadas reales? ¿Los grupos de anuncios están organizados por servicio específico? ¿Hay una lista de palabras clave negativas funcionando? ¿Las páginas de destino coinciden con la intención de búsqueda?</p>
+
+<p>Si la respuesta a cualquiera de esas preguntas es "no" o "no sé", ahí está el problema. Y la IA, sin esa base, solo va a amplificar el desperdicio.</p>
+
+<p>Si quieres una revisión gratuita de tu cuenta actual — o quieres saber cómo luciría una campaña bien estructurada para tu negocio específico — <a href="/es/googleadsai">solicita tu auditoría gratuita de Google Ads aquí</a>. Revisamos la estructura, el seguimiento, y te mostramos exactamente qué haríamos diferente.</p>
+    `.trim(),
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
