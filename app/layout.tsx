@@ -15,6 +15,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://javierayala.pro/",
+    languages: {
+      "en": "https://javierayala.pro/",
+      "es": "https://javierayala.pro/es",
+    },
+  },
   title: 'Javier Ayala | AI-Powered Google Ads Management for Local Service Businesses',
   description: 'Stop wasting money on Google Ads. I use AI to find every dollar your campaigns are wasting — and fix it in 48 hours. Free audit for plumbers, HVAC, roofers, dentists & more.',
   keywords: 'Google Ads management, AI advertising, local service business ads, PPC management, Google Ads audit, plumber marketing, HVAC advertising',
@@ -47,6 +54,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
         <link rel="icon" href="/logo.png?v=3" type="image/png" sizes="192x192" />
         <link rel="apple-touch-icon" href="/logo.png?v=3" />
+        {/* hreflang — language targeting */}
+        <link rel="alternate" hrefLang="en" href="https://javierayala.pro/" />
+        <link rel="alternate" hrefLang="es" href="https://javierayala.pro/es" />
+        <link rel="alternate" hrefLang="x-default" href="https://javierayala.pro/" />
         {/* Structured Data — Organization + Person + WebSite */}
         <script
           type="application/ld+json"

@@ -14,6 +14,13 @@ import { FooterES } from "@/components/es/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://javierayala.pro/es",
+    languages: {
+      "en": "https://javierayala.pro/",
+      "es": "https://javierayala.pro/es",
+    },
+  },
   title: 'Javier Ayala | Gestion de Google Ads con IA para Negocios de Servicios Locales',
   description: 'Deja de desperdiciar dinero en Google Ads. Uso IA para encontrar cada dolar que tus campanas estan desperdiciando — y lo arreglo en 48 horas. Auditoria gratis para plomeros, HVAC, techadores, dentistas y mas.',
   keywords: 'gestion Google Ads, publicidad con IA, anuncios para negocios locales, gestion PPC, auditoria Google Ads, marketing para plomeros, publicidad HVAC',
