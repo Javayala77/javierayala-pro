@@ -10,6 +10,7 @@ interface LandingLayoutProps {
   accentColor?: string
   ctaText?: string
   ctaHref?: string
+  homeHref?: string
 }
 
 export function LandingLayout({
@@ -17,6 +18,7 @@ export function LandingLayout({
   accentColor = "text-cyan-400",
   ctaText = "Talk to Javier",
   ctaHref = "https://wa.me/573103956445",
+  homeHref = "/",
 }: LandingLayoutProps) {
   const [scrolled, setScrolled] = useState(false)
   const [showSticky, setShowSticky] = useState(false)
@@ -43,7 +45,7 @@ export function LandingLayout({
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
-            href="/"
+            href={homeHref}
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
