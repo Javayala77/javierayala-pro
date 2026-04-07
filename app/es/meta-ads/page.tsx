@@ -251,7 +251,7 @@ export default function MetaAdsPageES() {
           <p className="text-gray-400 mb-8">
             Su copy, su segmentación y los huecos que están dejando abiertos. Reporte completo — gratis.
           </p>
-          <EmailCapture tag="meta-ads" ctaText="Reservar Mi Consultoría Gratuita de Meta Ads" accentClass="border-pink-500/30 focus:border-pink-500/60" btnClass="from-pink-600 to-pink-500" />
+          <EmailCapture tag="meta-ads-es" ctaText="Reservar Mi Consultoría Gratuita de Meta Ads" accentClass="border-pink-500/30 focus:border-pink-500/60" btnClass="from-pink-600 to-pink-500" />
         </div>
       </section>
 

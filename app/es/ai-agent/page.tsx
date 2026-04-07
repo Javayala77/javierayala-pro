@@ -256,7 +256,7 @@ export default function AIAgentPageES() {
           <p className="text-gray-400 mb-8">
             Deja tu correo y te mostramos una demo en vivo personalizada para tu negocio — lo que dice, cómo califica y cómo reserva.
           </p>
-          <EmailCapture tag="ai-agent" ctaText="Reservar Mi Demo Gratuita de Agente IA" accentClass="border-purple-500/30 focus:border-purple-500/60" btnClass="from-purple-600 to-purple-500" />
+          <EmailCapture tag="ai-agent-es" ctaText="Reservar Mi Demo Gratuita de Agente IA" accentClass="border-purple-500/30 focus:border-purple-500/60" btnClass="from-purple-600 to-purple-500" />
         </div>
       </section>
 

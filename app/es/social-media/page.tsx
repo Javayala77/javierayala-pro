@@ -253,7 +253,7 @@ export default function SocialMediaPageES() {
           <p className="text-gray-400 mb-8">
             Ingresa tu correo y agendamos una llamada gratuita — auditamos tu presencia actual en redes y te mostramos exactamente lo que produciría el sistema.
           </p>
-          <EmailCapture tag="newsletter" ctaText="Reservar Mi Consultoría Gratuita de Redes Sociales" accentClass="border-violet-500/30 focus:border-violet-500/60" btnClass="from-violet-600 to-violet-500" />
+          <EmailCapture tag="newsletter-es" ctaText="Reservar Mi Consultoría Gratuita de Redes Sociales" accentClass="border-violet-500/30 focus:border-violet-500/60" btnClass="from-violet-600 to-violet-500" />
         </div>
       </section>
 

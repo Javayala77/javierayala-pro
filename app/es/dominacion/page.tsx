@@ -253,7 +253,7 @@ export default function DominacionPageES() {
           <p className="text-gray-400 mb-8">
             Google Ads → WhatsApp → Meta → SEO. La secuencia exacta que usamos para llevar negocios de invisibles al #1 en su mercado.
           </p>
-          <EmailCapture tag="newsletter" ctaText="Reservar Mi Sesión de Estrategia Gratuita" accentClass="border-yellow-500/30 focus:border-yellow-500/60" btnClass="from-yellow-500 to-amber-400" />
+          <EmailCapture tag="newsletter-es" ctaText="Reservar Mi Sesión de Estrategia Gratuita" accentClass="border-yellow-500/30 focus:border-yellow-500/60" btnClass="from-yellow-500 to-amber-400" />
         </div>
       </section>
 

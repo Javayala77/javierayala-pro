@@ -250,7 +250,7 @@ export default function GoogleAdsPageES() {
           <p className="text-gray-400 mb-8">
             Una revisión gratuita de 30 minutos que revela los errores que drenan la mayoría de las cuentas de Google Ads locales.
           </p>
-          <EmailCapture tag="google-ads-audit" ctaText="Obtener Mi Auditoría Gratuita de Google Ads" accentClass="border-cyan-500/30 focus:border-cyan-500/60" btnClass="from-cyan-600 to-cyan-500" />
+          <EmailCapture tag="google-ads-audit-es" ctaText="Obtener Mi Auditoría Gratuita de Google Ads" accentClass="border-cyan-500/30 focus:border-cyan-500/60" btnClass="from-cyan-600 to-cyan-500" />
         </div>
       </section>
 

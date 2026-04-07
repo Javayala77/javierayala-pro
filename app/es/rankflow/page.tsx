@@ -254,7 +254,7 @@ export default function RankFlowPageES() {
           <p className="text-gray-400 mb-8">
             Plan de contenido + SEO mes a mes. Ve la estrategia completa antes de comprometerte con algo.
           </p>
-          <EmailCapture tag="seo" ctaText="Reservar Mi Consultoría Gratuita de SEO" accentClass="border-emerald-500/30 focus:border-emerald-500/60" btnClass="from-emerald-600 to-emerald-500" />
+          <EmailCapture tag="seo-es" ctaText="Reservar Mi Consultoría Gratuita de SEO" accentClass="border-emerald-500/30 focus:border-emerald-500/60" btnClass="from-emerald-600 to-emerald-500" />
         </div>
       </section>
 

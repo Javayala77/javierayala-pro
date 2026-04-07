@@ -255,7 +255,7 @@ export default function WhatsAppPageES() {
           <p className="text-gray-400 mb-8">
             Deja tu correo y configuramos una demo personalizada para tu negocio — verás exactamente lo que experimentarían tus clientes.
           </p>
-          <EmailCapture tag="whatsapp-bot" ctaText="Reservar Mi Consultoría Gratuita de Bot" accentClass="border-green-500/30 focus:border-green-500/60" btnClass="from-green-600 to-green-500" />
+          <EmailCapture tag="whatsapp-bot-es" ctaText="Reservar Mi Consultoría Gratuita de Bot" accentClass="border-green-500/30 focus:border-green-500/60" btnClass="from-green-600 to-green-500" />
         </div>
       </section>
 

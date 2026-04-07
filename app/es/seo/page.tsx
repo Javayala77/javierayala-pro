@@ -256,7 +256,7 @@ export default function SeoPageES() {
           <p className="text-gray-400 mb-8">
             Sistema mes a mes: Google Maps → Google Ads → WhatsApp → Meta. Deja de adivinar, comienza con un sistema probado.
           </p>
-          <EmailCapture tag="seo" ctaText="Reservar Mi Consultoría Gratuita de SEO" accentClass="border-blue-500/30 focus:border-blue-500/60" btnClass="from-blue-600 to-blue-500" />
+          <EmailCapture tag="seo-es" ctaText="Reservar Mi Consultoría Gratuita de SEO" accentClass="border-blue-500/30 focus:border-blue-500/60" btnClass="from-blue-600 to-blue-500" />
         </div>
       </section>
 
