@@ -1320,6 +1320,309 @@ Month 6+: Self-reinforcing. More reviews → higher ranking → more calls → m
 <p>Si quieres una revisión gratuita de tu cuenta actual — o quieres saber cómo luciría una campaña bien estructurada para tu negocio específico — <a href="/es/googleadsai">solicita tu auditoría gratuita de Google Ads aquí</a>. Revisamos la estructura, el seguimiento, y te mostramos exactamente qué haríamos diferente.</p>
     `.trim(),
   },
+  {
+    slug: "how-electricians-dominate-google-search",
+    title: "How Electricians Can Dominate Google Search in Their City",
+    date: "2026-04-05",
+    description: "Electricians face one of the most competitive local search landscapes of any trade. Here's the exact strategy — Google Ads, Maps, and SEO working together — that gets electricians to the top and keeps them there.",
+    category: "Google Ads",
+    readTime: "7 min read",
+    content: `
+<p>If you're an electrician trying to grow your business through Google, you've probably noticed one thing: the competition is brutal. Electrical is one of the highest-CPL (cost per lead) trades in local search, with Google Ads clicks regularly running $15–$40 depending on market. And the top three spots on Google Maps are owned by the same businesses month after month.</p>
+
+<p>But here's what most electricians don't realize: those businesses aren't winning because they have bigger budgets. They're winning because they're running the right strategy across all three channels simultaneously — Google Ads, Google Maps, and organic SEO. Take one channel away, and the whole thing weakens. Run all three together, and the compounding effect shuts competitors out.</p>
+
+<h2>Why electricians lose on Google Ads alone</h2>
+
+<p>The mistake most electrical contractors make is running Google Ads in isolation. They set up a campaign, spend $1,500–$3,000 a month, and get some leads — but the cost per lead is high, the volume is inconsistent, and the moment they pause the campaign, the phone stops ringing.</p>
+
+<p>That's because Google Ads without Maps presence and organic credibility is working at a disadvantage. When a homeowner searches "electrician near me," they see your ad at the top — but then scroll down and see a competitor with 180 reviews and a top-3 Maps position. Even if your ad is better, the competitor's trust signals are stronger. You paid for the click, they got the call.</p>
+
+<p>The solution isn't to spend more on ads. It's to build the credibility that makes your ads actually convert.</p>
+
+<h2>The Google Maps opportunity electricians are missing</h2>
+
+<p>Electrical is a high-urgency service. A breaker that won't reset, an outlet sparking, a panel that's throwing a burning smell — these are problems people need solved today. And when someone has an urgent electrical problem, they open Google Maps, look at the top three results, and call the one with the most reviews.</p>
+
+<p>The Local Pack — those top three Maps results — captures 70%+ of all clicks for local searches. Position 1 on Maps gets more calls than every organic result combined. And yet most electricians set up their Google Business Profile once and completely ignore it.</p>
+
+<p>Getting into the top 3 for electrical in your city requires:</p>
+
+<ul>
+<li><strong>Complete profile setup:</strong> Every service listed, every attribute checked, service area correctly defined. Most profiles are 60% complete at best.</li>
+<li><strong>Review velocity:</strong> Not just having reviews — generating new ones at a consistent pace. Google rewards recency. 50 reviews from 3 years ago loses to 30 reviews from the last 6 months.</li>
+<li><strong>Daily activity:</strong> Posts, photo updates, Q&A responses. The algorithm treats an active profile like an active business. A dormant profile slowly loses ground even if it was strong before.</li>
+<li><strong>NAP consistency:</strong> Your business name, address, and phone number must be identical across every directory Google can find — Yelp, Angi, BBB, HomeAdvisor, and dozens of others.</li>
+</ul>
+
+<h2>The SEO layer: ranking for "electrician [city]" organically</h2>
+
+<p>Organic SEO for electricians is a longer game — it takes 3–6 months to see significant movement — but the payoff is leads that cost nothing per click. Once you rank for "electrician [your city]" or "electrical panel upgrade [your city]," that traffic is yours indefinitely without ongoing ad spend.</p>
+
+<p>The fastest path to organic rankings for a local electrical contractor:</p>
+
+<ul>
+<li><strong>Location pages:</strong> If you serve multiple cities or neighborhoods, each needs its own page with unique content. "Electrician in [City A]" and "Electrician in [City B]" should be separate pages, not the same page with the city name swapped.</li>
+<li><strong>Service pages:</strong> Panel upgrades, EV charger installation, whole-home rewiring, outlet installation — each service should have its own page targeting its own keywords. One generic "Services" page ranks for nothing specific.</li>
+<li><strong>Regular content:</strong> Weekly blog posts about local electrical topics — permit requirements in your city, cost guides, safety tips — build topical authority that improves every page on your site.</li>
+</ul>
+
+<h2>How to structure Google Ads for electricians specifically</h2>
+
+<p>Electrical has two very different buyer types, and they need different campaigns:</p>
+
+<p><strong>Emergency buyers:</strong> People with urgent problems right now. These searches — "emergency electrician," "electrician near me open now," "breaker keeps tripping" — convert fast. They're not price shopping. They need someone today. These keywords command higher bids but deliver the highest-quality leads.</p>
+
+<p><strong>Project buyers:</strong> Homeowners planning panel upgrades, EV charger installs, whole-house rewires, or new construction. These leads take longer to close but are worth significantly more per job. Different ad copy, different landing page, different bid strategy.</p>
+
+<p>Running both in the same campaign is a common mistake — the budget gets blended, the algorithm can't optimize properly, and you end up paying emergency prices for project leads and vice versa. Separate them from day one.</p>
+
+<h2>The compounding effect when all three work together</h2>
+
+<p>Here's what happens in a market where one electrical contractor runs all three channels under a coordinated strategy:</p>
+
+<p>A homeowner searches "electrician [city]." They see that contractor's ad at the top. They scroll to the map and see the same contractor in position 1 with 200+ reviews. They scroll to organic results and see a blog post from that contractor about electrical panel costs in their city. By the time they've finished scanning the page, they've seen one business three times and every competitor once.</p>
+
+<p>The click-through rate on the ad improves because the brand is already familiar. The Maps listing converts better because the ad built awareness. The organic content builds the trust that makes both paid channels more efficient. Each channel makes the others stronger.</p>
+
+<p>Electricians who implement this full strategy typically see cost per lead drop 35–50% within 90 days — not because they're spending less on ads, but because the organic and Maps traffic is free and it's making their paid traffic convert at a higher rate.</p>
+
+<p>If you want to see exactly how this would work in your specific market — which keywords to target, where your Maps position currently stands, and what the 90-day roadmap would look like — <a href="/googleadsai">request a free audit here</a>. We'll map out the full strategy before you commit to anything.</p>
+    `.trim(),
+  },
+  {
+    slug: "ai-generated-content-seo-rankings",
+    title: "AI-Generated Content: Does It Actually Rank on Google?",
+    date: "2026-04-05",
+    description: "Everyone is asking whether Google penalizes AI content. The real answer is more nuanced — and more useful — than most people realize. Here's what actually matters for rankings.",
+    category: "SEO",
+    readTime: "8 min read",
+    content: `
+<p>The most common question we get from local business owners considering a content strategy in 2025 is some version of: "Will Google penalize me for using AI to write my blog posts?"</p>
+
+<p>It's a reasonable concern. Google has made public statements about "helpful content" and "quality" that get interpreted in a lot of different ways. And there's no shortage of SEO experts giving confident, contradictory opinions on what Google actually does versus what it says.</p>
+
+<p>Here's the honest, practical answer based on what we've seen running content strategies for real local businesses.</p>
+
+<h2>What Google actually says about AI content</h2>
+
+<p>Google's official position is that they don't care whether content was written by a human or an AI. What they care about is whether content is <strong>helpful, accurate, and written for people — not for search engines.</strong></p>
+
+<p>Their "helpful content system" — the algorithm update that caused the most panic around AI content — targets content that exists primarily to rank, not to genuinely help the person reading it. Thin content, keyword stuffing, pages that answer a question no one is actually asking — that's what gets penalized. The tool used to create it is largely irrelevant.</p>
+
+<p>In practice: a 300-word AI-generated post that's vague, generic, and answers nothing useful will struggle to rank. A 1,200-word AI-generated post that actually answers a specific question your customers ask, with real detail and local relevance, will rank just fine — and often better than human-written content that was rushed or underfunded.</p>
+
+<h2>The real variable: quality and specificity</h2>
+
+<p>We've run content for service businesses in competitive local markets using AI-generated posts since early 2024. The pattern we've seen consistently:</p>
+
+<ul>
+<li>Generic AI content — "Here are 5 tips for your HVAC system" with no local angle, no specifics, no depth — ranks poorly or not at all</li>
+<li>Specific AI content — "What Does an HVAC Tune-Up Cost in [City] in 2025?" with real price ranges, local context, and genuinely useful detail — ranks well and drives traffic</li>
+</ul>
+
+<p>The difference isn't the tool. It's the brief. AI content is only as good as the direction you give it. A poorly briefed AI post produces thin content. A well-briefed AI post produces something a reader actually finds useful — and Google rewards that.</p>
+
+<h2>What "well-briefed" actually looks like for local businesses</h2>
+
+<p>For a local service business, the highest-performing AI content follows a consistent structure:</p>
+
+<p><strong>Target a specific question with local intent.</strong> Not "how to fix a leaky faucet" but "how much does it cost to fix a leaky faucet in [City]?" The local modifier narrows the competition and matches exactly what someone in your market is actually searching.</p>
+
+<p><strong>Include real numbers.</strong> Cost guides, timelines, what's included in a service call — anything with actual specificity performs dramatically better than vague advice. "Most plumbers charge $150–$350 for a standard faucet repair, depending on the type of faucet and whether parts are needed" is worth ten paragraphs of general tips.</p>
+
+<p><strong>Answer follow-up questions.</strong> After the main question, think about what the reader would logically want to know next. If they're reading about HVAC tune-up costs, they'll also want to know how long it takes, whether they need one every year, and signs their system needs more than a tune-up. Answering those questions in the same post builds the depth that signals quality to Google.</p>
+
+<p><strong>Link to your services.</strong> Every content piece should have at least one natural internal link to a relevant service page. This passes authority from the blog post to the page you actually want to rank, and it's the connection between content strategy and lead generation.</p>
+
+<h2>Volume and consistency matter as much as individual post quality</h2>
+
+<p>One thing AI content does exceptionally well is enabling consistency at scale. A human team writing two blog posts per month is doing content marketing. A system publishing five SEO-optimized posts per week is building topical authority.</p>
+
+<p>Google's algorithm rewards sites that demonstrate expertise across a topic area. A plumbing company that has published 60 posts about plumbing — covering costs, common problems, maintenance tips, comparisons, city-specific guides — is treated as an authority on plumbing in a way that a company with 8 posts isn't. That authority lifts every page on the site, including service pages and the Google Maps listing.</p>
+
+<p>This is where the math changes fundamentally. At the pace a human content team can produce — 1-2 posts per week at most, usually less — it takes years to build that topical authority. With AI, that same library of content can be built in months.</p>
+
+<h2>The one thing AI content can't do on its own</h2>
+
+<p>The gap between good AI content and great content is almost always real-world specificity that only you have. The case study from an actual client. The specific detail about a local regulation or code requirement. The insight from a job that went wrong and what you learned.</p>
+
+<p>AI can write the structure, the explanation, the cost guide, the how-to. But injecting one paragraph of genuine first-hand experience or local knowledge into that post is what elevates it from competent to authoritative. The best content strategies we run combine AI for volume and consistency with real input from the business owner for credibility and differentiation.</p>
+
+<h2>The bottom line</h2>
+
+<p>Does AI content rank on Google? Yes — consistently, in competitive local markets, across multiple industries. Does all AI content rank? No — the same rules that applied to human content apply to AI content. Be specific. Be useful. Target real questions. Write for the reader, not the algorithm.</p>
+
+<p>The businesses using AI content strategically right now are building organic traffic moats that will take competitors years to catch up to. The businesses waiting to see how it shakes out are handing those positions to someone else.</p>
+
+<p>If you want to see what a content strategy built for your specific industry and city would look like — topics, volume, projected ranking timeline — <a href="/rankflow">check out the RankFlow system here</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "90-day-local-market-domination-strategy",
+    title: "The 90-Day Local Domination Strategy for Service Businesses",
+    date: "2026-04-06",
+    description: "Most local businesses try one channel at a time and wonder why growth is inconsistent. Here's the exact 90-day sequence — Google Ads, Maps, WhatsApp, Meta — that compounds into market dominance.",
+    category: "Strategy",
+    readTime: "9 min read",
+    content: `
+<p>The most common growth pattern for a local service business looks like this: run Google Ads for a few months, get some leads, decide it's too expensive, pause the campaign. Try SEO for a while, see slow results, lose patience. Boost a few Facebook posts, get reach but no calls, conclude that social media doesn't work. Repeat the cycle.</p>
+
+<p>The result is a business that's always starting over. Every channel gets a partial effort, nothing compounds, and the phone rings inconsistently. Meanwhile, there's one business in the market that seems to be everywhere — on Google, on Maps, in ads, in your inbox — and they just keep growing.</p>
+
+<p>The difference isn't luck or budget. It's sequence and coordination. Here's the exact 90-day approach that changes the growth pattern permanently.</p>
+
+<h2>The principle: channels compound when they're coordinated</h2>
+
+<p>Most businesses treat Google Ads, SEO, Google Maps, WhatsApp, and Meta as separate experiments to try one at a time. The businesses that dominate their markets understand that these channels multiply each other when run together under a unified strategy:</p>
+
+<ul>
+<li>Google Ads drives immediate leads while organic rankings build</li>
+<li>Google Maps provides the social proof that makes ads convert better</li>
+<li>WhatsApp automation captures the leads that ads and Maps generate — instantly, before a competitor responds</li>
+<li>Meta Ads retargets everyone who visited your site from Google but didn't call</li>
+<li>Organic content builds the authority that lowers your ad costs over time</li>
+</ul>
+
+<p>Run any one of these in isolation and you get partial results. Run all five in the right sequence and you create a self-reinforcing system where each channel feeds the others.</p>
+
+<h2>Days 1–30: Foundation and immediate lead flow</h2>
+
+<p><strong>Week 1: Google Ads live + conversion tracking configured</strong></p>
+
+<p>The first priority is always generating leads immediately while the slower channels build. Google Ads — properly structured with exact and phrase match keywords, tight ad groups by service, and real conversion tracking measuring phone calls and form submissions — can be live and generating leads within 48–72 hours.</p>
+
+<p>The conversion tracking setup is non-negotiable before any campaigns go live. Without it, Smart Bidding has nothing to learn from, and you're flying blind on what's actually working. Most accounts we audit have campaigns running for months with broken or missing conversion tracking.</p>
+
+<p><strong>Week 2: Google Business Profile fully optimized</strong></p>
+
+<p>While Google Ads runs, the Maps foundation gets built: every service listed with descriptions, service area correctly defined, photos added, Q&A seeded with common customer questions, and the review generation process started. A fully optimized profile won't rank in the top 3 immediately — that takes 60–90 days of consistent activity — but the foundation has to be right before the daily work begins.</p>
+
+<p><strong>Week 3–4: WhatsApp automation live</strong></p>
+
+<p>By week three, Google Ads is generating leads and some Maps traffic is starting. This is the moment to make sure every lead that comes in actually gets contacted — immediately, automatically, at any hour. The WhatsApp bot goes live: instant response to every inquiry, qualification questions asked automatically, calendar booking integrated. From this point forward, no lead waits more than 60 seconds for a response.</p>
+
+<h2>Days 31–60: Amplification and retargeting</h2>
+
+<p><strong>Meta Ads retargeting campaign</strong></p>
+
+<p>By day 30, your Google Ads campaigns have driven real traffic to your site. Some of those visitors called. Many didn't. Meta retargeting campaigns specifically target the people who visited your site but didn't convert — showing them your ads on Facebook and Instagram for the next 30 days. These are warm leads who already know you exist. The conversion rate on retargeting is typically 3–5x higher than cold traffic, and the cost per lead is dramatically lower.</p>
+
+<p><strong>Google Maps daily activity rhythm established</strong></p>
+
+<p>The daily posting routine is locked in by now: one Google Business post per day, new photos added weekly, every review responded to within 24 hours. The algorithm starts rewarding the activity with incremental ranking improvements. This is where patience matters — the movement is slow in month two but compounds heavily in month three.</p>
+
+<p><strong>Content strategy begins</strong></p>
+
+<p>Week five or six, the first SEO blog posts start publishing. The target: two to five posts per week, each one answering a specific question your customers search for, with local and service-specific targeting. This content won't drive significant traffic for 60–90 days, but starting now means organic traffic begins arriving at the 90-day mark instead of the 180-day mark.</p>
+
+<h2>Days 61–90: Compounding takes over</h2>
+
+<p>This is where the strategy starts to feel different from anything you've done before.</p>
+
+<p><strong>Google Maps position climbs.</strong> By day 60–90 of consistent activity, daily posts, and steady review generation, most businesses in mid-competition markets have moved into the top 5 on Maps. Some hit top 3. The free phone calls from Maps start supplementing — and in some cases exceeding — the paid calls from Google Ads.</p>
+
+<p><strong>Organic content starts ranking.</strong> The posts published in weeks 5–8 begin appearing in search results. Long-tail queries — "how much does HVAC repair cost in [city]", "emergency plumber [neighborhood]" — start driving traffic that converts to leads with zero ad spend.</p>
+
+<p><strong>Google Ads costs drop.</strong> As Maps presence and brand familiarity grow, the click-through rate on ads improves and the Quality Score rises. Google rewards ads that people actually click on — so a business that appears in Maps and organic results gets higher Quality Scores than a competitor with the same ad, lowering the cost per click.</p>
+
+<p><strong>Meta cold campaigns layer on top.</strong> With a proven retargeting campaign already running, expanding to cold Meta audiences — targeting homeowners in your service area by demographics, interests, and behaviors — adds a proactive demand generation layer. Instead of only capturing people who are already searching, you're now building awareness with people before they need you.</p>
+
+<h2>What the business looks like at day 90</h2>
+
+<p>At the end of a properly executed 90-day strategy, you have:</p>
+
+<ul>
+<li>Google Ads campaigns with 60+ days of conversion data, Smart Bidding optimizing efficiently, and a cost per lead that's dropped 20–40% from where it started</li>
+<li>A Google Maps profile with 30+ new reviews, daily activity, and a top-3 position (or moving toward it) generating free calls</li>
+<li>WhatsApp automation converting every inquiry within 60 seconds, including after hours and weekends — leads you would have lost before</li>
+<li>Meta retargeting capturing 20–30% of Google traffic that would have otherwise bounced and been lost</li>
+<li>25–40 pieces of SEO content indexed and beginning to rank, with organic traffic growing month over month</li>
+</ul>
+
+<p>The combined result for most service businesses: 3–5x the lead volume they were generating from a single channel, at a lower blended cost per lead, with a system that continues improving every month without starting over.</p>
+
+<p>If you want to map out what this 90-day sequence would look like specifically for your business and market, <a href="/domination">the Local Domination package</a> covers all five channels under one coordinated strategy. <a href="/free-audit">Request a free strategy session here</a> — we'll show you exactly where you stand and what the 90-day plan would look like.</p>
+    `.trim(),
+  },
+  {
+    slug: "how-to-track-phone-calls-google-ads",
+    title: "How to Track Phone Calls from Google Ads (Step by Step)",
+    date: "2026-04-06",
+    description: "Most local businesses running Google Ads have broken or missing call tracking. Here's exactly how to set it up correctly — and why it's the single most important thing you can do to improve your results.",
+    category: "Google Ads",
+    readTime: "7 min read",
+    content: `
+<p>If your Google Ads campaigns are running without proper phone call tracking, you are flying completely blind. You might be generating leads every day and have no idea which keywords, ads, or campaigns are responsible. Or you might be spending the majority of your budget on clicks that never convert and have no data to prove it.</p>
+
+<p>Phone call tracking is the single most impactful setup task for local service businesses running Google Ads — and it's the one most commonly done wrong or skipped entirely. Here's exactly how to set it up correctly.</p>
+
+<h2>Why call tracking matters more than any other optimization</h2>
+
+<p>For most local service businesses — plumbers, contractors, HVAC, legal, medical — the phone call is the conversion. Someone searches, clicks your ad, and calls. They don't fill out a form. They call.</p>
+
+<p>Without call tracking, Google's algorithm has no idea what a successful outcome looks like for your campaign. You can activate Smart Bidding — the AI-powered bid optimization that should be improving your results over time — but if you haven't told Google what a conversion is, the system is optimizing toward nothing. It might start counting clicks or time-on-page as proxy signals. It might distribute budget toward keywords that get clicks but never generate calls.</p>
+
+<p>With proper call tracking, everything changes. The algorithm learns which types of searches, which times of day, which devices, and which ad combinations actually result in phone calls from people who want to hire you. It uses that data to bid more on the searches likely to convert and less on the ones that won't. Cost per lead drops. Lead quality improves. The whole system gets smarter over time.</p>
+
+<h2>The two types of call tracking you need</h2>
+
+<p><strong>1. Call extensions (now called "call assets")</strong></p>
+
+<p>This puts your phone number directly in the ad, allowing people to call without ever visiting your website. On mobile, a tap on the phone number in the ad initiates the call. Google tracks these as "call from ad" conversions.</p>
+
+<p>How to set it up: In Google Ads, go to Assets → Call assets → Add → Enter your phone number → Select "Count as a conversion" → Set a minimum call duration (60–90 seconds is typical — calls shorter than that are usually wrong numbers or immediate hang-ups).</p>
+
+<p><strong>2. Website call tracking</strong></p>
+
+<p>This tracks calls that happen after someone clicks your ad and visits your website. Google replaces the phone number on your website with a temporary Google forwarding number for that visitor. When they call that number, Google records it as a website call conversion tied to the ad click.</p>
+
+<p>How to set it up:</p>
+<ol>
+<li>In Google Ads → Tools → Conversions → New conversion action → Phone calls → Calls to a phone number on your website</li>
+<li>Set minimum call duration (60 seconds)</li>
+<li>Install the Google tag on your website if not already there</li>
+<li>Add the phone snippet code to your website near your phone number</li>
+</ol>
+
+<p>Both types should be running simultaneously. Call assets capture the people who call directly from the ad without visiting your site. Website call tracking captures the people who click through, read your page, and then call. Together, they give you a complete picture of all calls generated by your campaigns.</p>
+
+<h2>Setting the right conversion window and count</h2>
+
+<p>Two settings that most people leave at default and shouldn't:</p>
+
+<p><strong>Conversion window:</strong> This is how long after an ad click Google will attribute a resulting call to that click. For most service businesses, 30 days is appropriate — someone might click your ad today and call three weeks later after getting quotes. The default of 30 days is usually correct, but if you run longer sales cycles (renovation, legal retainers, large commercial projects), extend this to 60–90 days.</p>
+
+<p><strong>Count:</strong> Set this to "One" for calls, not "Every." You want to count one lead per person, not multiple calls from the same person as separate conversions. If someone calls three times before booking, that's one customer — counting it as three conversions inflates your numbers and confuses the algorithm.</p>
+
+<h2>Verifying that call tracking is actually working</h2>
+
+<p>The most common mistake: setting up call tracking and assuming it's working without verifying. Here's the quick check:</p>
+
+<ol>
+<li>Go to your website from a browser where you're not logged into Google (incognito mode)</li>
+<li>Look at the phone number displayed on the page</li>
+<li>If call tracking is working correctly, it should show a Google forwarding number (usually starts with a local area code but isn't your real number) instead of your actual phone number</li>
+<li>Call that number — it should forward to your real phone and the call should appear in your Google Ads conversion data within a few hours</li>
+</ol>
+
+<p>If your actual phone number shows instead of a forwarding number, the tracking tag isn't installed correctly. This is more common than you'd think — tag installation errors are one of the leading reasons Google Ads campaigns underperform for local businesses.</p>
+
+<h2>Importing calls into Google Analytics (optional but recommended)</h2>
+
+<p>If you have Google Analytics 4 connected to your site, importing your Google Ads call conversions gives you a fuller picture of the customer journey. You can see which traffic sources — organic, paid, direct — are driving the most valuable calls, and use that data to inform both your ad strategy and your SEO priorities.</p>
+
+<p>To connect: In Google Analytics → Admin → Google Ads links → Link your Ads account → Enable auto-tagging.</p>
+
+<h2>What to do once call tracking is working</h2>
+
+<p>With 30+ call conversions recorded, you have enough data to activate Smart Bidding properly. Switch from manual CPC or Maximize Clicks to Target CPA (target cost per acquisition) or Maximize Conversions. The algorithm now has real signal — actual phone calls — to optimize toward.</p>
+
+<p>At this point, start looking at the conversion data by keyword. Which search terms are generating calls? Which are generating clicks but zero calls? The keywords with high click volume and zero conversions should either be moved to a separate campaign with lower bids, added to your negative keyword list, or paused entirely. This single optimization step — cutting the waste revealed by call tracking data — typically reduces cost per lead by 20–35% in the first month.</p>
+
+<p>If you want someone to audit your current call tracking setup and Google Ads account — verify what's actually being tracked, identify what's being missed, and show you the exact fix — <a href="/googleadsai">request a free Google Ads audit here</a>. We'll check every conversion action and show you exactly what's broken.</p>
+    `.trim(),
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
