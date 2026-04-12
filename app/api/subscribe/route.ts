@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 
 const GROUP_IDS: Record<string, string> = {
-  "google-ads-audit": "183385341709780775",
-  "meta-ads":         "183385342262379987",
-  "whatsapp-bot":     "183385342906205428",
-  "seo":              "183385343490262499",
-  "ai-agent":         "183385344085853462",
-  "newsletter":       "183385344663618823",
+  "google-ads-audit":  "183385341709780775",
+  "landing-page":      "178133860121314601",
+  "google-ai-score":   "183385341709780775", // routes to Google Ads Audit group
+  "newsletter":        "183385341709780775", // all email subs go to Google Ads Audit group
 }
 
 export async function POST(req: NextRequest) {
@@ -15,16 +13,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not configured" }, { status: 503 })
   }
 
-  const { email, name, tag } = await req.json()
+  const { email, name, tag, fields: extraFields } = await req.json()
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 })
   }
 
-  const groupId = tag ? GROUP_IDS[tag] : null
+  const groupId = tag ? (GROUP_IDS[tag] ?? GROUP_IDS["google-ads-audit"]) : GROUP_IDS["google-ads-audit"]
 
   try {
-    // Create or update subscriber
     const res = await fetch("https://connect.mailerlite.com/api/subscribers", {
       method: "POST",
       headers: {
@@ -33,8 +30,8 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         email,
-        fields: { name: name || "" },
-        groups: groupId ? [groupId] : [],
+        fields: { name: name || "", ...(extraFields || {}) },
+        groups: [groupId],
       }),
     })
 

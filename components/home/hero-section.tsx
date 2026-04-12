@@ -277,7 +277,7 @@ export function HomeHero() {
               <HeroEmailForm />
               <p className="mt-3 text-xs text-gray-600 flex items-center gap-4">
                 <span>Free · No spam · Unsubscribe anytime</span>
-                <a href="#services" className="text-gray-500 hover:text-white transition-colors underline underline-offset-2">See my services →</a>
+                <a href="/google-ai-score" className="text-cyan-400 hover:text-cyan-300 transition-colors underline underline-offset-2">Get your free Google AI Score →</a>
               </p>
             </motion.div>
 
