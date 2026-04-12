@@ -1,8 +1,6 @@
 import { CheckCircle, Calendar, Monitor, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { WhatsAppButton } from "@/components/whatsapp-button"
-
 export const metadata = {
   title: "Booking Confirmed | Javier Ayala - Google Ads Audit",
   description: "Your free Google Ads audit has been scheduled. Here's what to expect next.",
@@ -117,7 +115,6 @@ export default function ThankYouPage() {
         </p>
       </div>
     </main>
-      <WhatsAppButton />
     </>
   )
 }

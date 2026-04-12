@@ -1,7 +1,5 @@
 import { CheckCircle, Lightbulb, Target, ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { WhatsAppButton } from "@/components/whatsapp-button"
-
 export const metadata = {
   title: "You're Booked | Javier Ayala — Free Strategy Call",
   description: "Your free marketing strategy call is confirmed. Here's what to expect.",
@@ -117,7 +115,6 @@ export default function ThankYouStrategyPage() {
 
         </div>
       </main>
-      <WhatsAppButton />
     </>
   )
 }

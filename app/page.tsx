@@ -6,15 +6,13 @@ import { HomeApproach } from "@/components/home/approach-section"
 import { HomeNewsletter } from "@/components/home/newsletter-section"
 import { HomeAbout } from "@/components/home/about-section"
 import { HomeContact } from "@/components/home/contact-section"
-import { WhatsAppButton } from "@/components/whatsapp-button"
-
 export const metadata: Metadata = {
-  title: "Javier Ayala | AI Marketing & Automation for Local Businesses",
-  description: "I help local service businesses get more customers using AI-powered marketing, automation, and Google Ads. Serving businesses worldwide.",
-  keywords: "AI marketing, Google Ads, local business marketing, automation, marketing expert",
+  title: "Javier Ayala | Google Ads AI System for Local Businesses",
+  description: "I built an AI-powered Google Ads system that cuts cost per lead and floods local service businesses with calls. Free audit in 48 hours.",
+  keywords: "Google Ads management, AI Google Ads, Google Ads for contractors, Google Ads local businesses, reduce cost per lead",
   openGraph: {
-    title: "Javier Ayala | AI Marketing & Automation Expert",
-    description: "I help local service businesses get more customers using AI-powered marketing and automation.",
+    title: "Javier Ayala | Google Ads AI System",
+    description: "Stop bleeding budget on broken Google Ads. I built an AI-powered system that actually works for local service businesses.",
     type: "website",
   },
 }
@@ -22,7 +20,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0A0A0F] text-white overflow-x-hidden">
-      <WhatsAppButton />
       <HomeHero />
       <HomeServices />
       <HomeResults />

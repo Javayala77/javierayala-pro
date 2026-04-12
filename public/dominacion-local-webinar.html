@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Domination — Strategy Presentation</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #060609;
+      --cyan: #22d3ee;
+      --violet: #a78bfa;
+      --green: #34d399;
+      --red: #f87171;
+      --yellow: #fbbf24;
+    }
+
+    body {
+      background: var(--bg);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(to right, #06b6d4, #8b5cf6);
+      transition: width 0.4s ease;
+      z-index: 1000;
+    }
+
+    #counter {
+      position: fixed; top: 18px; right: 24px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); z-index: 1000;
+    }
+
+    #brand {
+      position: fixed; top: 18px; left: 24px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.15); z-index: 1000;
+    }
+
+    .nav-btn {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 38px; height: 38px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 1000; transition: all 0.2s;
+      color: rgba(255,255,255,0.3); font-size: 16px;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.07); color: white; }
+    #prev { left: 14px; }
+    #next { right: 14px; }
+
+    .slide {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 56px 80px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: all; }
+
+    .gc { position: absolute; top: -15%; left: 50%; transform: translateX(-50%); width: 700px; height: 450px; background: radial-gradient(ellipse, rgba(6,182,212,0.07) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+    .gv { position: absolute; bottom: -10%; right: -8%; width: 550px; height: 420px; background: radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+    .gr { position: absolute; top: -10%; right: -8%; width: 500px; height: 380px; background: radial-gradient(ellipse, rgba(248,113,113,0.05) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+
+    .c { width: 100%; max-width: 860px; position: relative; z-index: 1; }
+    .cw { width: 100%; max-width: 1080px; position: relative; z-index: 1; }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 22px;
+    }
+    .bc { color: #22d3ee; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.2); }
+    .bv { color: #a78bfa; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); }
+    .br { color: #f87171; background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
+    .bg { color: #34d399; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); }
+    .by { color: #fbbf24; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); }
+
+    h1 { font-size: clamp(30px, 4.8vw, 62px); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(24px, 3.6vw, 46px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; }
+
+    .tc { color: #22d3ee; }
+    .tv { color: #a78bfa; }
+    .tr { color: #f87171; }
+    .tg { color: #34d399; }
+    .ty { color: #fbbf24; }
+    .tgr { color: #9ca3af; }
+    .tgrd { color: #6b7280; }
+
+    p.lead { font-size: clamp(15px, 1.8vw, 21px); color: #9ca3af; line-height: 1.65; margin-top: 14px; }
+    p.body { font-size: clamp(13px, 1.3vw, 17px); color: #9ca3af; line-height: 1.75; }
+
+    .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px; }
+    .card-c { background: rgba(34,211,238,0.04); border: 1px solid rgba(34,211,238,0.18); border-radius: 14px; padding: 22px; }
+    .card-v { background: rgba(139,92,246,0.04); border: 1px solid rgba(139,92,246,0.18); border-radius: 14px; padding: 22px; }
+    .card-r { background: rgba(248,113,113,0.04); border: 1px solid rgba(248,113,113,0.18); border-radius: 14px; padding: 22px; }
+    .card-g { background: rgba(52,211,153,0.04); border: 1px solid rgba(52,211,153,0.18); border-radius: 14px; padding: 22px; }
+    .card-y { background: rgba(251,191,36,0.04); border: 1px solid rgba(251,191,36,0.18); border-radius: 14px; padding: 22px; }
+
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    .cl { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cl li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px, 1.3vw, 16px); color: #d1d5db; line-height: 1.5; }
+    .cl li::before { content: "✓"; color: #22d3ee; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+    .xl { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .xl li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px, 1.3vw, 16px); color: #d1d5db; line-height: 1.5; }
+    .xl li::before { content: "✗"; color: #f87171; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+    .sr { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; gap: 16px; }
+    .sr .lbl { font-weight: 700; font-size: 14px; color: white; }
+    .sr .val { font-weight: 800; font-size: 14px; white-space: nowrap; }
+
+    .div { height: 1px; background: rgba(255,255,255,0.06); margin: 18px 0; }
+
+    .highlight { background: rgba(34,211,238,0.05); border: 1px solid rgba(34,211,238,0.18); border-radius: 12px; padding: 18px 22px; font-size: clamp(13px, 1.5vw, 18px); font-weight: 700; color: white; line-height: 1.45; }
+
+    .btn-primary { display: inline-block; padding: 20px 52px; background: linear-gradient(135deg, #0891b2, #06b6d4); color: white; font-weight: 800; font-size: 17px; border-radius: 12px; text-decoration: none; box-shadow: 0 0 50px rgba(6,182,212,0.3); transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+    .stat { text-align: center; }
+    .stat .n { font-size: clamp(34px, 5vw, 68px); font-weight: 900; line-height: 1; }
+    .stat .l { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-top: 6px; }
+
+    .quote { font-size: clamp(13px, 1.5vw, 17px); font-style: italic; color: #e5e7eb; line-height: 1.65; padding-left: 16px; border-left: 3px solid #22d3ee; }
+    .bignum { font-size: clamp(52px, 7.5vw, 96px); font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+    .strike { text-decoration: line-through; color: #4b5563; }
+
+    .f { display: flex; }
+    .fc { flex-direction: column; }
+    .ai { align-items: center; }
+    .afs { align-items: flex-start; }
+    .jc { justify-content: center; }
+    .tc-text { text-align: center; }
+    .mt4 { margin-top: 16px; }
+    .mt6 { margin-top: 24px; }
+    .mt8 { margin-top: 32px; }
+    .mt10 { margin-top: 40px; }
+    .gap2 { gap: 8px; }
+    .gap3 { gap: 12px; }
+    .gap4 { gap: 16px; }
+    .gap5 { gap: 20px; }
+    .gap6 { gap: 24px; }
+    .secret-label { font-size: clamp(11px,1.5vw,16px); font-weight: 700; color: #4b5563; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:3.33%"></div>
+<div id="counter">1 / 30</div>
+<div id="brand">Local Domination · javierayala.pro</div>
+
+<button class="nav-btn" id="prev" onclick="nav(-1)" style="opacity:0.3">‹</button>
+<button class="nav-btn" id="next" onclick="nav(1)">›</button>
+
+
+<!-- SLIDE 1 — HOOK -->
+<div class="slide active" id="s1">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Strategy Session · 30 Minutes</div>
+    <h1>
+      How to Dominate Google and<br>
+      Get <span class="tc">3X More Clients</span><br>
+      in the Next 90 Days
+    </h1>
+    <p class="lead mt6" style="max-width:580px;margin-left:auto;margin-right:auto;">
+      No matter your budget, your industry, or what you've tried before — there's a system that changes everything.
+    </p>
+    <div class="mt10 f jc ai gap4" style="flex-wrap:wrap;">
+      <div class="card f ai gap3" style="padding:10px 22px;display:inline-flex;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;">Presented by</span>
+        <span style="font-weight:800;font-size:15px;">Javier Ayala</span>
+      </div>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 2 — CREDIBILITY -->
+<div class="slide" id="s2">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Who I Am</div>
+    <div class="g2" style="gap:44px;align-items:center;">
+      <div>
+        <h2>Javier Ayala</h2>
+        <p class="body mt6">Digital marketing specialist for local service businesses. I've managed over <strong style="color:white;">$2 million in ad spend</strong> and worked with 200+ businesses across the US.</p>
+        <ul class="cl mt6">
+          <li>8+ years in Google Ads, Meta Ads & Local SEO</li>
+          <li>Founder of javierayala.pro</li>
+          <li>Specialist in local service businesses</li>
+          <li>Creator of the Local Domination system</li>
+          <li>200+ businesses helped to grow with Google</li>
+        </ul>
+      </div>
+      <div class="f fc gap4">
+        <div class="card-c"><div class="stat"><div class="n tc">$2M+</div><div class="l">Ad spend managed</div></div></div>
+        <div class="card"><div class="stat"><div class="n tv">200+</div><div class="l">Businesses helped</div></div></div>
+        <div class="card"><div class="stat"><div class="n tg">8+</div><div class="l">Years experience</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 3 — AGENDA -->
+<div class="slide" id="s3">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bv">What You'll Learn Today</div>
+    <h2>Here's what we'll cover in the <span class="tc">next 30 minutes</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">1</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">Why 90% of local businesses waste money on advertising</div>
+          <div style="font-size:13px;color:#6b7280;">And why it's not your fault.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(139,92,246,0.12);color:#a78bfa;">2</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">The only system that combines Google's 3 most powerful channels</div>
+          <div style="font-size:13px;color:#6b7280;">Google Ads + Maps + SEO — working together, not in isolation.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(52,211,153,0.12);color:#34d399;">3</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">How to apply it to your business in 90 days</div>
+          <div style="font-size:13px;color:#6b7280;">With measurable results from week one.</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight mt8">
+      ⚠️ At the end of this presentation, I'm going to make you an offer. If what you see today makes sense, take action. If it's not for you, no problem — you'll still walk away with the knowledge.
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 4 — THE STORY / EPIPHANY -->
+<div class="slide" id="s4">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Story</div>
+    <h2>4 years ago, a client asked me a question that <span class="tc">changed everything</span></h2>
+    <p class="body mt6">He owned an HVAC company in Texas. He'd been spending $3,000/month on Google Ads for 2 years. He was getting calls, but something felt off. He asked me:</p>
+    <div style="margin:20px 0;padding:20px 24px;border-left:3px solid #22d3ee;background:rgba(34,211,238,0.04);border-radius:0 12px 12px 0;">
+      <p style="font-size:clamp(14px,1.6vw,19px);color:#e5e7eb;font-style:italic;line-height:1.6;">"Javier, why does my competitor show up at the top in ads, first on the map, AND has an article on Google? I also pay for ads but I only show up in one of the three."</p>
+    </div>
+    <div class="card-c mt4">
+      <p style="font-weight:700;font-size:clamp(14px,1.6vw,19px);line-height:1.5;">That's when I understood something most marketers miss: <span class="tc">it's not about choosing one channel. It's about dominating all of them at the same time.</span></p>
+    </div>
+    <p class="body mt6">That HVAC business went from mediocre results to <strong style="color:white;">3X more leads in 90 days</strong> — without increasing their budget. The only thing that changed was the system.</p>
+  </div>
+</div>
+
+
+<!-- SLIDE 5 — SECRET #1 TITLE -->
+<div class="slide" id="s5">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Secret #1 of 3</div>
+    <div class="secret-label">The Vehicle — The New Opportunity</div>
+    <h1>The reason your advertising<br>isn't working <span class="tr">isn't what you think</span></h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      It's not the budget. It's not the competition. It's not the platform. It's something more fundamental — and easier to fix than you imagine.
+    </p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 6 — THROWING ROCKS AT THE ENEMIES -->
+<div class="slide" id="s6">
+  <div class="gr"></div>
+  <div class="cw">
+    <div class="badge br">Breaking the Myth</div>
+    <h2>What agencies tell you — and <span class="tr">why it's wrong</span></h2>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card-r">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:14px;">What agencies say</div>
+        <ul class="xl">
+          <li>"You need a bigger budget to see results"</li>
+          <li>"Google Ads alone doesn't work for small businesses"</li>
+          <li>"SEO takes too long, it's not worth it"</li>
+          <li>"Google Maps ranks itself, there's nothing to do"</li>
+          <li>"Pick ONE channel and focus on that"</li>
+        </ul>
+      </div>
+      <div class="card-g">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px;">The truth they don't tell you</div>
+        <ul class="cl">
+          <li>Budget isn't the problem — strategy is</li>
+          <li>Isolated channels never perform as well as combined ones</li>
+          <li>SEO accelerates when you pair it with Ads and Maps</li>
+          <li>Maps is the highest-ROI and most ignored channel</li>
+          <li>Domination comes from simultaneous presence</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight mt6">
+      💡 Agencies sell you one channel at a time because that's how they charge more. A single channel was never enough — and they know it.
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 7 — THE NEW OPPORTUNITY -->
+<div class="slide" id="s7">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The New Opportunity</div>
+    <h2>When someone searches for your service on Google, there are <span class="tc">3 moments</span> to appear</h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <div style="font-size:26px;flex-shrink:0;">🔵</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;color:white;">Moment 1: The Ads (Google Ads)</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Appear in the first paid results. The customer sees you immediately — captures active buying intent.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div style="font-size:26px;flex-shrink:0;">📍</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;color:white;">Moment 2: The Map (Google Maps)</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Appear in the 3-pack with reviews. Free traffic. Extremely high conversion rate.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div style="font-size:26px;flex-shrink:0;">📄</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;color:white;">Moment 3: Organic Results (SEO)</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Your content appears in natural results. Builds trust and authority — without paying per click.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-c mt6">
+      <p style="font-weight:800;font-size:clamp(14px,1.6vw,18px);text-align:center;line-height:1.45;">
+        Your competitor who dominates all 3 shows up <span class="tc">3 times</span> where you show up once.<br>
+        <span style="font-size:13px;font-weight:400;color:#9ca3af;">Who do you think they call?</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 8 — CASE STUDY #1 -->
+<div class="slide" id="s8">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Real Case Study</div>
+    <h2>What happens when all 3 channels <span class="tc">work together</span></h2>
+    <div class="g3 mt8">
+      <div class="card tc-text">
+        <div class="stat"><div class="n tr" style="font-size:36px;">Before</div></div>
+        <div class="div"></div>
+        <ul class="xl" style="text-align:left;">
+          <li>Google Ads only</li>
+          <li>$3,000 / month</li>
+          <li>18 leads / month</li>
+          <li>Cost per lead: $167</li>
+          <li>Close rate: 22%</li>
+        </ul>
+      </div>
+      <div class="card-c tc-text" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#22d3ee;margin-bottom:6px;">Real Client — HVAC Texas</div>
+        <p style="font-size:13px;color:#9ca3af;line-height:1.7;">Same budget.<br>Same city.<br>Same industry.<br><br>Only the system changed.</p>
+        <div style="font-size:36px;">→</div>
+      </div>
+      <div class="card tc-text" style="border-color:rgba(52,211,153,0.22);">
+        <div class="stat"><div class="n tg" style="font-size:36px;">After</div></div>
+        <div class="div"></div>
+        <ul class="cl" style="text-align:left;">
+          <li>Ads + Maps + SEO</li>
+          <li>$3,000 / month (same)</li>
+          <li>54 leads / month <span class="tg">(+200%)</span></li>
+          <li>Cost per lead: $55 <span class="tg">(-67%)</span></li>
+          <li>Close rate: 38%</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight mt6">
+      🔑 The budget didn't change. What changed was they stopped losing 67% of their opportunities by betting everything on one channel.
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 9 — SECRET #2 TITLE -->
+<div class="slide" id="s9">
+  <div class="gv"></div>
+  <div class="c tc-text">
+    <div class="badge bv">Secret #2 of 3</div>
+    <div class="secret-label">The Internal Belief — Yes, It Can Work for You</div>
+    <h1>"This sounds good,<br>but <span class="tv">my business is different"</span></h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      That voice in your head saying your market, your city, or your situation makes this not work for you. It's time to confront it.
+    </p>
+  </div>
+</div>
+
+
+<!-- SLIDE 10 — THROWING ROCKS AT INTERNAL EXCUSES -->
+<div class="slide" id="s10">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">Dismantling the Excuses</div>
+    <h2>The reasons you think <span class="tr">it won't work for you</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"My competitors already dominate Google, I can't beat them"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">Market leaders rarely dominate all 3 channels. The one leading in Ads is usually weak in Maps. There's always a gap to exploit — always.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"I don't have enough budget for all of that"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">The system is designed to scale with results. One new customer covers weeks of investment. You start lean and grow fast.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"My market is too small / my customers don't use Google"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">In smaller markets, competition is lighter. Fewer businesses competing = easier to dominate. And 93% of local service searches happen on Google.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"I already tried Google Ads and it didn't work"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">What you tried was one isolated channel with no closing strategy. That's like building with a single brick. The full system is fundamentally different.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 11 — JUSTIFY PAST FAILURES -->
+<div class="slide" id="s11">
+  <div class="gv"></div>
+  <div class="c">
+    <div class="badge bv">Not Your Fault</div>
+    <h2>First — <span class="tv">I want to apologize</span><br>on behalf of the industry</h2>
+    <p class="body mt6">If you've invested in digital advertising and haven't seen the results you expected, <strong style="color:white;">it is not your fault.</strong></p>
+    <div class="f fc gap4 mt6">
+      <div class="card"><p class="body">You were sold <strong style="color:white;">Google Ads without strategy</strong>. Someone turned on a generic campaign, collected their management fee, and disappeared. That's not marketing — it's billing without accountability.</p></div>
+      <div class="card"><p class="body">You were sold <strong style="color:white;">SEO without transparency</strong>. Promises of "page one of Google" with no timeline, no guarantee, no explanation of what you were actually paying for.</p></div>
+      <div class="card"><p class="body">You were sold <strong style="color:white;">isolated channels</strong>. Nobody explained that the real power is in how the channels connect — because if they did, they'd have to deliver everything together.</p></div>
+    </div>
+    <div class="card-v mt6">
+      <p style="font-weight:700;font-size:clamp(14px,1.6vw,18px);line-height:1.5;">The system that failed wasn't yours. It was theirs. <span class="tv">Today I show you a different one.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 12 — WORKS FOR ANY INDUSTRY -->
+<div class="slide" id="s12">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Proof</div>
+    <h2>This works in <span class="tc">any local service industry</span></h2>
+    <div class="g3 mt8">
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">🔧</div><div style="font-weight:700;font-size:14px;">Contractors</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Plumbing · HVAC · Electrical · Roofing</div></div>
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">⚖️</div><div style="font-weight:700;font-size:14px;">Legal & Medical</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Attorneys · Dentists · Clinics</div></div>
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">🏡</div><div style="font-weight:700;font-size:14px;">Real Estate</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Agents · Property · Leasing</div></div>
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">💆</div><div style="font-weight:700;font-size:14px;">Wellness & Beauty</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Med Spas · Chiropractors · Nutrition</div></div>
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">💰</div><div style="font-weight:700;font-size:14px;">Finance & Insurance</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Agents · Advisors · Mortgages</div></div>
+      <div class="card tc-text" style="padding:18px;"><div style="font-size:26px;margin-bottom:8px;">🎓</div><div style="font-weight:700;font-size:14px;">Education & Consulting</div><div style="font-size:11px;color:#6b7280;margin-top:4px;">Coaches · Consultants · Trainers</div></div>
+    </div>
+    <div class="highlight mt6 tc-text">If you have a local business with a real service and customers who search on Google — this works for you.</div>
+  </div>
+</div>
+
+
+<!-- SLIDE 13 — CASE STUDY #2 -->
+<div class="slide" id="s13">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Real Case Study #2</div>
+    <h2>The dentist who said <em style="color:#9ca3af;">"I already tried Google Ads"</em></h2>
+    <div class="g2 mt8" style="gap:28px;align-items:center;">
+      <div>
+        <div class="card-r" style="margin-bottom:16px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:10px;">His previous experience</div>
+          <p style="font-size:13px;color:#d1d5db;line-height:1.7;">Spent $8,000 with an agency over 6 months. Got calls from the wrong insurance types, clients outside his service area, cost per lead of $220. He canceled and swore he'd never run ads again.</p>
+        </div>
+        <div class="card-c">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#22d3ee;margin-bottom:10px;">With the full system</div>
+          <p style="font-size:13px;color:#d1d5db;line-height:1.7;">Within 60 days: tightly segmented Ads + Maps top 3 + SEO articles about dental implants. Result: 32 new consultations in the first month.</p>
+        </div>
+      </div>
+      <div class="f fc gap4">
+        <div class="card tc-text" style="padding:28px;"><div class="bignum tr">$220</div><div style="font-size:11px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.1em;text-transform:uppercase;">Cost per lead before</div></div>
+        <div style="text-align:center;font-size:28px;">↓</div>
+        <div class="card tc-text" style="padding:28px;border-color:rgba(52,211,153,0.25);"><div class="bignum tg">$58</div><div style="font-size:11px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.1em;text-transform:uppercase;">Cost per lead after</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 14 — SECRET #3 TITLE -->
+<div class="slide" id="s14">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge by">Secret #3 of 3</div>
+    <div class="secret-label">The External Belief — The Time Is Now</div>
+    <h1>"I'm going to wait for<br><span class="ty">the right moment"</span></h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">The economy. Next month. When I have more time. When I raise more capital. While you wait, your competition is moving forward.</p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 15 — THE REAL COST OF WAITING -->
+<div class="slide" id="s15">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">The Real Cost of Waiting</div>
+    <h2>Every month you wait, <span class="tr">this is what you lose</span></h2>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card tc-text" style="padding:28px;"><div class="bignum tr">47</div><div style="font-size:12px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.08em;text-transform:uppercase;">Leads going to<br>your competitor / month</div><div style="font-size:11px;color:#4b5563;margin-top:8px;">Average for a local<br>service business</div></div>
+      <div class="card tc-text" style="padding:28px;"><div class="bignum tr">$23K</div><div style="font-size:12px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.08em;text-transform:uppercase;">Revenue lost<br>per month of delay</div><div style="font-size:11px;color:#4b5563;margin-top:8px;">Based on avg. customer<br>value of $500</div></div>
+    </div>
+    <div class="card-r mt6"><p style="font-weight:700;font-size:clamp(14px,1.6vw,18px);line-height:1.5;text-align:center;">Waiting isn't free. Waiting has an exact cost: customers who are searching for your service right now and hiring someone else.</p></div>
+    <div class="card mt4 f gap4 afs">
+      <span style="font-size:22px;flex-shrink:0;">⏰</span>
+      <p style="font-size:13px;color:#9ca3af;line-height:1.6;">SEO takes 3–6 months to show significant results. If you start today, you have organic free traffic in 90 days. If you wait 2 more months, that traffic comes 2 months later. That delay is never recovered.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 16 — WHY NOW -->
+<div class="slide" id="s16">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">Why NOW</div>
+    <h2>The opportunity window <span class="tc">won't last</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📈</span>
+        <div><div style="font-weight:700;font-size:15px;">Google Maps is undervalued right now</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">80% of local businesses don't optimize their profile. Those who do it now dominate for years without competition.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🤖</span>
+        <div><div style="font-weight:700;font-size:15px;">AI in Google Ads is changing the game right now</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Accounts with AI properly configured generate 40% more conversions. Those who learn this first, win first.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🏆</span>
+        <div><div style="font-weight:700;font-size:15px;">Your competition hasn't figured this out yet</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">In most local markets, nobody is executing this correctly. Whoever enters first, dominates first.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📅</span>
+        <div><div style="font-weight:700;font-size:15px;">Google Ads history builds from today</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Accounts with conversion history have a quality advantage. Every day without data is a day your competition builds that advantage instead.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 17 — RECAP + TRANSITION -->
+<div class="slide" id="s17">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Recap</div>
+    <h2>The <span class="tc">3 secrets</span> in one idea</h2>
+    <div class="f fc gap4 mt8" style="max-width:680px;margin-left:auto;margin-right:auto;text-align:left;">
+      <div class="card-c f gap4 ai">
+        <div class="num" style="background:rgba(34,211,238,0.18);color:#22d3ee;width:42px;height:42px;font-size:18px;">1</div>
+        <div><div style="font-weight:700;font-size:15px;">The Vehicle</div><div style="font-size:13px;color:#9ca3af;">It's not one channel — it's a 3-channel system where each amplifies the others.</div></div>
+      </div>
+      <div class="card-v f gap4 ai">
+        <div class="num" style="background:rgba(139,92,246,0.18);color:#a78bfa;width:42px;height:42px;font-size:18px;">2</div>
+        <div><div style="font-weight:700;font-size:15px;">The Internal Belief</div><div style="font-size:13px;color:#9ca3af;">It works for your industry. The previous system failed — not you.</div></div>
+      </div>
+      <div class="card-y f gap4 ai">
+        <div class="num" style="background:rgba(251,191,36,0.18);color:#fbbf24;width:42px;height:42px;font-size:18px;">3</div>
+        <div><div style="font-weight:700;font-size:15px;">The External Belief</div><div style="font-size:13px;color:#9ca3af;">The right time is now. Waiting has an exact, measurable cost.</div></div>
+      </div>
+    </div>
+    <p class="lead mt8">Now let me show you <span class="tc">exactly how we build this for you.</span></p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 18 — INTRODUCING THE PACKAGE -->
+<div class="slide" id="s18">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">The Offer</div>
+    <h2>Introducing the only system that takes<br>your business to <span class="tc">dominate Google</span></h2>
+    <div class="mt10" style="display:inline-block;padding:2px;background:linear-gradient(135deg,rgba(34,211,238,0.45),rgba(139,92,246,0.45));border-radius:22px;">
+      <div style="background:#060609;border-radius:20px;padding:30px 56px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Complete Package</div>
+        <div style="font-size:clamp(26px,5vw,54px);font-weight:900;letter-spacing:-0.025em;">Local Domination</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:8px;">Google Ads · Google Maps · SEO & Content</div>
+      </div>
+    </div>
+    <p class="lead mt8" style="max-width:580px;margin-left:auto;margin-right:auto;">All 3 Google channels working together under one coordinated strategy — so your business appears at every point where your customer searches for you.</p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 19 — STACK #1: GOOGLE ADS -->
+<div class="slide" id="s19">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #1</div>
+    <div class="g2" style="gap:44px;align-items:center;">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">🎯</div>
+        <h2>Google Ads<br><span class="tc">with Artificial Intelligence</span></h2>
+        <p class="body mt6">Campaigns built for your specific industry and city. AI that optimizes bids, adjusts audiences, and improves Quality Score every week — without you having to do a thing.</p>
+        <ul class="cl mt6">
+          <li>Full account and campaign setup</li>
+          <li>High-intent buyer keyword research</li>
+          <li>AI-optimized responsive search ads</li>
+          <li>Smart Bidding with real conversion data</li>
+          <li>Call and form conversion tracking</li>
+          <li>Weekly reports in your own dashboard</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$1,200</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">/ month</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">💡 Agencies charge between $800–$2,500/month just for Ads management</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 20 — STACK #2: GOOGLE MAPS -->
+<div class="slide" id="s20">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #2</div>
+    <div class="g2" style="gap:44px;align-items:center;">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">📍</div>
+        <h2>Google Maps<br><span class="tc">Domination</span></h2>
+        <p class="body mt6">Your profile optimized to appear in the top 3 of the map for your most important industry searches — generating free calls every single day.</p>
+        <ul class="cl mt6">
+          <li>Full Google Business Profile optimization</li>
+          <li>Automated review generation system</li>
+          <li>Daily automated posts</li>
+          <li>NAP consistency across 50+ directories</li>
+          <li>Maps ranking position tracking</li>
+          <li>Review response and Q&A management</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$800</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">/ month</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">🗺️ 76% of local searches end in a visit within 24 hours</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 21 — STACK #3: SEO -->
+<div class="slide" id="s21">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Component #3</div>
+    <div class="g2" style="gap:44px;align-items:center;">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">📝</div>
+        <h2>Organic SEO<br><span class="tg">& AI-Powered Content</span></h2>
+        <p class="body mt6">Articles and pages that position your business on Google organically — building authority month after month without paying per click.</p>
+        <ul class="cl mt6">
+          <li>Full site SEO audit</li>
+          <li>4 SEO-optimized blog articles per month</li>
+          <li>Service pages per city/zone</li>
+          <li>Focused local link building</li>
+          <li>Continuous technical optimization</li>
+          <li>Ranking position and organic traffic tracking</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-g tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#34d399;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$900</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">/ month</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">📈 SEO content generates indefinite free traffic — ROI grows over time</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 22 — THE COMPOUNDING EFFECT -->
+<div class="slide" id="s22">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Compounding Effect</div>
+    <h2>Why the 3 together are <span class="tc">exponentially more powerful</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🔵→📍</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Google Ads strengthens your Maps</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Traffic from Ads visits your Google Business Profile and leaves reviews. More reviews = better map ranking. The paid channel strengthens the free one.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📍→📝</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Maps strengthens your organic SEO</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Google treats businesses with active, well-reviewed profiles as local authorities. That pushes your organic results higher too.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📝→🔵</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">SEO lowers your cost-per-click in Ads</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Google rewards advertisers who have high-authority sites with low bounce rates. SEO content improves your Quality Score, reducing what you pay per click.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-c mt6">
+      <p style="font-weight:800;font-size:clamp(14px,1.6vw,18px);text-align:center;line-height:1.45;">
+        Each channel makes the others stronger.<br>
+        <span style="font-size:13px;font-weight:400;color:#9ca3af;">This is what no single-channel agency can ever give you.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 23 — 90-DAY PLAN -->
+<div class="slide" id="s23">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The 90-Day Plan</div>
+    <h2>What happens <span class="tc">week by week</span> from day 1</h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;width:56px;height:36px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:0.08em;">Wk 1</div>
+        <div><div style="font-weight:700;font-size:15px;">Google Ads live — first calls coming in</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Full campaign setup, keywords, and tracking. Within 48–72 hours your ads are running and generating real leads.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;width:56px;height:36px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:0.08em;">Wk 2</div>
+        <div><div style="font-weight:700;font-size:15px;">Google Maps optimized — first reviews coming in</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Profile completed 100%, review system active, daily posts started. Map ranking begins climbing.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;width:56px;height:36px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:0.08em;">Mo 1</div>
+        <div><div style="font-weight:700;font-size:15px;">SEO underway — first articles published</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">4 SEO articles published, technical audit completed. Content begins indexing in Google.</div></div>
+      </div>
+      <div class="card f gap4 afs" style="border-color:rgba(34,211,238,0.22);">
+        <div class="num" style="background:rgba(34,211,238,0.18);color:#22d3ee;width:56px;height:36px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:0.08em;">Day 90</div>
+        <div><div style="font-weight:700;font-size:15px;color:#22d3ee;">All 3 channels compounding</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Ads with 60 days of AI conversion data, Maps in top 3, SEO content driving free organic traffic. Cost per lead down 40–60%.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 24 — BONUSES -->
+<div class="slide" id="s24">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge by">Exclusive Bonuses</div>
+    <h2>And on top of that, these <span class="ty">bonuses included free</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">Full Competitor Audit</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$500 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Analysis of your top 5 competitors — which keywords they use, how much they spend, what's working for them.</div>
+        </div>
+      </div>
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">High-Conversion Landing Page</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$800 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Page designed to convert your campaign traffic. Optimized for mobile and speed.</div>
+        </div>
+      </div>
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">Real-Time Results Dashboard</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$300 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">See in real time: leads, calls, cost per lead, Maps ranking, and organic traffic — all in one place.</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight mt6 tc-text">Total bonus value: <span class="ty" style="font-weight:900;">$1,600</span> — included at no additional cost</div>
+  </div>
+</div>
+
+
+<!-- SLIDE 25 — FULL STACK + VALUE -->
+<div class="slide" id="s25">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Complete Stack</div>
+    <h2>Everything <span class="tc">included in the package</span></h2>
+    <div class="f fc gap3 mt8">
+      <div class="sr"><div><div class="lbl">🎯 Google Ads with AI</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Setup + management + monthly optimization</div></div><div class="val tc">$1,200/mo</div></div>
+      <div class="sr"><div><div class="lbl">📍 Google Maps Domination</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Profile + reviews + daily posts</div></div><div class="val tc">$800/mo</div></div>
+      <div class="sr"><div><div class="lbl">📝 SEO & Content</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Articles + pages + link building</div></div><div class="val tc">$900/mo</div></div>
+      <div class="sr" style="border-color:rgba(251,191,36,0.2);"><div><div class="lbl" style="color:#fbbf24;">🎁 Bonuses: Audit + Landing Page + Dashboard</div></div><div class="val ty">$1,600</div></div>
+      <div class="div"></div>
+      <div class="sr" style="background:rgba(34,211,238,0.04);border-color:rgba(34,211,238,0.22);padding:16px 18px;"><div><div style="font-weight:900;font-size:16px;">TOTAL PACKAGE VALUE</div></div><div style="font-weight:900;font-size:20px;color:#22d3ee;">$4,500/mo</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 26 — PRICE REVEAL + GUARANTEE -->
+<div class="slide" id="s26">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">The Price</div>
+    <h2>You're not going to pay <span class="tgrd">$4,500 a month</span></h2>
+    <p class="lead mt4">This special offer is only for clients who get started today.</p>
+    <div class="mt8" style="display:inline-block;padding:2px;background:linear-gradient(135deg,rgba(34,211,238,0.5),rgba(139,92,246,0.5));border-radius:22px;">
+      <div style="background:#0a0a12;border-radius:20px;padding:36px 64px;text-align:center;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">You only pay</div>
+        <div style="font-size:clamp(44px,7.5vw,90px);font-weight:900;line-height:1;letter-spacing:-0.04em;">$1,000</div>
+        <div style="font-size:15px;color:#6b7280;margin-top:6px;">/ month · month-to-month · no annual contract</div>
+        <div class="div" style="margin:20px 0;"></div>
+        <div style="font-size:14px;color:#9ca3af;">Real value: <span class="strike">$4,500/mo</span><br><span style="color:#34d399;font-weight:700;font-size:16px;margin-top:4px;display:block;">You save $3,500 every month</span></div>
+      </div>
+    </div>
+    <div class="g2 mt8" style="gap:16px;max-width:680px;margin-left:auto;margin-right:auto;">
+      <div class="card-g" style="text-align:left;padding:18px;"><div style="font-size:22px;margin-bottom:8px;">🛡️</div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">30-Day Guarantee</div><div style="font-size:12px;color:#9ca3af;line-height:1.5;">If within 30 days you don't see measurable results, we refund 100% of your investment.</div></div>
+      <div class="card" style="text-align:left;padding:18px;"><div style="font-size:22px;margin-bottom:8px;">📅</div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">No Annual Contract</div><div style="font-size:12px;color:#9ca3af;line-height:1.5;">Month to month. If you're ever unhappy, you cancel. No penalties, no hidden clauses.</div></div>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- SLIDE 27 — IF/ALL CLOSE -->
+<div class="slide" id="s27">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Close — If/All Logic</div>
+    <h2>Let me ask you something <span class="tc">honestly</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> the results I showed you today are real — and they are — does it make sense to keep doing what isn't working?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> every month without this system is costing you $23,000 in lost revenue, how much longer can you afford to wait?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> the risk is completely eliminated with the 30-day guarantee, what exactly do you have to lose?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> all of this — 3 Google channels + bonuses — is worth $4,500/month but I'm offering it today for $1,000, when are you going to find a better opportunity?</p></div>
+    </div>
+    <div class="card-c mt6"><p style="font-weight:800;font-size:clamp(14px,1.6vw,18px);text-align:center;line-height:1.4;">If the answer to all of that is "yes" — the only question left is:<br><span class="tc">when do we start?</span></p></div>
+  </div>
+</div>
+
+
+<!-- SLIDE 28 — FUTURE PACING + TESTIMONIALS -->
+<div class="slide" id="s28">
+  <div class="gv"></div>
+  <div class="cw">
+    <div class="badge bv">Future Pacing + Social Proof</div>
+    <h2>Imagine your business in <span class="tc">90 days</span></h2>
+    <div class="g2 mt6" style="gap:20px;align-items:start;">
+      <div class="f fc gap4">
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine opening your inbox Monday morning and seeing 12 new qualified leads — 5 of them already have appointments booked for this week.</p></div>
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine searching your service on Google and seeing your business in the ad, on the map, and in an article — while your competitor appears only once.</p></div>
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine your cost per lead dropped from $150 to $55 — and those leads already arrive qualified, ready to talk price.</p></div>
+      </div>
+      <div class="f fc gap4">
+        <div class="card f fc gap4"><div class="quote">"In 45 days we had double the calls. We had to hire someone new just to handle the volume."</div><div class="f gap3 ai" style="margin-top:auto;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0891b2,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">RC</div><div><div style="font-weight:700;font-size:13px;">Robert C.</div><div style="font-size:11px;color:#6b7280;">HVAC · Texas</div></div></div></div>
+        <div class="card f fc gap4"><div class="quote">"Before, I had no idea if my $4,000 in ads was working. Now I spend $1,000 and see every lead in real time."</div><div class="f gap3 ai" style="margin-top:auto;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#059669,#22d3ee);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">ML</div><div><div style="font-weight:700;font-size:13px;">Mary L.</div><div style="font-size:11px;color:#6b7280;">Dentist · Florida</div></div></div></div>
+        <div class="card f fc gap4"><div class="quote">"Google Maps generates more free calls than what I paid in ads last month. It's unbelievable."</div><div class="f gap3 ai" style="margin-top:auto;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">JP</div><div><div style="font-weight:700;font-size:13px;">John P.</div><div style="font-size:11px;color:#6b7280;">Plumbing · California</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 29 — URGENCY + SCARCITY -->
+<div class="slide" id="s29">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">Urgency & Scarcity</div>
+    <h2>This offer has <span class="tr">a real limit</span></h2>
+    <p class="body mt6">This isn't a sales tactic. It's an operational reality: to maintain quality and measurable results for every client, I only accept <strong style="color:white;">5 new clients per month.</strong></p>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card-r"><div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:12px;">This month</div><div style="font-size:52px;font-weight:900;line-height:1;">3/5</div><div style="font-size:13px;color:#9ca3af;margin-top:8px;">Spots already taken</div><div class="f gap2 mt4"><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:rgba(255,255,255,0.08);border-radius:4px;"></div><div style="width:22px;height:7px;background:rgba(255,255,255,0.08);border-radius:4px;"></div></div></div>
+      <div class="card-g"><div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:12px;">Still available</div><div style="font-size:52px;font-weight:900;line-height:1;">2</div><div style="font-size:13px;color:#9ca3af;margin-top:8px;">Spots for this month</div><div class="f gap2 mt4"><div style="width:22px;height:7px;background:#34d399;border-radius:4px;"></div><div style="width:22px;height:7px;background:#34d399;border-radius:4px;"></div></div></div>
+    </div>
+    <div class="highlight mt6">⚠️ If you want to reserve one of the 2 available spots, I need you to do it on this call. Next month's pricing will be reviewed upward.</div>
+    <div class="card-r mt4 f gap4 afs"><span style="font-size:20px;flex-shrink:0;">🎁</span><p style="font-size:13px;color:#d1d5db;line-height:1.6;">Those who start today also get the <strong style="color:white;">competitor audit ($500) and landing page ($800)</strong> bonuses — those <strong style="color:#f87171;">will not be available next month.</strong></p></div>
+  </div>
+</div>
+
+
+<!-- SLIDE 30 — FINAL CTA / CALENDLY -->
+<div class="slide" id="s30">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Final Step</div>
+    <h2>The next step is <span class="tc">simple</span></h2>
+    <p class="lead mt4" style="max-width:540px;margin-left:auto;margin-right:auto;">Book your free 30-minute strategy consultation. I'll show you exactly what this system would look like for your specific business — before you commit to anything.</p>
+    <div class="f fc gap4 mt8" style="max-width:540px;margin-left:auto;margin-right:auto;text-align:left;">
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">1</div><div style="font-size:14px;color:#d1d5db;">Click the button and choose your time slot</div></div>
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">2</div><div style="font-size:14px;color:#d1d5db;">Receive immediate confirmation</div></div>
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">3</div><div style="font-size:14px;color:#d1d5db;">On the call we review your market and I walk you through the full plan</div></div>
+    </div>
+    <div class="mt10">
+      <a href="[YOUR_CALENDLY_LINK]" class="btn-primary">→ Book My Free Strategy Call</a>
+      <div style="font-size:11px;color:#4b5563;margin-top:14px;">30 minutes · No commitment · 100% free</div>
+    </div>
+    <div class="card mt8 f gap4 afs" style="max-width:500px;margin-left:auto;margin-right:auto;text-align:left;">
+      <span style="font-size:20px;flex-shrink:0;">🛡️</span>
+      <p style="font-size:12px;color:#9ca3af;line-height:1.6;"><strong style="color:white;">Full 30-Day Guarantee:</strong> If within 30 days of working together you don't see measurable results, I refund 100% of your investment. No questions, no forms, no drama.</p>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<script>
+  let cur = 1;
+  const total = 30;
+
+  function nav(dir) {
+    const next = cur + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('s' + cur).classList.remove('active');
+    cur = next;
+    document.getElementById('s' + cur).classList.add('active');
+    document.getElementById('counter').textContent = cur + ' / ' + total;
+    document.getElementById('progress-bar').style.width = ((cur / total) * 100) + '%';
+    document.getElementById('prev').style.opacity = cur === 1 ? '0.3' : '1';
+    document.getElementById('next').style.opacity = cur === total ? '0.3' : '1';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); nav(1); }
+    if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); nav(-1); }
+  });
+
+  let tx = 0;
+  document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const d = tx - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 50) nav(d > 0 ? 1 : -1);
+  });
+</script>
+</body>
+</html>

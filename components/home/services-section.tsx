@@ -1,99 +1,61 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight, Target, Search, Bot, MapPin, Zap, MessageCircle, Calendar } from "lucide-react"
+import { ArrowUpRight, Target, Search, Zap, BarChart3, RefreshCw } from "lucide-react"
 import { motion } from "framer-motion"
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-const services = [
+const components = [
   {
     number: "01",
     icon: Target,
-    title: "Google Ads Management",
-    tag: "Paid Search",
-    description: "AI-optimized campaigns that turn ad spend into predictable, profitable customer acquisition. Free audit in 48 hours.",
-    href: "/googleadsai",
+    title: "Campaign Strategy & Setup",
+    tag: "Foundation",
+    description: "Tight ad groups, exact match architecture, and account structure that makes Google's algorithm work for you — not against you. Most accounts are set up wrong. We fix that first.",
     accent: "hover:border-cyan-500/40 group-hover:bg-cyan-500/[0.03]",
     iconBg: "bg-cyan-500/10 text-cyan-400",
     tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
   },
   {
     number: "02",
-    icon: Target,
-    title: "Meta Ads",
-    tag: "Paid Social",
-    description: "Facebook + Instagram campaigns with precision targeting. Stop boosting posts — run real ads that generate real leads.",
-    href: "/meta-ads",
-    accent: "hover:border-pink-500/40 group-hover:bg-pink-500/[0.03]",
-    iconBg: "bg-pink-500/10 text-pink-400",
-    tagColor: "text-pink-400 bg-pink-500/10 border-pink-500/20",
+    icon: Search,
+    title: "Keyword & Negative Keyword Management",
+    tag: "Traffic Control",
+    description: "Deep keyword research plus a continuously growing negative keyword list. We cut irrelevant clicks from day one and protect your budget from the search terms that never convert.",
+    accent: "hover:border-sky-500/40 group-hover:bg-sky-500/[0.03]",
+    iconBg: "bg-sky-500/10 text-sky-400",
+    tagColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
   },
   {
     number: "03",
-    icon: MessageCircle,
-    title: "WhatsApp Chatbot",
-    tag: "Automation",
-    description: "WhatsApp Cloud API bot that responds instantly 24/7, qualifies leads, and books appointments while you work.",
-    href: "/whatsapp",
-    accent: "hover:border-green-500/40 group-hover:bg-green-500/[0.03]",
-    iconBg: "bg-green-500/10 text-green-400",
-    tagColor: "text-green-400 bg-green-500/10 border-green-500/20",
-  },
-  {
-    number: "04",
-    icon: Calendar,
-    title: "Social Media Automation",
-    tag: "Content",
-    description: "30 AI-created posts per month across Instagram, Facebook, and LinkedIn. Scheduled, published, and tracked automatically.",
-    href: "/social-media",
+    icon: Zap,
+    title: "AI Bid Optimization",
+    tag: "AI Engine",
+    description: "Smart bidding powered by machine learning adjusts bids in real time — by keyword, device, time of day, and audience segment. Your competitors are still setting manual bids. You're not.",
     accent: "hover:border-violet-500/40 group-hover:bg-violet-500/[0.03]",
     iconBg: "bg-violet-500/10 text-violet-400",
     tagColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
   },
   {
-    number: "05",
-    icon: Search,
-    title: "SEO & Content Automation",
-    tag: "Organic Growth",
-    description: "Weekly AI-generated blog posts, GMB updates, and automated indexing that compounds your rankings month after month.",
-    href: "/rankflow",
+    number: "04",
+    icon: BarChart3,
+    title: "Conversion Tracking & Monthly Report",
+    tag: "Visibility",
+    description: "You see exactly what each lead cost, which campaigns are profitable, and where we scale next. No more guessing. Every dollar is tracked back to a phone call or form submission.",
     accent: "hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.03]",
     iconBg: "bg-emerald-500/10 text-emerald-400",
     tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
   },
   {
-    number: "06",
-    icon: MapPin,
-    title: "Google Maps Domination",
-    tag: "Local SEO",
-    description: "Full GMB optimization, review automation, and weekly posts. Rank in the top 3 local pack within 90 days.",
-    href: "/seo",
-    accent: "hover:border-blue-500/40 group-hover:bg-blue-500/[0.03]",
-    iconBg: "bg-blue-500/10 text-blue-400",
-    tagColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
-  },
-  {
-    number: "07",
-    icon: Bot,
-    title: "AI Booking Agent",
-    tag: "AI Agent",
-    description: "AI that answers leads across WhatsApp, your website, and social — qualifying and booking appointments 24/7.",
-    href: "/ai-agent",
-    accent: "hover:border-purple-500/40 group-hover:bg-purple-500/[0.03]",
-    iconBg: "bg-purple-500/10 text-purple-400",
-    tagColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
-  },
-  {
-    number: "08",
-    icon: Zap,
-    title: "Local Domination Bundle",
-    tag: "Full System",
-    description: "Google Ads + SEO + Google Maps — all three running under one unified strategy. Save $200/mo vs. buying separately.",
-    href: "/domination",
-    accent: "hover:border-yellow-500/40 group-hover:bg-yellow-500/[0.03]",
-    iconBg: "bg-yellow-500/10 text-yellow-400",
-    tagColor: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20",
+    number: "05",
+    icon: RefreshCw,
+    title: "Ad Copy A/B Testing + Remarketing",
+    tag: "Compounding Edge",
+    description: "Continuous split testing across headlines and descriptions — so your ads get sharper every month. Paired with remarketing that recaptures visitors who clicked but didn't call.",
+    accent: "hover:border-amber-500/40 group-hover:bg-amber-500/[0.03]",
+    iconBg: "bg-amber-500/10 text-amber-400",
+    tagColor: "text-amber-400 bg-amber-500/10 border-amber-500/20",
   },
 ]
 
@@ -112,62 +74,77 @@ export function HomeServices() {
         >
           <div>
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1 rounded-full mb-4">
-              Frameworks & Services
+              The System
             </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-white">
-              Every Channel.<br />
-              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                One Expert.
+              Five Layers.<br />
+              <span className="bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">
+                One AI System.
               </span>
             </h2>
           </div>
           <p className="text-gray-500 max-w-xs text-sm leading-relaxed sm:text-right">
-            Google, Meta, WhatsApp, SEO, Social — all managed under one AI-powered strategy.
+            Every component works together. Remove one and the whole system weakens. Run all five and it compounds every month.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {services.map((service, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {components.map((item, i) => (
             <motion.div
-              key={service.title}
+              key={item.title}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease: EASE, delay: i * 0.05 }}
+              transition={{ duration: 0.6, ease: EASE, delay: i * 0.07 }}
             >
-              <Link
-                href={service.href}
-                className={`group relative flex flex-col h-full p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 overflow-hidden ${service.accent}`}
+              <div
+                className={`group relative flex flex-col h-full p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 overflow-hidden ${item.accent}`}
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${service.iconBg} transition-transform group-hover:scale-110 duration-300`}>
-                    <service.icon className="h-4.5 w-4.5 h-[18px] w-[18px]" />
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.iconBg} transition-transform group-hover:scale-110 duration-300`}>
+                    <item.icon className="h-[18px] w-[18px]" />
                   </div>
-                  <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full border ${service.tagColor}`}>
-                    {service.tag}
+                  <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full border ${item.tagColor}`}>
+                    {item.tag}
                   </span>
                 </div>
 
                 <span className="text-[72px] font-black leading-none text-white/[0.025] absolute right-3 top-2 select-none pointer-events-none">
-                  {service.number}
+                  {item.number}
                 </span>
 
-                <h3 className="text-base font-bold text-white mb-2 leading-snug">{service.title}</h3>
+                <h3 className="text-base font-bold text-white mb-2 leading-snug">{item.title}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors flex-1">
-                  {service.description}
+                  {item.description}
                 </p>
-
-                <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[10px] text-gray-600 group-hover:text-gray-400 transition-colors font-medium uppercase tracking-wider">
-                    Explore
-                  </span>
-                  <div className="w-6 h-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-300">
-                    <ArrowUpRight className="h-3 w-3 text-gray-500 group-hover:text-white transition-colors" />
-                  </div>
-                </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
+
+          {/* CTA card */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.35 }}
+          >
+            <Link
+              href="/free-audit"
+              className="group relative flex flex-col h-full p-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04] hover:border-cyan-500/40 hover:bg-cyan-500/[0.07] transition-all duration-300 overflow-hidden"
+            >
+              <div className="flex-1 flex flex-col justify-center items-center text-center gap-4 py-4">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-cyan-400">Get Started</p>
+                <h3 className="text-xl font-black text-white leading-snug">Is Your Google Ads Account Broken?</h3>
+                <p className="text-xs text-gray-500 leading-relaxed max-w-[200px]">
+                  Find out in 48 hours. Free audit — no pitch, no obligation.
+                </p>
+                <div className="flex items-center gap-2 mt-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-xs group-hover:shadow-[0_0_30px_rgba(6,182,212,0.35)] transition-shadow">
+                  Get My Free Audit
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

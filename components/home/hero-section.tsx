@@ -234,7 +234,7 @@ export function HomeHero() {
                 AI Marketing Expert
               </span>
               <span className="text-gray-600 text-xs hidden sm:block">·</span>
-              <span className="text-gray-500 text-xs hidden sm:block">Google Ads · Meta Ads · WhatsApp · SEO · AI Automation</span>
+              <span className="text-gray-500 text-xs hidden sm:block">AI-Powered Google Ads for Local Service Businesses</span>
             </motion.div>
 
             {/* Headline */}
@@ -267,12 +267,9 @@ export function HomeHero() {
               variants={itemVariants}
               className="text-base sm:text-lg text-gray-500 max-w-2xl mb-10 leading-relaxed"
             >
-              I help contractors, roofers, doctors, and lawyers get more customers — with{" "}
-              <span className="text-white font-medium">Google Ads</span>,{" "}
-              <span className="text-white font-medium">Meta Ads</span>,{" "}
-              <span className="text-white font-medium">AI automation</span>, and{" "}
-              <span className="text-white font-medium">SEO</span>{" "}
-              working together as one system, 24/7.
+              Most Google Ads agencies run the same broken playbook.{" "}
+              <span className="text-white font-medium">I built a different system</span> — one where AI handles bids, structure, and optimization 24/7, so contractors, roofers, doctors, and lawyers{" "}
+              <span className="text-white font-medium">stop bleeding budget and start getting calls.</span>
             </motion.p>
 
             {/* CTAs — inline email capture */}

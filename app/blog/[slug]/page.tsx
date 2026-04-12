@@ -30,8 +30,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
-  const allPosts = getAllPosts()
-  const related = allPosts.filter((p) => p.slug !== slug).slice(0, 4)
+  const related = getAllPosts().filter((p) => p.slug !== slug).slice(0, 4)
 
   const formatted = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric", month: "long", day: "numeric",
@@ -173,15 +172,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             {/* Services */}
             <div className="mb-8">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-4">Services</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-4">Get Started</p>
               <div className="space-y-2">
                 {[
-                  { label: "Google Ads", href: "/googleadsai", color: "text-cyan-400" },
-                  { label: "Meta Ads", href: "/meta-ads", color: "text-pink-400" },
-                  { label: "WhatsApp Bot", href: "/whatsapp", color: "text-green-400" },
-                  { label: "SEO & Content", href: "/rankflow", color: "text-emerald-400" },
-                  { label: "Google Maps", href: "/seo", color: "text-blue-400" },
-                  { label: "AI Agent", href: "/ai-agent", color: "text-purple-400" },
+                  { label: "Google Ads AI System", href: "/googleadsai", color: "text-cyan-400" },
+                  { label: "Free Google Ads Audit", href: "/free-audit", color: "text-sky-400" },
                 ].map((s) => (
                   <Link
                     key={s.href}

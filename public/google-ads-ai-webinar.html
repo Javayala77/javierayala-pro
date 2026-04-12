@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads AI System — Strategy Presentation</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #060609; }
+    body { background: var(--bg); color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; height: 100vh; overflow: hidden; user-select: none; }
+
+    #progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(to right, #06b6d4, #0284c7); transition: width 0.4s ease; z-index: 1000; }
+    #counter { position: fixed; top: 18px; right: 24px; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); z-index: 1000; }
+    #brand { position: fixed; top: 18px; left: 24px; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.15); z-index: 1000; }
+
+    .nav-btn { position: fixed; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; transition: all 0.2s; color: rgba(255,255,255,0.3); font-size: 16px; }
+    .nav-btn:hover { background: rgba(255,255,255,0.07); color: white; }
+    #prev { left: 14px; } #next { right: 14px; }
+
+    .slide { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 56px 80px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .slide.active { opacity: 1; pointer-events: all; }
+
+    /* Glows */
+    .gc { position: absolute; top: -15%; left: 50%; transform: translateX(-50%); width: 700px; height: 450px; background: radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+    .gv { position: absolute; bottom: -10%; right: -8%; width: 550px; height: 420px; background: radial-gradient(ellipse, rgba(2,132,199,0.06) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+    .gr { position: absolute; top: -10%; right: -8%; width: 500px; height: 380px; background: radial-gradient(ellipse, rgba(248,113,113,0.05) 0%, transparent 68%); pointer-events: none; z-index: 0; }
+
+    /* Layout */
+    .c { width: 100%; max-width: 860px; position: relative; z-index: 1; }
+    .cw { width: 100%; max-width: 1080px; position: relative; z-index: 1; }
+
+    /* Badges */
+    .badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 22px; }
+    .bc { color: #22d3ee; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.2); }
+    .bb { color: #60a5fa; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.2); }
+    .br { color: #f87171; background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
+    .bg { color: #34d399; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); }
+    .by { color: #fbbf24; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); }
+    .bv { color: #a78bfa; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); }
+
+    h1 { font-size: clamp(30px, 4.8vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(24px, 3.6vw, 46px); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; }
+
+    .tc { color: #22d3ee; } .tb { color: #60a5fa; } .tr { color: #f87171; } .tg { color: #34d399; } .ty { color: #fbbf24; } .tv { color: #a78bfa; }
+
+    p.lead { font-size: clamp(15px, 1.8vw, 21px); color: #9ca3af; line-height: 1.65; margin-top: 14px; }
+    p.body { font-size: clamp(13px, 1.3vw, 17px); color: #9ca3af; line-height: 1.75; }
+
+    /* Cards */
+    .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px; }
+    .card-c { background: rgba(34,211,238,0.04); border: 1px solid rgba(34,211,238,0.18); border-radius: 14px; padding: 22px; }
+    .card-b { background: rgba(96,165,250,0.04); border: 1px solid rgba(96,165,250,0.18); border-radius: 14px; padding: 22px; }
+    .card-r { background: rgba(248,113,113,0.04); border: 1px solid rgba(248,113,113,0.18); border-radius: 14px; padding: 22px; }
+    .card-g { background: rgba(52,211,153,0.04); border: 1px solid rgba(52,211,153,0.18); border-radius: 14px; padding: 22px; }
+    .card-y { background: rgba(251,191,36,0.04); border: 1px solid rgba(251,191,36,0.18); border-radius: 14px; padding: 22px; }
+
+    /* Grids */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    /* Lists */
+    .cl { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cl li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px, 1.3vw, 16px); color: #d1d5db; line-height: 1.5; }
+    .cl li::before { content: "✓"; color: #22d3ee; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+    .xl { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .xl li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px, 1.3vw, 16px); color: #d1d5db; line-height: 1.5; }
+    .xl li::before { content: "✗"; color: #f87171; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+    .sr { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; gap: 16px; }
+    .sr .lbl { font-weight: 700; font-size: 14px; color: white; }
+    .sr .val { font-weight: 800; font-size: 14px; white-space: nowrap; }
+
+    .div { height: 1px; background: rgba(255,255,255,0.06); margin: 18px 0; }
+    .highlight { background: rgba(34,211,238,0.05); border: 1px solid rgba(34,211,238,0.18); border-radius: 12px; padding: 18px 22px; font-size: clamp(13px, 1.5vw, 18px); font-weight: 700; color: white; line-height: 1.45; }
+
+    .btn-primary { display: inline-block; padding: 20px 52px; background: linear-gradient(135deg, #0891b2, #06b6d4); color: white; font-weight: 800; font-size: 17px; border-radius: 12px; text-decoration: none; box-shadow: 0 0 50px rgba(6,182,212,0.3); transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+    .stat .n { font-size: clamp(34px, 5vw, 68px); font-weight: 900; line-height: 1; }
+    .stat .l { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-top: 6px; }
+
+    .quote { font-size: clamp(13px, 1.5vw, 17px); font-style: italic; color: #e5e7eb; line-height: 1.65; padding-left: 16px; border-left: 3px solid #22d3ee; }
+    .bignum { font-size: clamp(52px, 7.5vw, 96px); font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+    .strike { text-decoration: line-through; color: #4b5563; }
+
+    /* Utils */
+    .f { display: flex; } .fc { flex-direction: column; } .ai { align-items: center; } .afs { align-items: flex-start; } .jc { justify-content: center; }
+    .tc-text { text-align: center; }
+    .mt4 { margin-top: 16px; } .mt6 { margin-top: 24px; } .mt8 { margin-top: 32px; } .mt10 { margin-top: 40px; }
+    .gap2 { gap: 8px; } .gap3 { gap: 12px; } .gap4 { gap: 16px; } .gap5 { gap: 20px; }
+    .secret-label { font-size: clamp(11px,1.5vw,15px); font-weight: 700; color: #4b5563; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+
+    /* Split layout */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+
+    /* Metric callout */
+    .metric { text-align: center; padding: 28px; }
+    .metric .before { font-size: clamp(28px,4vw,52px); font-weight: 900; color: #f87171; line-height: 1; }
+    .metric .after { font-size: clamp(28px,4vw,52px); font-weight: 900; color: #34d399; line-height: 1; }
+    .metric .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:3.33%"></div>
+<div id="counter">1 / 30</div>
+<div id="brand">Google Ads AI System · javierayala.pro</div>
+<button class="nav-btn" id="prev" onclick="nav(-1)" style="opacity:0.3">‹</button>
+<button class="nav-btn" id="next" onclick="nav(1)">›</button>
+
+
+<!-- ══ SLIDE 1 — HOOK ══ -->
+<div class="slide active" id="s1">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Strategy Session · 30 Minutes</div>
+    <h1>
+      Two Businesses. Same City.<br>Same Budget.<br>
+      <span class="tc">One Gets Flooded With Calls.<br>The Other Gets Nothing.</span>
+    </h1>
+    <p class="lead mt6" style="max-width:600px;margin-left:auto;margin-right:auto;">
+      The difference is not the budget. It's the structure. And once you see it, you can never un-see it.
+    </p>
+    <div class="mt10 f jc ai gap4">
+      <div class="card f ai gap3" style="padding:10px 22px;display:inline-flex;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;">Presented by</span>
+        <span style="font-weight:800;font-size:15px;">Javier Ayala</span>
+      </div>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 2 — CREDIBILITY ══ -->
+<div class="slide" id="s2">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Who I Am</div>
+    <div class="split">
+      <div>
+        <h2>Javier Ayala</h2>
+        <p class="body mt6">Google Ads specialist for local service businesses. I've managed over <strong style="color:white;">$2 million in Google Ads spend</strong> across contractors, legal, medical, and home services in the US.</p>
+        <ul class="cl mt6">
+          <li>8+ years running Google Ads for local businesses</li>
+          <li>Managed accounts from $500 to $50,000/month budgets</li>
+          <li>Rebuilt 100+ broken Google Ads accounts</li>
+          <li>Founder of javierayala.pro</li>
+          <li>Specialist: contractors, legal, medical, home services</li>
+        </ul>
+      </div>
+      <div class="f fc gap4">
+        <div class="card-c"><div class="stat tc-text"><div class="n tc">$2M+</div><div class="l">Google Ads managed</div></div></div>
+        <div class="card"><div class="stat tc-text"><div class="n tb">100+</div><div class="l">Accounts rebuilt</div></div></div>
+        <div class="card"><div class="stat tc-text"><div class="n tg">8+</div><div class="l">Years experience</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 3 — AGENDA ══ -->
+<div class="slide" id="s3">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bb">What You'll Learn Today</div>
+    <h2>Here's what we cover in the <span class="tc">next 30 minutes</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">1</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">The real reason Google Ads doesn't work for most local businesses</div>
+          <div style="font-size:13px;color:#6b7280;">It's not your budget. It's not your industry. And it's not Google. It's the structure.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(96,165,250,0.12);color:#60a5fa;">2</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">How to make Google's AI algorithm work for you — not against you</div>
+          <div style="font-size:13px;color:#6b7280;">The exact campaign structure that flips the algorithm from wasting your money to multiplying it.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <div class="num" style="background:rgba(52,211,153,0.12);color:#34d399;">3</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">What a properly managed account looks like in 30, 60, and 90 days</div>
+          <div style="font-size:13px;color:#6b7280;">Real numbers from real clients — and what I'd do specifically for your account.</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight mt8">
+      ⚠️ At the end, I'm going to make you an offer. If it makes sense, take action. If not — you'll still leave knowing exactly why your Google Ads are underperforming and how to fix them.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 4 — THE STORY / EPIPHANY ══ -->
+<div class="slide" id="s4">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Story</div>
+    <h2>I took over a campaign that was <span class="tr">bleeding money every day</span></h2>
+    <p class="body mt6">A home services company had been running Google Ads for 6 months. Significant monthly budget. Two or three leads to show for it. They thought Google Ads "just didn't work" for their industry.</p>
+    <p class="body mt4">I opened the account and saw it immediately: broad match keywords everywhere. Ads running for searches that had nothing to do with their service. No negative keyword list. No conversion tracking — so Google had zero idea what a real customer looked like. Every dollar fed a machine with no direction.</p>
+    <div style="margin:20px 0;padding:20px 24px;border-left:3px solid #22d3ee;background:rgba(34,211,238,0.04);border-radius:0 12px 12px 0;">
+      <p style="font-size:clamp(14px,1.6vw,19px);color:#e5e7eb;font-style:italic;line-height:1.6;">"They weren't losing because Google Ads doesn't work. They were losing because bad structure makes the algorithm work against you — and nobody ever told them."</p>
+    </div>
+    <div class="card-c mt4">
+      <p style="font-weight:700;font-size:clamp(14px,1.6vw,18px);line-height:1.5;">We rebuilt the account from scratch. <span class="tc">Month one: cost per lead dropped from $340 to $67. Same budget. Same market. Different structure.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 5 — SECRET #1 TITLE ══ -->
+<div class="slide" id="s5">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Secret #1 of 3</div>
+    <div class="secret-label">The Vehicle — The New Opportunity</div>
+    <h1>
+      Google Ads isn't broken.<br>
+      <span class="tr">Your account structure is.</span>
+    </h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      The platform works. The AI works. The problem is that 90% of local business Google Ads accounts are built in a way that makes the algorithm optimize for the wrong thing from day one.
+    </p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 6 — THROWING ROCKS AT THE ENEMIES ══ -->
+<div class="slide" id="s6">
+  <div class="gr"></div>
+  <div class="cw">
+    <div class="badge br">Breaking the Myth</div>
+    <h2>What bad agencies do — and <span class="tr">why it costs you everything</span></h2>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card-r">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:14px;">What most agencies deliver</div>
+        <ul class="xl">
+          <li>Broad match keywords that show ads for irrelevant searches</li>
+          <li>One campaign with every keyword mixed together</li>
+          <li>No conversion tracking — Google optimizes toward nothing</li>
+          <li>Zero negative keyword list — you pay for competitor clicks</li>
+          <li>Generic ad copy that doesn't match search intent</li>
+          <li>No Smart Bidding data because conversions aren't tracked</li>
+        </ul>
+      </div>
+      <div class="card-g">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:14px;">What a properly built account does</div>
+        <ul class="cl">
+          <li>Tight ad groups organized by service and buyer intent</li>
+          <li>Exact and phrase match keywords that capture real buyers</li>
+          <li>Conversion tracking installed so AI learns what works</li>
+          <li>Negative keyword list that blocks irrelevant traffic from day 1</li>
+          <li>Ad copy matched to each specific search query</li>
+          <li>Smart Bidding that improves automatically week over week</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight mt6">
+      💡 A bad account structure doesn't just waste money — it actively teaches Google's AI to send you worse leads at higher prices. Every day it runs, it gets harder to fix.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 7 — THE NEW OPPORTUNITY ══ -->
+<div class="slide" id="s7">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The New Opportunity</div>
+    <h2>When structure is right, <span class="tc">Google's AI becomes your best employee</span></h2>
+    <p class="body mt6">Google's AI bidding system — Smart Bidding — is genuinely powerful. It can analyze hundreds of signals in real time: time of day, device, location, search history, and more. But it only works if it has real conversion data to learn from.</p>
+    <div class="f fc gap4 mt6">
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📊</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Week 1–2: The system starts learning</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Every call tracked. Every form submission recorded. Google starts seeing what a real customer looks like for your specific business.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🤖</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Week 3–4: The AI starts optimizing aggressively</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">With 15–20 conversions recorded, Smart Bidding begins adjusting bids in real time. It bids higher when a searcher looks like your best customer. Lower when they don't.</div>
+        </div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📈</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Day 60+: The compound effect kicks in</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">More conversion data = better AI decisions = lower cost per lead = higher Quality Score = Google charges you less per click. The system gets more efficient every week automatically.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-c mt6">
+      <p style="font-weight:800;font-size:clamp(14px,1.6vw,18px);text-align:center;line-height:1.45;">The right structure doesn't just reduce waste. <span class="tc">It makes Google's own algorithm fight for you.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 8 — CASE STUDY #1 ══ -->
+<div class="slide" id="s8">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Real Results</div>
+    <h2>What happens when <span class="tc">structure meets AI</span></h2>
+    <div class="g3 mt8">
+      <div class="card tc-text">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-bottom:12px;">Home Services Client</div>
+        <div class="metric">
+          <div class="before">$340</div>
+          <div style="font-size:22px;color:#6b7280;margin:4px 0;">↓</div>
+          <div class="after">$67</div>
+          <div class="label">Cost per lead · First month</div>
+        </div>
+      </div>
+      <div class="card tc-text">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-bottom:12px;">Legal Services Firm</div>
+        <div class="metric">
+          <div class="after" style="font-size:clamp(36px,5vw,64px);">3x</div>
+          <div class="label" style="margin-top:12px;">More qualified calls<br>after account rebuild</div>
+        </div>
+      </div>
+      <div class="card tc-text">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-bottom:12px;">HVAC Contractor</div>
+        <div class="metric">
+          <div class="after" style="font-size:clamp(36px,5vw,64px);">5x</div>
+          <div class="label" style="margin-top:12px;">More leads<br>same monthly budget</div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt6 f gap4 afs" style="max-width:780px;margin-left:auto;margin-right:auto;">
+      <div class="quote" style="flex:1;">"I thought Google Ads just didn't work for my type of business. Then Javier rebuilt the account and my phone started ringing every day. I wish I had done this two years ago."</div>
+    </div>
+    <div style="text-align:center;margin-top:8px;font-size:13px;color:#22d3ee;font-weight:700;">— Carlos R., Plumbing & Drain Services</div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 9 — SECRET #2 TITLE ══ -->
+<div class="slide" id="s9">
+  <div class="gv"></div>
+  <div class="c tc-text">
+    <div class="badge bv">Secret #2 of 3</div>
+    <div class="secret-label">The Internal Belief — Yes, It Works for Your Business</div>
+    <h1>"This works for other businesses,<br>but <span class="tv">mine is different"</span></h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      Every business owner I've worked with said this before we started. Not one of them said it after the first month.
+    </p>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 10 — THROW ROCKS AT INTERNAL EXCUSES ══ -->
+<div class="slide" id="s10">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">Confronting the Objections</div>
+    <h2>The reasons you think <span class="tr">it won't work for you</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"Google Ads is too expensive for my budget"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">Cost per lead is determined by structure, not budget size. A $1,500/month account with proper structure will outperform a $10,000/month account built wrong. I've seen it dozens of times.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"My competitors have been running ads forever, I can't compete"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">Most of your competitors' accounts are also built wrong. An account with correct structure and conversion tracking routinely outranks bigger-budget competitors within 60 days.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"I tried Google Ads and it burned my money"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">You tried a badly built account. That's like saying cars don't work because someone gave you one with a broken engine. The platform works. The setup was the problem.</div>
+        </div>
+      </div>
+      <div class="card-r f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">❌</span>
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#f87171;">"My industry is too niche / nobody searches for what I do"</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:6px;">If even 100 people per month in your city search for your service, a properly built account captures them. Low search volume means lower competition and lower cost per click.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 11 — JUSTIFY PAST FAILURES ══ -->
+<div class="slide" id="s11">
+  <div class="gv"></div>
+  <div class="c">
+    <div class="badge bv">Not Your Fault</div>
+    <h2>Let me be honest:<br><span class="tv">the industry failed you</span></h2>
+    <p class="body mt6">If you've spent money on Google Ads and didn't get results — <strong style="color:white;">the account was built wrong and nobody fixed it.</strong></p>
+    <div class="f fc gap4 mt6">
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">💸</span>
+        <p class="body">Agencies set up generic campaigns, collect a monthly management fee, send you a report full of impressions and clicks, and call it done. They are paid for time, not for your results.</p>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🤖</span>
+        <p class="body">Nobody set up conversion tracking properly — so Google's AI had no data to learn from. The algorithm was running blind, spending your budget without ever knowing what a real customer looked like.</p>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📉</span>
+        <p class="body">Every week the broken account ran, it accumulated bad data. Google learned to send you more of the wrong traffic. The longer it ran, the worse it got — and the harder it became to fix.</p>
+      </div>
+    </div>
+    <div class="card-c mt6">
+      <p style="font-weight:700;font-size:clamp(14px,1.6vw,18px);line-height:1.5;text-align:center;">You didn't fail at Google Ads. <span class="tc">You were handed a broken account and told it was working.</span></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 12 — WORKS FOR ANY INDUSTRY ══ -->
+<div class="slide" id="s12">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Proof</div>
+    <h2>It works for <span class="tc">any local service business</span> where buyers search on Google</h2>
+    <div class="g3 mt8">
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">🔧</span>
+        <div><div style="font-weight:700;font-size:14px;">Home Services</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">Plumbing · HVAC · Electrical · Roofing · Pest Control</div></div>
+      </div>
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">⚖️</span>
+        <div><div style="font-weight:700;font-size:14px;">Legal</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">Personal Injury · Immigration · Criminal · Family Law</div></div>
+      </div>
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">🦷</span>
+        <div><div style="font-weight:700;font-size:14px;">Medical & Dental</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">Dentists · Surgeons · Chiropractors · Med Spas</div></div>
+      </div>
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">🏗️</span>
+        <div><div style="font-weight:700;font-size:14px;">Contractors</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">General Contractors · Remodeling · Landscaping · Flooring</div></div>
+      </div>
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">💰</span>
+        <div><div style="font-weight:700;font-size:14px;">Financial & Insurance</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">Mortgage Brokers · Insurance Agents · Financial Advisors</div></div>
+      </div>
+      <div class="card f gap3 afs" style="padding:18px;">
+        <span style="font-size:22px;flex-shrink:0;">🏡</span>
+        <div><div style="font-weight:700;font-size:14px;">Real Estate</div><div style="font-size:11px;color:#6b7280;margin-top:3px;">Buyers Agents · Property Management · Commercial</div></div>
+      </div>
+    </div>
+    <div class="highlight mt6 tc-text">If your customers search Google when they need your service — a properly built account will capture them. That's all that matters.</div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 13 — CASE STUDY #2 ══ -->
+<div class="slide" id="s13">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Case Study #2</div>
+    <h2>The law firm that had <em style="color:#9ca3af;">"given up on Google Ads"</em></h2>
+    <div class="g2 mt8" style="gap:28px;align-items:center;">
+      <div>
+        <div class="card-r" style="margin-bottom:16px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:10px;">The situation</div>
+          <p style="font-size:13px;color:#d1d5db;line-height:1.7;">Immigration law firm. Spending $4,500/month for 8 months. Getting mostly irrelevant calls — tourists with visa questions, people outside their service area, price shoppers not serious clients. They were about to cancel everything and try billboards.</p>
+        </div>
+        <div class="card-c">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#22d3ee;margin-bottom:10px;">After account rebuild</div>
+          <p style="font-size:13px;color:#d1d5db;line-height:1.7;">Rebuilt campaign structure around case types. Negative keywords blocking irrelevant traffic. Conversion tracking on calls 60s+. Smart Bidding with real data. Result: calls tripled, average quality improved dramatically.</p>
+        </div>
+      </div>
+      <div class="f fc gap4">
+        <div class="card" style="padding:20px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-bottom:10px;">Before rebuild</div>
+          <ul class="xl">
+            <li>$4,500/month · 8 months</li>
+            <li>Generic, irrelevant calls</li>
+            <li>No conversion tracking</li>
+            <li>Broad match everywhere</li>
+          </ul>
+        </div>
+        <div class="card" style="padding:20px;border-color:rgba(52,211,153,0.25);">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#34d399;margin-bottom:10px;">After rebuild</div>
+          <ul class="cl">
+            <li>Same budget</li>
+            <li>Calls tripled</li>
+            <li>Qualified leads only</li>
+            <li>Smart Bidding optimizing daily</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 14 — SECRET #3 TITLE ══ -->
+<div class="slide" id="s14">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge by">Secret #3 of 3</div>
+    <div class="secret-label">The External Belief — The Time Is Now</div>
+    <h1>"I'll start running ads<br><span class="ty">when the time is right"</span></h1>
+    <p class="lead mt6" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      Next quarter. After the slow season. When I have a bigger budget. When I hire someone to handle calls. Every month you wait is a month your competitors are building the data advantage you'll have to spend twice as much to overcome.
+    </p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 15 — COST OF WAITING ══ -->
+<div class="slide" id="s15">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">The Cost of Waiting</div>
+    <h2>Every month without a proper account, <span class="tr">here's what it costs you</span></h2>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card tc-text" style="padding:28px;"><div class="bignum tr">$23K</div><div style="font-size:12px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.08em;text-transform:uppercase;">Average monthly revenue<br>lost to competitors</div><div style="font-size:11px;color:#4b5563;margin-top:8px;">Based on avg. deal value<br>of $500 · 46 lost leads</div></div>
+      <div class="card tc-text" style="padding:28px;"><div class="bignum tr">60+</div><div style="font-size:12px;font-weight:600;color:#6b7280;margin-top:8px;letter-spacing:0.08em;text-transform:uppercase;">Days of AI learning data<br>your competitor builds</div><div style="font-size:11px;color:#4b5563;margin-top:8px;">Data you'll need to spend<br>through to catch up later</div></div>
+    </div>
+    <div class="card-r mt6">
+      <p style="font-weight:700;font-size:clamp(14px,1.6vw,18px);line-height:1.5;text-align:center;">Google Ads accounts get better with data over time. Every month a competitor runs a properly built account, their AI gets smarter and their costs drop. Waiting doesn't pause the clock — it lets them pull further ahead.</p>
+    </div>
+    <div class="card mt4 f gap4 afs">
+      <span style="font-size:22px;flex-shrink:0;">⏰</span>
+      <p style="font-size:13px;color:#9ca3af;line-height:1.6;">Smart Bidding needs 30–50 conversions to exit the learning phase. The sooner you start collecting real data, the sooner the algorithm fully optimizes. Starting 90 days later means your AI is always 90 days behind.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 16 — WHY NOW ══ -->
+<div class="slide" id="s16">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">Why Act Now</div>
+    <h2>The window to get ahead <span class="tc">is open right now</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🤖</span>
+        <div><div style="font-weight:700;font-size:15px;">Google's AI is more powerful than it's ever been — and most accounts still can't use it</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">Smart Bidding only works with conversion data. Businesses that set it up correctly right now are compounding an advantage that will take years to replicate.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📉</span>
+        <div><div style="font-weight:700;font-size:15px;">Most of your local competitors are still running broken accounts</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">I audit accounts weekly. The majority of local business Google Ads accounts in the US still have no proper conversion tracking, no negative keywords, and Smart Bidding running blind. The bar is low.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">📈</span>
+        <div><div style="font-weight:700;font-size:15px;">Quality Score compounds over time</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">A well-structured account earns a higher Quality Score week over week. Higher Quality Score = lower cost per click. Starting now means lower costs by the time your peak season hits.</div></div>
+      </div>
+      <div class="card f gap4 afs">
+        <span style="font-size:22px;flex-shrink:0;">🏆</span>
+        <div><div style="font-weight:700;font-size:15px;">First-mover advantage is real in local Google Ads</div><div style="font-size:13px;color:#9ca3af;margin-top:4px;">The business in your market that builds the most conversion data first becomes the hardest to outbid. That spot is still available. It won't be forever.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 17 — RECAP + TRANSITION ══ -->
+<div class="slide" id="s17">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">Recap</div>
+    <h2>The <span class="tc">3 secrets</span> in one idea</h2>
+    <div class="f fc gap4 mt8" style="max-width:680px;margin-left:auto;margin-right:auto;text-align:left;">
+      <div class="card-c f gap4 ai">
+        <div class="num" style="background:rgba(34,211,238,0.18);color:#22d3ee;width:42px;height:42px;font-size:18px;">1</div>
+        <div><div style="font-weight:700;font-size:15px;">The Vehicle</div><div style="font-size:13px;color:#9ca3af;">Google Ads works. Bad structure makes the AI work against you. Right structure makes it fight for you.</div></div>
+      </div>
+      <div class="card f gap4 ai" style="border-color:rgba(139,92,246,0.2);">
+        <div class="num" style="background:rgba(139,92,246,0.18);color:#a78bfa;width:42px;height:42px;font-size:18px;">2</div>
+        <div><div style="font-weight:700;font-size:15px;">The Internal Belief</div><div style="font-size:13px;color:#9ca3af;">It works for your industry. Previous attempts failed because of setup — not the platform, not your market.</div></div>
+      </div>
+      <div class="card-y f gap4 ai">
+        <div class="num" style="background:rgba(251,191,36,0.18);color:#fbbf24;width:42px;height:42px;font-size:18px;">3</div>
+        <div><div style="font-weight:700;font-size:15px;">The External Belief</div><div style="font-size:13px;color:#9ca3af;">Every month you wait, your competitor's AI gets smarter and the gap gets harder to close.</div></div>
+      </div>
+    </div>
+    <p class="lead mt8">Now let me show you exactly <span class="tc">what we build for you.</span></p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 18 — INTRODUCING THE PACKAGE ══ -->
+<div class="slide" id="s18">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">The Offer</div>
+    <h2>Introducing the system that makes<br><span class="tc">Google's AI work for your business</span></h2>
+    <div class="mt10" style="display:inline-block;padding:2px;background:linear-gradient(135deg,rgba(34,211,238,0.45),rgba(2,132,199,0.45));border-radius:22px;">
+      <div style="background:#060609;border-radius:20px;padding:30px 56px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Complete System</div>
+        <div style="font-size:clamp(26px,5vw,54px);font-weight:900;letter-spacing:-0.025em;">Google Ads AI System</div>
+        <div style="font-size:14px;color:#9ca3af;margin-top:8px;">Structure · AI Optimization · Conversion Tracking · Ongoing Management</div>
+      </div>
+    </div>
+    <p class="lead mt8" style="max-width:580px;margin-left:auto;margin-right:auto;">Everything your Google Ads account needs — built correctly from the ground up, with AI that improves your results automatically every single week.</p>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 19 — COMPONENT 1: STRATEGY & SETUP ══ -->
+<div class="slide" id="s19">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #1</div>
+    <div class="split">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">🎯</div>
+        <h2>Campaign Strategy<br><span class="tc">& Full Account Setup</span></h2>
+        <p class="body mt6">Your account rebuilt from scratch — or built right from day one. Tight campaign architecture that tells Google's algorithm exactly who to show your ads to and when.</p>
+        <ul class="cl mt6">
+          <li>Campaign structure organized by service type and buyer intent</li>
+          <li>Exact and phrase match keyword segmentation</li>
+          <li>Separate campaigns for emergency vs. planned buyers</li>
+          <li>Ad group architecture that enables AI optimization</li>
+          <li>Geographic targeting refined to your actual service area</li>
+          <li>Ad scheduling based on your peak call hours</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$800</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">one-time setup</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">💡 Most agencies charge $500–1,500 for setup alone — and still build it wrong</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 20 — COMPONENT 2: KEYWORDS ══ -->
+<div class="slide" id="s20">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #2</div>
+    <div class="split">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">🔍</div>
+        <h2>Keyword & Negative<br><span class="tc">Keyword Management</span></h2>
+        <p class="body mt6">Deep research into exactly what your buyers type when they're ready to hire — and an aggressive negative keyword list that blocks every irrelevant click from day one.</p>
+        <ul class="cl mt6">
+          <li>Full buyer intent keyword research for your market</li>
+          <li>High-intent terms separated from research/browse traffic</li>
+          <li>Negative keyword list built before first dollar is spent</li>
+          <li>Search term report reviewed weekly — new negatives added</li>
+          <li>Competitor brand terms isolated or excluded</li>
+          <li>Long-tail local keywords that lower CPC and raise quality</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$400</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">+ ongoing monthly management</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">🚫 Without negatives, 30–60% of your budget goes to clicks that will never convert</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 21 — COMPONENT 3: AI BID OPTIMIZATION ══ -->
+<div class="slide" id="s21">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #3</div>
+    <div class="split">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">🤖</div>
+        <h2>AI Bid Optimization<br><span class="tc">Powered by Smart Bidding</span></h2>
+        <p class="body mt6">Google's AI bidding system properly configured with real conversion data — so it optimizes toward actual customers, not clicks, impressions, or proxy metrics.</p>
+        <ul class="cl mt6">
+          <li>Smart Bidding strategy matched to your specific goal (CPL or ROAS)</li>
+          <li>Conversion data feeding the algorithm in real time</li>
+          <li>Bid adjustments by device, time of day, and location</li>
+          <li>Target CPA set based on your real job value</li>
+          <li>Manual oversight during learning phase to prevent waste</li>
+          <li>Weekly performance review and strategy adjustment</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$600</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">/ month ongoing</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">🤖 Proper Smart Bidding setup reduces average cost per lead by 40–60% within 60 days</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 22 — COMPONENT 4: CONVERSION TRACKING ══ -->
+<div class="slide" id="s22">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bc">Component #4</div>
+    <div class="split">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">📊</div>
+        <h2>Conversion Tracking<br><span class="tc">& Monthly Reporting</span></h2>
+        <p class="body mt6">Every phone call, every form fill, every lead — tracked and attributed to the exact keyword, ad, and campaign that generated it. Full transparency, always.</p>
+        <ul class="cl mt6">
+          <li>Google Ads call tracking (calls from ads + website calls)</li>
+          <li>Minimum call duration set to filter wrong numbers</li>
+          <li>Form submission tracking via Google Tag Manager</li>
+          <li>Google Analytics 4 integration and goal setup</li>
+          <li>Monthly report: leads, CPL, top keywords, wasted spend eliminated</li>
+          <li>Personal dashboard access — your numbers in real time</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-c tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$300</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">setup + included monthly</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">📞 Without call tracking, Smart Bidding cannot optimize — your AI is flying blind</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 23 — COMPONENT 5: AD COPY + REMARKETING ══ -->
+<div class="slide" id="s23">
+  <div class="gc"></div>
+  <div class="cw">
+    <div class="badge bg">Component #5</div>
+    <div class="split">
+      <div>
+        <div style="font-size:40px;margin-bottom:14px;">✍️</div>
+        <h2>Ad Copy A/B Testing<br><span class="tg">+ Remarketing</span></h2>
+        <p class="body mt6">Responsive search ads with multiple headline and description variations — continuously tested so the highest-converting combinations rise to the top. Plus remarketing to recapture visitors who didn't call.</p>
+        <ul class="cl mt6">
+          <li>15 ad headline variations per ad group</li>
+          <li>Urgency, social proof, benefit, and CTA angles tested</li>
+          <li>Responsive Search Ads let Google test combinations automatically</li>
+          <li>Remarketing lists built from site visitors and past converters</li>
+          <li>Separate bids for warm remarketing audiences</li>
+          <li>Monthly copy refresh based on top performer data</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-g tc-text" style="padding:30px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#34d399;margin-bottom:14px;">Value of this component</div>
+          <div style="font-size:54px;font-weight:900;line-height:1;">$400</div>
+          <div style="font-size:13px;color:#6b7280;margin-top:8px;">/ month ongoing</div>
+        </div>
+        <div class="card mt4"><div style="font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;">🎯 Remarketing converts 3–5x better than cold traffic — captures leads that didn't call the first time</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 24 — BONUSES ══ -->
+<div class="slide" id="s24">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge by">Exclusive Bonuses</div>
+    <h2>Included at <span class="ty">no additional cost</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">Free Google Ads Account Audit</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$400 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">Before we build anything, I audit your current account (or your competitors' if you're starting from scratch) and show you exactly what's broken and what we'd do differently.</div>
+        </div>
+      </div>
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">Competitor Intelligence Report</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$300 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">What keywords your top 3 local competitors are bidding on, what their ad copy looks like, and where the gaps are that we can exploit immediately.</div>
+        </div>
+      </div>
+      <div class="card f gap5 afs">
+        <div style="font-size:28px;flex-shrink:0;">🎁</div>
+        <div style="flex:1;">
+          <div class="f" style="justify-content:space-between;align-items:flex-start;">
+            <div style="font-weight:700;font-size:15px;">High-Converting Landing Page Review</div>
+            <div style="font-weight:800;font-size:14px;color:#fbbf24;flex-shrink:0;margin-left:16px;">$300 free</div>
+          </div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:4px;">A full review of the page your ads send traffic to — with specific recommendations to increase conversion rate before we spend a dollar on clicks.</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight mt6 tc-text">Total bonus value: <span class="ty" style="font-weight:900;">$1,000</span> — included with every account</div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 25 — FULL STACK + VALUE ══ -->
+<div class="slide" id="s25">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Complete Stack</div>
+    <h2>Everything <span class="tc">included in the system</span></h2>
+    <div class="f fc gap3 mt8">
+      <div class="sr"><div><div class="lbl">🎯 Campaign Strategy & Full Setup</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Account architecture + keyword segmentation + targeting</div></div><div class="val tc">$800</div></div>
+      <div class="sr"><div><div class="lbl">🔍 Keyword & Negative Keyword Management</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Research + negative list + weekly search term review</div></div><div class="val tc">$400/mo</div></div>
+      <div class="sr"><div><div class="lbl">🤖 AI Bid Optimization (Smart Bidding)</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Smart Bidding + weekly performance review</div></div><div class="val tc">$600/mo</div></div>
+      <div class="sr"><div><div class="lbl">📊 Conversion Tracking & Monthly Report</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">Call tracking + GA4 + dashboard access</div></div><div class="val tc">$300/mo</div></div>
+      <div class="sr"><div><div class="lbl">✍️ Ad Copy Testing + Remarketing</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">RSA testing + remarketing audiences</div></div><div class="val tc">$400/mo</div></div>
+      <div class="sr" style="border-color:rgba(251,191,36,0.2);"><div><div class="lbl" style="color:#fbbf24;">🎁 Bonuses: Audit + Competitor Intel + Landing Review</div></div><div class="val ty">$1,000</div></div>
+      <div class="div"></div>
+      <div class="sr" style="background:rgba(34,211,238,0.04);border-color:rgba(34,211,238,0.22);padding:16px 18px;"><div><div style="font-weight:900;font-size:16px;">TOTAL VALUE</div></div><div style="font-weight:900;font-size:20px;color:#22d3ee;">$3,500+/mo</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 26 — PRICE REVEAL + GUARANTEE ══ -->
+<div class="slide" id="s26">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">The Price</div>
+    <h2>You're not going to pay <span style="color:#6b7280;text-decoration:line-through;">$3,500 a month</span></h2>
+    <p class="lead mt4">Everything above — built, managed, and optimized every week — for one flat monthly fee.</p>
+    <div class="mt8" style="display:inline-block;padding:2px;background:linear-gradient(135deg,rgba(34,211,238,0.5),rgba(2,132,199,0.5));border-radius:22px;">
+      <div style="background:#0a0a12;border-radius:20px;padding:36px 64px;text-align:center;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">One flat monthly fee</div>
+        <div style="font-size:clamp(44px,7.5vw,90px);font-weight:900;line-height:1;letter-spacing:-0.04em;">$497</div>
+        <div style="font-size:15px;color:#6b7280;margin-top:6px;">/ month · no annual contract · cancel anytime</div>
+        <div class="div" style="margin:20px 0;"></div>
+        <div style="font-size:14px;color:#9ca3af;">Real value: <span class="strike">$3,500/mo</span><br><span style="color:#34d399;font-weight:700;font-size:16px;margin-top:4px;display:block;">You save $3,000+ every month</span></div>
+      </div>
+    </div>
+    <div class="g2 mt8" style="gap:16px;max-width:680px;margin-left:auto;margin-right:auto;">
+      <div class="card-g" style="text-align:left;padding:18px;"><div style="font-size:22px;margin-bottom:8px;">🛡️</div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">30-Day Money Back Guarantee</div><div style="font-size:12px;color:#9ca3af;line-height:1.5;">If in 30 days you don't see measurable improvement in your account performance, we refund 100%.</div></div>
+      <div class="card" style="text-align:left;padding:18px;"><div style="font-size:22px;margin-bottom:8px;">📅</div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">No Long-Term Contract</div><div style="font-size:12px;color:#9ca3af;line-height:1.5;">Month to month. If you're not happy with results, you cancel. No fees, no penalties.</div></div>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<!-- ══ SLIDE 27 — IF/ALL CLOSE ══ -->
+<div class="slide" id="s27">
+  <div class="gc"></div>
+  <div class="c">
+    <div class="badge bc">The Close — If/All Logic</div>
+    <h2>Let me ask you something <span class="tc">directly</span></h2>
+    <div class="f fc gap4 mt8">
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> the results I showed you are real — $340 CPL down to $67, calls tripled — is there any logical reason to keep running your current account the same way?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> every month with a broken account is costing you $23K in lost revenue, how much of that have you already left on the table this year?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> the risk is completely eliminated by the 30-day guarantee, what exactly do you lose by trying this?</p></div>
+      <div class="card f gap4 afs"><span style="font-size:20px;flex-shrink:0;">✅</span><p style="font-size:clamp(13px,1.4vw,16px);color:#d1d5db;line-height:1.5;"><strong style="color:white;">If</strong> a full managed system worth $3,500/mo is available for $497 today, and your competitor is about to sign up for it — what's your move?</p></div>
+    </div>
+    <div class="card-c mt6"><p style="font-weight:800;font-size:clamp(14px,1.6vw,18px);text-align:center;line-height:1.4;">If the answer to all of that is yes — the only question left is: <span class="tc">do you want to keep giving leads to your competitors?</span></p></div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 28 — FUTURE PACING + TESTIMONIALS ══ -->
+<div class="slide" id="s28">
+  <div class="gv"></div>
+  <div class="cw">
+    <div class="badge bv">Future Pacing + Social Proof</div>
+    <h2>Picture your account in <span class="tc">90 days</span></h2>
+    <div class="g2 mt6" style="gap:20px;align-items:start;">
+      <div class="f fc gap4">
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine opening your Google Ads dashboard and seeing cost per lead at $55 — down from $200+ — with more leads coming in on the same budget you have today.</p></div>
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine Smart Bidding having 90 days of real conversion data — getting smarter every week, automatically bidding more on the searches that convert and less on the ones that don't.</p></div>
+        <div class="card-c"><p style="font-size:14px;color:#e5e7eb;line-height:1.65;">Imagine knowing exactly which keywords, which ads, and which campaigns generated every single call — no more guessing whether Google Ads is working.</p></div>
+      </div>
+      <div class="f fc gap4">
+        <div class="card f fc gap4">
+          <div class="quote">"Went from $340 to $67 cost per lead in the first month. Same budget, same market. I genuinely don't know what I was paying for before."</div>
+          <div class="f gap3 ai" style="margin-top:auto;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0891b2,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">MK</div>
+            <div><div style="font-weight:700;font-size:13px;">Mike K.</div><div style="font-size:11px;color:#6b7280;">Home Services · Ohio</div></div>
+          </div>
+        </div>
+        <div class="card f fc gap4">
+          <div class="quote">"My phone started ringing every day after the rebuild. I wish I had done this two years ago instead of wasting money on a broken account."</div>
+          <div class="f gap3 ai" style="margin-top:auto;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#059669,#22d3ee);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">CR</div>
+            <div><div style="font-weight:700;font-size:13px;">Carlos R.</div><div style="font-size:11px;color:#6b7280;">Plumbing · California</div></div>
+          </div>
+        </div>
+        <div class="card f fc gap4">
+          <div class="quote">"Calls tripled after the account rebuild. The attorney I hired to handle the overflow paid for itself in the first two weeks."</div>
+          <div class="f gap3 ai" style="margin-top:auto;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;">SL</div>
+            <div><div style="font-weight:700;font-size:13px;">Sarah L.</div><div style="font-size:11px;color:#6b7280;">Legal Services · Texas</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 29 — URGENCY + SCARCITY ══ -->
+<div class="slide" id="s29">
+  <div class="gr"></div>
+  <div class="c">
+    <div class="badge br">Urgency & Scarcity</div>
+    <h2>I only work with <span class="tr">a limited number of clients</span></h2>
+    <p class="body mt6">Managing Google Ads accounts properly takes real weekly attention. I cap my client roster to ensure every account gets the oversight it needs — not just a monthly glance and an automated report.</p>
+    <div class="g2 mt8" style="gap:20px;">
+      <div class="card-r"><div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#f87171;margin-bottom:12px;">This month</div><div style="font-size:52px;font-weight:900;line-height:1;">3/5</div><div style="font-size:13px;color:#9ca3af;margin-top:8px;">New client spots taken</div><div class="f gap2 mt4"><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:#f87171;border-radius:4px;"></div><div style="width:22px;height:7px;background:rgba(255,255,255,0.08);border-radius:4px;"></div><div style="width:22px;height:7px;background:rgba(255,255,255,0.08);border-radius:4px;"></div></div></div>
+      <div class="card-g"><div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#34d399;margin-bottom:12px;">Still available</div><div style="font-size:52px;font-weight:900;line-height:1;">2</div><div style="font-size:13px;color:#9ca3af;margin-top:8px;">Spots for this month</div><div class="f gap2 mt4"><div style="width:22px;height:7px;background:#34d399;border-radius:4px;"></div><div style="width:22px;height:7px;background:#34d399;border-radius:4px;"></div></div></div>
+    </div>
+    <div class="highlight mt6">⚠️ The next client who takes a spot starts building AI conversion data this week. Every week of delay is a week of optimization data your account won't have.</div>
+    <div class="card-y mt4 f gap4 afs"><span style="font-size:20px;flex-shrink:0;">🎁</span><p style="font-size:13px;color:#d1d5db;line-height:1.6;">Clients who start this month get the <strong style="color:white;">Competitor Intelligence Report and Landing Page Review ($600 value)</strong> included. <strong style="color:#fbbf24;">These bonuses are only available for the 2 remaining spots.</strong></p></div>
+  </div>
+</div>
+
+
+<!-- ══ SLIDE 30 — FINAL CTA ══ -->
+<div class="slide" id="s30">
+  <div class="gc"></div>
+  <div class="c tc-text">
+    <div class="badge bc">One Last Thing</div>
+    <h2>Your competitors are getting<br>the calls <span class="tc">you should be getting.</span></h2>
+    <p class="lead mt4" style="max-width:540px;margin-left:auto;margin-right:auto;">Book a free 30-minute Google Ads audit. I'll show you exactly what's wrong with your current setup — or where the opportunity is if you're starting fresh — before you commit to anything.</p>
+    <div class="f fc gap4 mt8" style="max-width:540px;margin-left:auto;margin-right:auto;text-align:left;">
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">1</div><div style="font-size:14px;color:#d1d5db;">Click below and pick your time slot on Calendly</div></div>
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">2</div><div style="font-size:14px;color:#d1d5db;">I audit your account (or competitor accounts) before the call</div></div>
+      <div class="card f gap4 ai"><div class="num" style="background:rgba(34,211,238,0.12);color:#22d3ee;">3</div><div style="font-size:14px;color:#d1d5db;">On the call I show you exactly what's broken and how we'd fix it</div></div>
+    </div>
+    <div class="mt10">
+      <a href="[YOUR_CALENDLY_LINK]" class="btn-primary">→ Book My Free Google Ads Audit</a>
+      <div style="font-size:11px;color:#4b5563;margin-top:14px;">30 minutes · No commitment · Audit delivered before the call</div>
+    </div>
+    <div class="card mt8 f gap4 afs" style="max-width:500px;margin-left:auto;margin-right:auto;text-align:left;">
+      <span style="font-size:20px;flex-shrink:0;">🛡️</span>
+      <p style="font-size:12px;color:#9ca3af;line-height:1.6;"><strong style="color:white;">30-Day Full Guarantee:</strong> If after 30 days of working together your account performance hasn't measurably improved, I refund every dollar. No questions. No process. No drama.</p>
+    </div>
+  </div>
+  <div class="gv"></div>
+</div>
+
+
+<script>
+  let cur = 1;
+  const total = 30;
+
+  function nav(dir) {
+    const next = cur + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('s' + cur).classList.remove('active');
+    cur = next;
+    document.getElementById('s' + cur).classList.add('active');
+    document.getElementById('counter').textContent = cur + ' / ' + total;
+    document.getElementById('progress-bar').style.width = ((cur / total) * 100) + '%';
+    document.getElementById('prev').style.opacity = cur === 1 ? '0.3' : '1';
+    document.getElementById('next').style.opacity = cur === total ? '0.3' : '1';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); nav(1); }
+    if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); nav(-1); }
+  });
+
+  let tx = 0;
+  document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const d = tx - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 50) nav(d > 0 ? 1 : -1);
+  });
+</script>
+</body>
+</html>
