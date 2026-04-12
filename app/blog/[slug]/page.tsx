@@ -4,6 +4,27 @@ import { getPostBySlug, getAllPosts } from "@/lib/blog"
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react"
 import type { Metadata } from "next"
 import EmailCapture from "@/components/email-capture"
+import BlogTOC from "@/components/blog-toc"
+
+function extractHeadings(html: string) {
+  const matches = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/gi)]
+  return matches.map((m, i) => {
+    const text = m[1].replace(/<[^>]+>/g, "").trim()
+    const id = `section-${i}-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`
+    return { id, text }
+  })
+}
+
+function addHeadingIds(html: string, headings: { id: string; text: string }[]) {
+  let result = html
+  let idx = 0
+  result = result.replace(/<h2([^>]*)>(.*?)<\/h2>/gi, (match, attrs, inner) => {
+    const h = headings[idx++]
+    if (!h) return match
+    return `<h2${attrs} id="${h.id}">${inner}</h2>`
+  })
+  return result
+}
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
@@ -31,6 +52,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound()
 
   const related = getAllPosts().filter((p) => p.slug !== slug).slice(0, 4)
+  const headings = extractHeadings(post.content)
+  const contentWithIds = addHeadingIds(post.content, headings)
 
   const formatted = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric", month: "long", day: "numeric",
@@ -110,7 +133,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {post.description}
             </p>
 
-            <div className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/* Mobile TOC */}
+            {headings.length > 0 && (
+              <div className="lg:hidden mb-8 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
+                <BlogTOC headings={headings} />
+              </div>
+            )}
+
+            <div className="prose-blog" dangerouslySetInnerHTML={{ __html: contentWithIds }} />
 
             {/* Author */}
             <div className="mt-16 pt-8 border-t border-white/[0.06] flex items-center gap-4">
@@ -144,6 +174,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Sidebar */}
           <aside className="hidden lg:block w-72 flex-shrink-0 sticky top-8">
+            {/* Table of Contents */}
+            {headings.length > 0 && (
+              <div className="mb-8 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
+                <BlogTOC headings={headings} />
+              </div>
+            )}
 
             {/* More Articles */}
             {related.length > 0 && (

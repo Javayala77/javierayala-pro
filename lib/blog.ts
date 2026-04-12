@@ -663,6 +663,204 @@ Month 6+: Self-reinforcing. More reviews → higher ranking → more calls → m
 <p>If you want someone to audit your current call tracking setup and Google Ads account — verify what's actually being tracked, identify what's being missed, and show you the exact fix — <a href="/googleadsai">request a free Google Ads audit here</a>. We'll check every conversion action and show you exactly what's broken.</p>
     `.trim(),
   },
+  {
+    slug: "how-to-lower-google-ads-cpc",
+    title: "How to Lower Your Google Ads CPC Without Losing Leads",
+    date: "2026-04-12",
+    description: "High cost-per-click is not a Google problem — it's a structure problem. Here's exactly how to bring your CPC down while keeping lead volume up.",
+    category: "Google Ads",
+    readTime: "8 min read",
+    content: `
+<p>Most contractors and local service businesses assume that a high Google Ads CPC is just the cost of doing business. "That's what clicks cost in my market." In some cases they're right — competitive markets have expensive keywords. But in most cases, the CPC is high because of structural problems in the account that are entirely fixable.</p>
+
+<p>The goal isn't to pay the lowest possible CPC. It's to pay the lowest CPC <em>for clicks that actually convert</em>. Those are two very different objectives — and confusing them is how businesses end up with cheap clicks from searchers who never call, or expensive clicks they've failed to optimize.</p>
+
+<p>Here's the complete breakdown of what drives CPC up and exactly how to bring it down.</p>
+
+<h2>Why Your CPC Is High (It's Rarely Just Competition)</h2>
+
+<p>Google determines what you pay per click through a real-time auction. Your actual CPC is driven by three things: your bid, your Quality Score, and the competition's bids. Most people focus only on the bid — but Quality Score is where the real leverage is.</p>
+
+<p>Quality Score is Google's rating (1–10) of how relevant your ad and landing page are to the search query. A Quality Score of 8 can get you the same ad position as a competitor with a Quality Score of 5 — at a fraction of the cost. Google literally rewards relevance with lower CPCs.</p>
+
+<p>Accounts with poor structure — generic ad copy, broad match keywords, homepage landing pages — have Quality Scores in the 3–5 range. Well-structured accounts with tight ad groups and relevant landing pages routinely achieve 7–9. The CPC difference can be 40–60% for the same keyword.</p>
+
+<h2>Fix 1: Tighten Your Keyword Match Types</h2>
+
+<p>Broad match keywords are the single biggest driver of wasted spend and inflated effective CPC. When you bid on "plumber" in broad match, Google shows your ad for "plumber salary," "how to become a plumber," "plumbing supplies near me," and hundreds of other irrelevant searches. You pay for every click.</p>
+
+<p>The fix: move your core keywords to phrase match and exact match. Use broad match only for discovery — finding new keyword ideas — with strict negative keyword controls. This alone typically reduces your effective CPC by 25–40% by eliminating irrelevant clicks that drag down your conversion rate.</p>
+
+<p><strong>Before:</strong> Bidding on [plumber] broad match at $18 CPC, converting at 4% — effective cost per lead: $450<br/>
+<strong>After:</strong> Exact match [emergency plumber near me] at $24 CPC, converting at 18% — effective cost per lead: $133</p>
+
+<p>Higher nominal CPC. Much lower cost per lead. That's the math that matters.</p>
+
+<h2>Fix 2: Improve Your Quality Score With Ad Group Tightness</h2>
+
+<p>Quality Score is calculated at the keyword level, and the biggest driver is expected click-through rate — how likely Google thinks someone is to click your ad when it appears for that keyword.</p>
+
+<p>The way to increase it: create tightly themed ad groups where the keyword, ad headline, and landing page all say the same thing. One ad group for "emergency AC repair." A different one for "AC installation." A different one for "AC tune-up." Each with ad copy written specifically for that intent.</p>
+
+<p>Generic ad groups with 50 keywords and one set of ads have low Quality Scores because the ad can't be relevant to every keyword. Tight ad groups with 3–7 closely related keywords and highly specific ad copy get Quality Scores of 7–9 — and Google charges less per click because it trusts the relevance.</p>
+
+<h2>Fix 3: Build a Negative Keyword List (And Keep Building It)</h2>
+
+<p>Every irrelevant click you pay for raises your effective CPC and lowers your conversion rate, which signals to Google that your ads are less relevant, which raises your CPC further. It compounds in the wrong direction.</p>
+
+<p>Start with a foundational negative keyword list for your industry. For home services, this includes: "free," "DIY," "how to," "cheap," "school," "training," "jobs," "career," "license," "permit," "wholesale," "salary." Then check your Search Terms report weekly and add any irrelevant queries you're getting charged for.</p>
+
+<p>Accounts that actively manage negative keywords see 30–50% reductions in wasted spend within 60 days. That money either reduces your total spend or gets reallocated to the keywords that convert.</p>
+
+<h2>Fix 4: Use Dayparting and Device Bid Adjustments</h2>
+
+<p>If you're running ads 24/7 at the same bid, you're paying the same rate at 2am on a Sunday as you are at 9am on a Tuesday. But your conversion rate at 2am is likely a fraction of business hours.</p>
+
+<p>Look at your conversion data by hour of day and day of week. You'll almost always find that 80% of your conversions come from 30–40% of your hours. Reduce bids or pause ads during the low-conversion windows. Raise bids during your peak conversion hours.</p>
+
+<p>Similarly, check performance by device. Many local service businesses see much higher conversion rates on mobile (people call directly from a mobile search) than desktop. If your data confirms this, increase mobile bid adjustments by 20–40% and reduce desktop. You'll pay more per click on mobile but convert a much higher percentage.</p>
+
+<h2>Fix 5: Let AI Bidding Take Over (Once You Have Data)</h2>
+
+<p>Manual CPC bidding means you set a static bid for each keyword. You're competing against accounts using Target CPA and Maximize Conversions — strategies where Google's AI adjusts bids in real time based on hundreds of signals: device, location, time of day, search history, audience segments.</p>
+
+<p>Manual bidding cannot compete with that. The AI sees patterns you can't see and reacts in milliseconds to auction conditions you don't know about.</p>
+
+<p>The catch: AI bidding needs data to work. You need a minimum of 30–50 conversions per month before switching to Target CPA — otherwise the algorithm has nothing to optimize toward and will make bad decisions. Build your conversion tracking first, accumulate real data, then flip to Smart Bidding.</p>
+
+<p>When the switch works correctly, you'll see CPC go up on some keywords and down on others as the AI optimizes for conversion probability rather than raw cost. What matters is cost per lead — and properly trained AI bidding typically reduces it by 25–45% versus manual over a 90-day window.</p>
+
+<h2>Fix 6: Align Your Landing Page With the Ad (The Most Overlooked Factor)</h2>
+
+<p>Quality Score has three components: expected CTR, ad relevance, and landing page experience. Most businesses optimize the first two and ignore the third — even though landing page experience directly impacts your CPC.</p>
+
+<p>Google evaluates your landing page for relevance to the search query, load speed, and how easy it is for the visitor to find what they're looking for. A homepage that takes 4 seconds to load and mentions 12 different services is a poor landing page experience for someone who searched "AC repair near me." Google knows this and charges you more.</p>
+
+<p>Build dedicated landing pages for each service. Match the headline of the page to the keyword and ad. Load in under 2 seconds. Put the phone number and a form above the fold. This can lift your Quality Score by 2–3 points — which translates to 20–35% lower CPCs for the same position.</p>
+
+<h2>What Lower CPC Actually Looks Like in Practice</h2>
+
+<p>A roofing contractor in a mid-size market came to us paying $42 average CPC with a 6% conversion rate — $700 cost per lead. After restructuring the account:</p>
+
+<ul>
+<li>Average CPC dropped to $31 (tighter match types, improved Quality Scores)</li>
+<li>Conversion rate increased to 19% (dedicated landing pages, better ad copy)</li>
+<li>Cost per lead: $163</li>
+</ul>
+
+<p>Same market. Same competitors. Same budget. 77% lower cost per lead.</p>
+
+<p>The difference wasn't the bid. It was the structure — and a bidding strategy that put Google's AI to work instead of fighting it.</p>
+
+<p>If you want to see what's driving your CPC up and what's fixable in your specific account, <a href="/free-audit">request a free Google Ads audit</a>. We'll pull your actual data and show you exactly where the waste is.</p>
+    `.trim(),
+  },
+  {
+    slug: "why-google-ads-cost-per-lead-too-high",
+    title: "The Real Reason Your Google Ads Cost Per Lead Is Too High",
+    date: "2026-04-12",
+    description: "Most businesses blame their market or their budget when Google Ads CPL climbs. The real problem is almost always structural — and it's fixable. Here's how to diagnose it.",
+    category: "Google Ads",
+    readTime: "9 min read",
+    content: `
+<p>There's a conversation that happens constantly in local service businesses. The owner is running Google Ads, spending $2,000–$5,000 a month, and the cost per lead is somewhere between uncomfortable and unsustainable. The explanation from the agency (or the owner's own conclusion) is usually some version of: "That's just what it costs in this market."</p>
+
+<p>Sometimes that's true. Highly competitive markets — personal injury law, emergency plumbing in major metros, cosmetic dentistry — have genuinely expensive clicks. But in the majority of cases, an excessively high cost per lead is a structural problem. It's not the market — it's the account.</p>
+
+<p>Here's how to diagnose it correctly.</p>
+
+<h2>The Formula Most People Get Wrong</h2>
+
+<p>Cost per lead has two inputs: cost per click and conversion rate. Most businesses obsess over CPC and ignore conversion rate. This is backwards.</p>
+
+<p>A $40 CPC with a 3% conversion rate produces a $1,333 cost per lead.<br/>
+A $60 CPC with a 20% conversion rate produces a $300 cost per lead.</p>
+
+<p>Conversion rate is the dominant variable. A 2x improvement in conversion rate cuts your cost per lead in half — more powerfully than any bid reduction. But conversion rate issues are invisible until you measure them, which is why they go unfixed for months or years.</p>
+
+<h2>Problem 1: Your Landing Page Is Killing Your Conversion Rate</h2>
+
+<p>The most common cause of high cost per lead is sending paid traffic to a page that isn't built to convert. This includes:</p>
+
+<ul>
+<li><strong>The homepage.</strong> Your homepage is for everyone. It talks about all your services, your story, your team. Someone who searched "emergency roof repair" and lands on your homepage has to figure out if you even do that. Most don't wait to find out.</li>
+<li><strong>Slow pages.</strong> A page that loads in 4 seconds loses 50%+ of mobile visitors before they even see the content. Every lost visitor is a click you paid for.</li>
+<li><strong>No clear call to action above the fold.</strong> If the visitor has to scroll to find your phone number or a form, your conversion rate is suffering.</li>
+<li><strong>Mismatched messaging.</strong> The ad says "Same-day AC repair." The landing page talks about general HVAC services. The disconnect creates doubt and the visitor leaves.</li>
+</ul>
+
+<p>The fix: build dedicated landing pages for each service campaign. Match the headline to the ad. Lead with the specific service and location. Put the phone number and a short form in the first viewport. Test your page speed — it should load in under 2 seconds on mobile.</p>
+
+<h2>Problem 2: You're Paying for the Wrong Clicks</h2>
+
+<p>If your account is using broad match keywords without an aggressive negative keyword strategy, a significant percentage of your clicks are coming from searchers who will never become customers.</p>
+
+<p>Pull your Search Terms report right now. Look at the actual queries that triggered your ads over the last 30 days. In most unmanaged accounts, 30–50% of spend is going to irrelevant queries: informational searches, competitor lookups, job seekers, people in the wrong geography.</p>
+
+<p>Every irrelevant click you pay for inflates your cost per lead — even if the conversion tracking doesn't capture it. If you spent $3,000 last month and 40% was wasted on irrelevant clicks, your real budget for converting traffic was $1,800. Your cost per lead looks like it's based on $3,000 of spend, but you were only really competing with $1,800.</p>
+
+<p>The fix: switch core keywords to phrase and exact match. Build a negative keyword list. Review Search Terms weekly and add anything irrelevant. This is the highest-ROI optimization in most accounts.</p>
+
+<h2>Problem 3: You're Measuring the Wrong Conversions</h2>
+
+<p>This one is subtle and extremely common: the account is "tracking conversions" — but it's tracking the wrong things.</p>
+
+<p>Common tracking errors:</p>
+
+<ul>
+<li><strong>Tracking page views instead of leads.</strong> If your conversion fires when someone lands on a contact page (not the thank-you page after submission), every visitor looks like a conversion.</li>
+<li><strong>Not tracking phone calls.</strong> In most local service businesses, 60–80% of leads come via phone. If you're only tracking form fills, you're missing most of your conversions — and Google's AI is optimizing toward the wrong signal.</li>
+<li><strong>Double-counting.</strong> Having the same conversion action set up twice inflates conversion numbers and makes cost per lead look lower than it is — until you wonder why a "low" CPL isn't producing enough actual customers.</li>
+</ul>
+
+<p>The fix: audit every conversion action in your account. Make sure call tracking is set up with a minimum call duration (60 seconds = qualified call). Verify that form tracking fires on the thank-you page, not the form page. Remove duplicate conversion actions.</p>
+
+<h2>Problem 4: Your Bidding Strategy Is Fighting Google's AI</h2>
+
+<p>Manual CPC bidding made sense when Google's auction was relatively simple. In 2026, the auction factors in real-time signals — user behavior, device, location, time of day, search history, audience segments — that no human bidding strategy can match.</p>
+
+<p>Accounts still running manual CPC are competing against accounts using Target CPA and Maximize Conversions with Smart Bidding. Those accounts adjust bids hundreds of times per day based on conversion probability signals you can't see. You're bringing a spreadsheet to an AI fight.</p>
+
+<p>The fix: once you have 30–50 conversions per month tracked correctly, switch to Target CPA or Maximize Conversions. Set your Target CPA at your current actual cost per lead — don't start too aggressive. Let the algorithm learn for 30 days before evaluating. Most accounts see 20–40% CPL reduction within 60 days of properly implemented Smart Bidding.</p>
+
+<h2>Problem 5: Your Ad Copy Isn't Written for Intent</h2>
+
+<p>Generic ad copy produces low click-through rates, which signals low relevance to Google, which raises your CPC, which raises your cost per lead.</p>
+
+<p>Compare these two headlines for an emergency plumber:</p>
+
+<p><strong>Generic:</strong> "Professional Plumbing Services | Licensed & Insured | Call Today"<br/>
+<strong>Intent-matched:</strong> "Burst Pipe? We're 30 Min Away | Same-Day Emergency Plumbing | Available Now"</p>
+
+<p>The second headline speaks directly to the emergency searcher's exact situation — the burst pipe, the need for speed, the immediate availability. It gets a higher CTR, which improves Quality Score, which lowers CPC. It also filters out non-emergency searches, which improves conversion rate.</p>
+
+<p>Every ad group should have copy written for the specific intent behind the keywords in that group. Emergency intent needs urgency language. Commercial intent needs trust signals and offers. Comparison intent needs differentiation.</p>
+
+<h2>Problem 6: You Have No Attribution on What Actually Closed</h2>
+
+<p>Cost per lead is important but it's not the final metric. What matters is cost per acquired customer — and you can only calculate that if you know which leads actually closed into paying jobs.</p>
+
+<p>Many businesses know their cost per form fill or call, but don't track which of those leads converted to revenue. This means they can't tell Google which leads to optimize toward — just "calls," not "calls that became $3,000 roofing jobs."</p>
+
+<p>The fix: if your CRM allows it, import offline conversions back to Google Ads. When a lead books an appointment, closes a job, or reaches a revenue threshold, pass that event back to the Ads account. Now Smart Bidding is optimizing for customers, not just leads — and the quality of traffic improves significantly.</p>
+
+<h2>Diagnosing Your Own Account</h2>
+
+<p>If your cost per lead feels too high, run through this checklist:</p>
+
+<ul>
+<li>What's your conversion rate? If it's under 8%, landing pages are the likely culprit.</li>
+<li>What percentage of your Search Terms report is irrelevant? If it's over 20%, negative keywords are the issue.</li>
+<li>Are you tracking phone calls as conversions? If not, your data is incomplete.</li>
+<li>Are you using Smart Bidding with enough conversion data? If not, you're fighting the algorithm.</li>
+<li>When did you last test new ad copy? If it's been over 90 days, quality scores are degrading.</li>
+</ul>
+
+<p>Most accounts that do this audit find 2–4 of these problems simultaneously. Each one adds to cost per lead. Fix all of them and the compound effect is often a 50–70% reduction in what you're paying per lead — without touching the budget.</p>
+
+<p>If you want a real audit of your account — we'll pull your actual data, check every conversion action, review your search terms, and give you a specific fix list — <a href="/free-audit">book a free Google Ads audit here</a>. No pitch, no obligation. Just an honest picture of what's driving your cost per lead up.</p>
+    `.trim(),
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
