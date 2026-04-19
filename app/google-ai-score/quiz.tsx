@@ -261,10 +261,10 @@ export default function GoogleAIScoreQuiz() {
             </div>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
-            Where should we send<br />your Google AI Score?
+            One step to unlock<br />your Google AI Score
           </h2>
           <p className="text-sm text-gray-500 max-w-xs mx-auto">
-            Enter your email to unlock your score + personalized fix roadmap.
+            Enter your details and your full score reveals instantly — right here.
           </p>
         </div>
 
@@ -371,17 +371,17 @@ export default function GoogleAIScoreQuiz() {
           <div className="p-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04] text-center">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">Next Step</p>
             <h3 className="text-xl font-black text-white mb-2">
-              {score <= 60 ? "Let's fix this together — free 30-min call." : "Let's scale this — free 30-min strategy call."}
+              {score <= 60 ? "Let's fix this together — free AI Scan." : "Let's scale this — free 30-min strategy call."}
             </h3>
             <p className="text-sm text-gray-500 mb-5 max-w-sm mx-auto">
-              Your full roadmap is heading to your inbox. Book a call and we&apos;ll walk through it together — live, on your account.
+              You now know exactly where your account stands. Book a free call and we&apos;ll walk through your score live — on your actual account.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/free-audit"
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold text-sm hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all"
               >
-                Book My Free Strategy Call <ArrowRight className="h-4 w-4" />
+                Get My Free AI Scan <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/blog"

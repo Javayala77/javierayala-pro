@@ -1,21 +1,93 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { TrendingUp, Eye, MousePointer, Target, Loader2, AlertTriangle, RefreshCw } from "lucide-react"
+import { TrendingUp, Eye, MousePointer, Target, Loader2, AlertTriangle, RefreshCw, Send, Search, CheckCircle, XCircle, Clock } from "lucide-react"
 
 type Row = { keys: string[]; clicks: number; impressions: number; ctr: number; position: number }
 type Overview = { clicks: number; impressions: number; ctr: number; position: number }
 type Data = { overview: Overview; topQueries: Row[]; topPages: Row[] }
+
+
+type Post = { slug: string; title: string; date: string; url: string }
+
+type InspectResult = {
+  url: string
+  verdict: string
+  coverageState: string
+  lastCrawlTime: string | null
+  crawledAs: string | null
+  error?: string
+}
+
+type IndexStatus = "idle" | "loading" | "submitted" | "error"
+type InspectStatus = "idle" | "loading" | "done" | "error"
 
 function fmt(n: number, dec = 0) { return n.toLocaleString("en-US", { maximumFractionDigits: dec }) }
 function pct(n: number) { return (n * 100).toFixed(1) + "%" }
 function pos(n: number) { return n.toFixed(1) }
 function shortUrl(url: string) { return url.replace("https://javierayala.pro", "") || "/" }
 
-export default function SearchConsoleDashboard() {
+function VerdictBadge({ verdict }: { verdict: string }) {
+  if (verdict === "PASS") return <span className="flex items-center gap-1 text-emerald-400 text-[10px] font-bold"><CheckCircle className="h-3 w-3" />Indexed</span>
+  if (verdict === "FAIL") return <span className="flex items-center gap-1 text-red-400 text-[10px] font-bold"><XCircle className="h-3 w-3" />Not indexed</span>
+  return <span className="flex items-center gap-1 text-gray-500 text-[10px]"><Clock className="h-3 w-3" />Unknown</span>
+}
+
+export default function SearchConsoleDashboard({ posts }: { posts: Post[] }) {
   const [data, setData] = useState<Data | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+const [indexStatus, setIndexStatus] = useState<Record<string, IndexStatus>>({})
+  const [indexError, setIndexError] = useState<Record<string, string>>({})
+  const [inspectStatus, setInspectStatus] = useState<Record<string, InspectStatus>>({})
+  const [inspectData, setInspectData] = useState<Record<string, InspectResult>>({})
+
+  async function requestIndex(url: string) {
+    setIndexStatus((s) => ({ ...s, [url]: "loading" }))
+    setIndexError((e) => { const n = { ...e }; delete n[url]; return n })
+    try {
+      const res = await fetch("/api/search-console/index", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ urls: [url] }),
+      })
+      const json = await res.json()
+      const result = json.results?.[0]
+      if (result?.status === "submitted") {
+        setIndexStatus((s) => ({ ...s, [url]: "submitted" }))
+      } else {
+        setIndexStatus((s) => ({ ...s, [url]: "error" }))
+        setIndexError((e) => ({ ...e, [url]: result?.error ?? "Failed" }))
+      }
+    } catch {
+      setIndexStatus((s) => ({ ...s, [url]: "error" }))
+      setIndexError((e) => ({ ...e, [url]: "Network error" }))
+    }
+  }
+
+  async function requestIndexAll() {
+    for (const post of posts) {
+      await requestIndex(post.url)
+    }
+  }
+
+  async function inspect(url: string) {
+    setInspectStatus((s) => ({ ...s, [url]: "loading" }))
+    try {
+      const res = await fetch(`/api/search-console/index?url=${encodeURIComponent(url)}`)
+      const json = await res.json()
+      if (json.error) {
+        setInspectStatus((s) => ({ ...s, [url]: "error" }))
+        setInspectData((d) => ({ ...d, [url]: { url, verdict: "UNKNOWN", coverageState: json.error, lastCrawlTime: null, crawledAs: null, error: json.error } }))
+      } else {
+        setInspectStatus((s) => ({ ...s, [url]: "done" }))
+        setInspectData((d) => ({ ...d, [url]: json }))
+      }
+    } catch {
+      setInspectStatus((s) => ({ ...s, [url]: "error" }))
+    }
+  }
 
   async function load() {
     setLoading(true)
@@ -163,6 +235,99 @@ export default function SearchConsoleDashboard() {
             </div>
           </>
         )}
+
+        {/* ── URL Indexing Panel ── */}
+        <div className="mt-8 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02]">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-1">URL Indexing</p>
+              <p className="text-xs text-gray-500">Request indexing or inspect status via Search Console API</p>
+            </div>
+            <button
+              onClick={requestIndexAll}
+              disabled={posts.some((p) => indexStatus[p.url] === "loading")}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-xs text-cyan-400 hover:bg-cyan-500/20 transition-all disabled:opacity-40"
+            >
+              <Send className="h-3.5 w-3.5" />
+              Submit All
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {posts.map((post) => {
+              const iStatus = indexStatus[post.url] ?? "idle"
+              const inStatus = inspectStatus[post.url] ?? "idle"
+              const inData = inspectData[post.url]
+
+              return (
+                <div key={post.slug} className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01]">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-white font-medium truncate">{post.title}</p>
+                      <p className="text-[10px] text-gray-600 mt-0.5">/blog/{post.slug} · {post.date}</p>
+
+                      {/* Inspect result */}
+                      {inStatus === "done" && inData && (
+                        <div className="mt-2 flex flex-wrap items-center gap-3">
+                          <VerdictBadge verdict={inData.verdict} />
+                          <span className="text-[10px] text-gray-600">{inData.coverageState}</span>
+                          {inData.lastCrawlTime && (
+                            <span className="text-[10px] text-gray-600">
+                              Last crawled: {new Date(inData.lastCrawlTime).toLocaleDateString("en-US")}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      {inStatus === "error" && (
+                        <p className="mt-1 text-[10px] text-red-400">{inspectData[post.url]?.error ?? "Inspection failed"}</p>
+                      )}
+                      {iStatus === "error" && indexError[post.url] && (
+                        <p className="mt-1 text-[10px] text-red-400">{indexError[post.url]}</p>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      {/* Inspect button */}
+                      <button
+                        onClick={() => inspect(post.url)}
+                        disabled={inStatus === "loading"}
+                        title="Inspect URL"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/[0.08] bg-white/[0.02] text-[10px] text-gray-400 hover:text-white hover:border-white/20 transition-all disabled:opacity-40"
+                      >
+                        {inStatus === "loading"
+                          ? <Loader2 className="h-3 w-3 animate-spin" />
+                          : <Search className="h-3 w-3" />}
+                        Inspect
+                      </button>
+
+                      {/* Index button */}
+                      <button
+                        onClick={() => requestIndex(post.url)}
+                        disabled={iStatus === "loading" || iStatus === "submitted"}
+                        title="Request indexing"
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[10px] transition-all disabled:opacity-40 ${
+                          iStatus === "submitted"
+                            ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                            : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20"
+                        }`}
+                      >
+                        {iStatus === "loading" ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : iStatus === "submitted" ? (
+                          <CheckCircle className="h-3 w-3" />
+                        ) : (
+                          <Send className="h-3 w-3" />
+                        )}
+                        {iStatus === "submitted" ? "Submitted" : "Index"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
       </div>
     </main>
   )

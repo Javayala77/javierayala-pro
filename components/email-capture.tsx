@@ -16,7 +16,7 @@ export default function EmailCapture({
   tag,
   placeholder = "Your email address",
   ctaText = "Send It to Me Free",
-  successText = "Check your inbox — and message us on WhatsApp to get started.",
+  successText = "You're confirmed. We'll be in touch within 24 hours to schedule your Google Ads AI Scan.",
   accentClass = "border-cyan-500/30 focus:border-cyan-500/60",
   btnClass = "from-cyan-600 to-cyan-500",
 }: Props) {

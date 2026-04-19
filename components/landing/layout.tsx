@@ -9,15 +9,13 @@ interface LandingLayoutProps {
   children: React.ReactNode
   accentColor?: string
   ctaText?: string
-  ctaHref?: string
   homeHref?: string
 }
 
 export function LandingLayout({
   children,
   accentColor = "text-cyan-400",
-  ctaText = "Talk to Javier",
-  ctaHref = "https://wa.me/573103956445",
+  ctaText = "Get My Free AI Scan",
   homeHref = "/",
 }: LandingLayoutProps) {
   const [scrolled, setScrolled] = useState(false)

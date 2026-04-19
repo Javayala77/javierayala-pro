@@ -58,7 +58,7 @@ const caseStudies = [
   {
     company: "Elite HVAC Services",
     location: "Texas",
-    service: "AI Booking Agent",
+    service: "Google Ads AI System",
     before: "Manual bookings only",
     after: "47 jobs booked",
     metric: "47 jobs",
